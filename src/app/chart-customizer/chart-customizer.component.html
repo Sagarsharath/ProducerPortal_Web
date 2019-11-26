@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div class="topinfo">
+    {{customizerData.description}}
+    <span class="topright"> {{customizerData.additionalInfo}} </span>
+    <!-- {{customizerData.cType}} -->
+</div>
+<div class="main">
+<bar-chart [barChartData] ="dataChild" [barChartLabels]="Labels"  *ngIf ="customizerData.bar"></bar-chart>
+<pie-chart [pieChartData] ="dataChild[0].data" [pieChartLabels]="Labels" *ngIf ="customizerData.pie"></pie-chart>
+</div>
+
+</body>
+</html> 
+
