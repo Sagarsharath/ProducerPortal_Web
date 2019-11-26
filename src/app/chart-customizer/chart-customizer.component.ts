@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { BarChartComponent } from '../Charts/bar-chart/bar-chart.component';
-import { customizerDataModel,chartTypes } from './../Charts/ChartModels';
+import { customizerDataModel } from './../Charts/ChartModels';
 
 @Component({
   selector: 'chart-customizer',

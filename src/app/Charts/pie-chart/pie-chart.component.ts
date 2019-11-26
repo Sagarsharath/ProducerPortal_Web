@@ -2,8 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ChartType, ChartOptions, ChartColor,ChartDataSets } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Colors, Color } from 'ng2-charts';
 import { getNsPrefix } from '@angular/compiler';
-// import { ChartData}  from './../chartData';
-
+import { defaultColors } from './../ChartModels'
 @Component({
   selector: 'pie-chart',
   templateUrl: './pie-chart.component.html',
@@ -17,15 +16,14 @@ export class PieChartComponent {
     
   };
   @Input() name: string;
-  @Input() pieChartLabels: Label[] ;//= ['SciFi', ['Drama'], 'Comedy','dumm','fsds'];
+  @Input() pieChartLabels: Label[] ;
   @Input() pieChartData: SingleDataSet ;
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-  public colors = ['#2EE7E7', '#C658B7', '#4526EF','orange','red','green'];
   public pieChartColors = [
     {
-      backgroundColor: this.colors,
+       backgroundColor: defaultColors.RGB
     },
   ];
   public chartOption = {
@@ -50,9 +48,7 @@ export class PieChartComponent {
       }
       
 
-  constructor() {
-    // this.pieChartData = ChartData.chartDataSets[1].slice(0,3);
-    // this.pieChartData = 
+  constructor(private clr :defaultColors) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
 

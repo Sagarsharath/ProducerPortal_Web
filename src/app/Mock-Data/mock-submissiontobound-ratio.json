@@ -1,0 +1,8 @@
+{
+    "submission": 5,
+    "quoted": 5,
+    "bound": 3,
+    "submissionToBoundRatio": 0.6,
+    "submissionToQuoteRatio": 1.0,
+    "quoteToBoundRatio": 0.6
+}

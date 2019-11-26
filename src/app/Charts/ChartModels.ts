@@ -3,11 +3,14 @@ import { Label } from 'ng2-charts';
 import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
-  })
-export class BarChartModel {
+})
+export class ChartDataModel {
     public chartType: chartTypes;
-    public values: ChartDataSets[];
-    public barChartLabels: Label[] ;//= ['2010-11', '2011-12', '2012-13', '2013-14', '2014-15', '2015-16'];
+    public barChartValues: ChartDataSets[];
+    public barChartLabels: Label[];
+    public pieChartValues: any[];
+    // these data is fixed for currently known piechart data, need to remove it if changes
+    public pieChartLabels = ['submission', 'quoted', 'bound'];
 }
 @Injectable({
     providedIn: 'root'
@@ -20,17 +23,19 @@ export class chartTypes {
     providedIn: 'root'
 })
 export class customizerDataModel extends chartTypes {
-   // public cType: chartTypes;
     public description: string;
     public additionalInfo: string;
 }
-export class defaultColors{
+@Injectable({
+    providedIn: 'root'
+})
+export class defaultColors {
     public static RGB = [
-    '#8f6f85',
-    '#94aab5',
-    '#94b59d',
-    '#736329',
-    '#6b1616',
-    '#521343',
-    '#05134d',  ];
+        '#8f6f85',
+        '#94aab5',
+        '#94b59d',
+        '#736329',
+        '#6b1616',
+        '#521343',
+        '#05134d',];
 }
