@@ -11,7 +11,7 @@
     <!-- {{customizerData.cType}} -->
 </div>
 <div class="main">
-<bar-chart [barChartData] ="dataChild" [barChartLabels]="Labels"  *ngIf ="customizerData.bar"></bar-chart>
+<bar-chart [barChartData] ="dataChild.values" [barChartLabels]="dataChild.barChartLabels"  *ngIf ="customizerData.bar"></bar-chart>
 <pie-chart [pieChartData] ="dataChild[0].data" [pieChartLabels]="Labels" *ngIf ="customizerData.pie"></pie-chart>
 </div>
 

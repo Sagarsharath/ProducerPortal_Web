@@ -13,9 +13,6 @@ import { Color,Label } from 'ng2-charts';
 export class ChartRendererComponent implements OnInit {
 
   public dataVal: any;
-  public barCData: ChartDataSets[] = [];
-  public pieChartColors: Color[];
-  public labels : Label[]
 
   constructor(
     private data: DataLoaderService,
@@ -23,11 +20,7 @@ export class ChartRendererComponent implements OnInit {
   ) {
 
     this.loadData();
-    this.pieChartColors = new Array();
-    this.barCData = [
-      { data: this.dataVal, label: 'sample data', backgroundColor: defaultColors.RGB[0], hoverBackgroundColor: '#2d7fa6', barPercentage: 0.4 },
-    ];
-    this.labels =['A','B','C','D','E'];
+    
   }
   ngOnInit() {
     
@@ -38,7 +31,7 @@ export class ChartRendererComponent implements OnInit {
     this.custumData.bar = true;
     this.custumData.description = 'This is bar chart';
     this.custumData.additionalInfo = 'some data info';
-    this.dataVal = this.data.getData();
+    this.dataVal = this.data.getBarChartData();
     console.log(this.custumData);
   }
 

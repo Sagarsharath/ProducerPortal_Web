@@ -1,0 +1,56 @@
+[
+    {
+        "description": "Commercial Auto",
+        "totalGrossRevenue": 480.18,
+        "totalNETRevenue": 255.08,
+        "premium": 2251.00
+    },
+    {
+        "description": "Commercial General Liability",
+        "totalGrossRevenue": 2550.83,
+        "totalNETRevenue": 1639.43,
+        "premium": 9114.00
+    },
+    {
+        "description": "Professional Liability",
+        "totalGrossRevenue": 586.80,
+        "totalNETRevenue": 355.90,
+        "premium": 2309.00
+    },
+    {
+        "description": "Umbrella - Excess",
+        "totalGrossRevenue": 821.00,
+        "totalNETRevenue": 328.40,
+        "premium": 6568.00
+    },
+    {
+        "description": "Errors and Omissions Liability",
+        "totalGrossRevenue": 621.80,
+        "totalNETRevenue": 352.20,
+        "premium": 2696.00
+    },
+    {
+        "description": "Garage Keepers Legal Liability",
+        "totalGrossRevenue": 20.00,
+        "totalNETRevenue": 10.00,
+        "premium": 100.00
+    },
+    {
+        "description": "Non-Profit Directors and Officers Liability",
+        "totalGrossRevenue": 858.23,
+        "totalNETRevenue": 474.53,
+        "premium": 4426.00
+    },
+    {
+        "description": "Pollution Liability",
+        "totalGrossRevenue": 562.50,
+        "totalNETRevenue": 343.75,
+        "premium": 2500.00
+    },
+    {
+        "description": "Personal - Package",
+        "totalGrossRevenue": 396.40,
+        "totalNETRevenue": 233.38,
+        "premium": 988.00
+    }
+]

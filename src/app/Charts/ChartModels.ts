@@ -1,6 +1,9 @@
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Injectable } from '@angular/core';
+@Injectable({
+    providedIn: 'root'
+  })
 export class BarChartModel {
     public chartType: chartTypes;
     public values: ChartDataSets[];
