@@ -4,17 +4,6 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class ChartDataModel {
-    public chartType: chartTypes;
-    public barChartValues: ChartDataSets[];
-    public barChartLabels: Label[];
-    public pieChartValues: any[];
-    // these data is fixed for currently known piechart data, need to remove it if changes
-    public pieChartLabels = ['submission', 'quoted', 'bound'];
-}
-@Injectable({
-    providedIn: 'root'
-})
 export class chartTypes {
     public pie = false;
     public bar = false;
@@ -25,6 +14,17 @@ export class chartTypes {
 export class customizerDataModel extends chartTypes {
     public description: string;
     public additionalInfo: string;
+}
+@Injectable({
+    providedIn: 'root'
+})
+export class ChartDataModel extends customizerDataModel {
+    public chartType: chartTypes;
+    public barChartValues: ChartDataSets[];
+    public barChartLabels: Label[];
+    public pieChartValues: any[];
+    // these data is fixed for currently known piechart data, need to remove it if changes
+    public pieChartLabels = ['submission', 'quoted', 'bound'];
 }
 @Injectable({
     providedIn: 'root'

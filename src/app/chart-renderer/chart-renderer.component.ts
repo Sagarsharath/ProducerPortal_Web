@@ -26,11 +26,9 @@ export class ChartRendererComponent implements OnInit {
   loadData() {
 
     // Need to be seggregated based on chart type...
-    this.custumData.bar = true;
-    this.custumData.description = 'This is bar chart';
-    this.custumData.additionalInfo = 'some data info';
-    this.custumData.bar = true; // need to change these two lines to automatically modify
-    this.dataVal = this.data.getBarChartsData();
+    
+    this.dataVal = this.data.getNewBusinessData();
+
   }
 
 }

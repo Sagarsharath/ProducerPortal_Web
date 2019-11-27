@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-
 <body>
-    <div class="topinfo">
-        {{customizerData.description}}
-        <span class="topright"> {{customizerData.additionalInfo}} </span>
-    </div>
+    <!-- <div class="topinfo">
+        <table>
+            <tr>
+                <td>{{dataChild.description}}</td>
+                <td style="text-align: right!important;">{{dataChild.additionalInfo}} </td>
+            </tr>
+            </table>
+         <b>{{dataChild.description}}</b>
+        <div class="topright"> {{dataChild.additionalInfo}} </div>
+    </div> -->
     <div class="main">
+        <div>
+               <b> {{dataChild.description}}</b>
+            <span>   {{dataChild.additionalInfo}} </span>
+        </div>
+            
+         
         <bar-chart [barChartData]="dataChild.barChartValues" [barChartLabels]="dataChild.barChartLabels"
-            *ngIf="customizerData.bar"></bar-chart>
+            *ngIf="dataChild.bar"></bar-chart>
         <pie-chart [pieChartData]="dataChild.pieChartValues" [pieChartLabels]="dataChild.pieChartLabels"
-            *ngIf="customizerData.pie"></pie-chart>
+            *ngIf="dataChild.pie"></pie-chart>
     </div>
 
 </body>

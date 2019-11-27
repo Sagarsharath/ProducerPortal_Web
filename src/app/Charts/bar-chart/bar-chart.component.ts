@@ -10,13 +10,47 @@ import { Label } from 'ng2-charts';
 export class BarChartComponent {
 
   index =5;
-  constructor( 
-               
-     ){}
+  constructor(){}
   barChartOptions: ChartOptions = {
     responsive: true,
-    legend: { position: 'right' },
-    
+    legend: { position: 'right' ,
+    labels: {
+      fontColor: '#d5dee0', 
+    },
+    },
+    scales: {
+      xAxes: [{
+        stacked: true,
+        ticks: {
+          fontColor: '#d5dee0',  
+        },
+        gridLines: {
+          color: '#868d8f' 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: '', // can be used to display y axis info
+          fontColor: '#d5dee0', 
+        }
+      }],
+      yAxes: [{
+        stacked: true,
+        ticks: {
+          fontColor: '#d5dee0',
+          min: 0,
+          beginAtZero: true,
+
+        },
+        gridLines: {
+          color: '#868d8f' 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: '', // can be used to display y axis info
+          fontColor: '', 
+        }
+      }]
+    },
      tooltips: {
       custom: function(tooltip) {
         if (!tooltip) return;
@@ -26,7 +60,6 @@ export class BarChartComponent {
   }
 }
   @Input() barChartLabels: Label[];
-
   barChartType: ChartType =  'bar';
   barChartLegend = true;
   barChartPlugins = [];

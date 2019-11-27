@@ -10,8 +10,8 @@ import { customizerDataModel } from './../Charts/ChartModels';
 export class ChartCustomizerComponent implements OnInit {
  
   @Input() dataChild : any;
-  @Input() customizerData : customizerDataModel;
-  @Input() Labels : any;
+  //@Input() customizerData : customizerDataModel;
+  //@Input() Labels : any;
   @ViewChild(BarChartComponent, { static: false }) barChartComponent: BarChartComponent;
   constructor() {
         

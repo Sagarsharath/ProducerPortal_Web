@@ -1,0 +1,77 @@
+{
+    "spans": [
+        {
+            "spanName": "1",
+            "noOfPolicies": 30,
+            "totalPremium": 8510.0000,
+            "totalRevenue": 2608.9400
+        },
+        {
+            "spanName": "2",
+            "noOfPolicies": 25,
+            "totalPremium": 9179.0000,
+            "totalRevenue": 2629.5300
+        },
+        {
+            "spanName": "3",
+            "noOfPolicies": 100,
+            "totalPremium": 18992.0000,
+            "totalRevenue": 5185.1800
+        },
+        {
+            "spanName": "4",
+            "noOfPolicies": 103,
+            "totalPremium": 14236.0000,
+            "totalRevenue": 4050.2400
+        },
+        {
+            "spanName": "5",
+            "noOfPolicies": 240,
+            "totalPremium": 24166.0000,
+            "totalRevenue": 6625.8400
+        },
+        {
+            "spanName": "6",
+            "noOfPolicies": 48,
+            "totalPremium": 7811.0000,
+            "totalRevenue": 2188.3300
+        },
+        {
+            "spanName": "7",
+            "noOfPolicies": 58,
+            "totalPremium": 17130.0000,
+            "totalRevenue": 4895.3000
+        },
+        {
+            "spanName": "8",
+            "noOfPolicies": 82,
+            "totalPremium": 15890.0000,
+            "totalRevenue": 4634.9000
+        },
+        {
+            "spanName": "9",
+            "noOfPolicies": 72,
+            "totalPremium": 10174.0000,
+            "totalRevenue": 2801.5400
+        },
+        {
+            "spanName": "10",
+            "noOfPolicies": 62,
+            "totalPremium": 20182.0000,
+            "totalRevenue": 5514.2200
+        },
+        {
+            "spanName": "11",
+            "noOfPolicies": 61,
+            "totalPremium": 12006.0000,
+            "totalRevenue": 3542.2800
+        },
+        {
+            "spanName": "12",
+            "noOfPolicies": 78,
+            "totalPremium": 26288.0000,
+            "totalRevenue": 7031.4800
+        }
+    ],
+    "averagePremium": 15380.333333333333333333333333
+}

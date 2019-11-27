@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from './../Services/api-service.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { chartTypes, customizerDataModel,ChartDataModel, defaultColors } from './../Charts/ChartModels';
-import { Color,Label } from 'ng2-charts';
+import { chartTypes, customizerDataModel, ChartDataModel, defaultColors } from './../Charts/ChartModels';
+import { chartsConfig } from './../Charts/chartsConfig'
+import { Color, Label } from 'ng2-charts';
 import { Observable, of } from 'rxjs';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Router } from '@angular/router';
@@ -12,24 +13,42 @@ import { Router } from '@angular/router';
 })
 
 export class DataLoaderService {
+
   public valuesArray = new Array();
   public labelsArray = new Array();
+
+  index = 5;
+  constructor(private api: ApiServiceService,
+    private chartsData: ChartDataModel) { }
   
-  index =5;
-  constructor(private api : ApiServiceService,
-    private chartsData : ChartDataModel) { }
-  
+  getNewBusinessData() {
+    const mockData = require('./../Mock-Data/mock-newbusiness.json');
+    // TODO
+    // need to add api call...
+    mockData.spans.forEach(element => {
+      this.valuesArray.push(element.totalPremium);
+    });
+    this.chartsData.barChartValues = [
+      { data: this.valuesArray, label: 'Total Premium' }
+    ];
+    this.chartsData.bar = true;
+    this.chartsData.barChartLabels = chartsConfig.labelsForNewBusiness;
+    this.chartsData.description = chartsConfig._headingForMonthlyPremium;
+    this.chartsData.additionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
+    return this.chartsData;
+  }
+
   getBarChartsData() {
 
     const mockData = require('./../Mock-Data/mock-nbpremium.json');
-     mockData.forEach(element => {
+    mockData.forEach(element => {
       this.labelsArray.push(element.description),
-      this.valuesArray.push(element.premium)
-      
-      
+        this.valuesArray.push(element.premium)
+
+
     });
-    
-    // uncomment below code & remove mockData above when api is ready
+
+    // uncomment below code & remove mockData when api is ready
 
     // this.api.getInfo()
     //   .subscribe(
@@ -44,21 +63,20 @@ export class DataLoaderService {
     //     }
     //   );
     this.chartsData.barChartValues = [
-      {data : this.valuesArray ,label:'premium'}
+      { data: this.valuesArray, label: 'premium' }
     ];
-    this.chartsData.barChartLabels = this.labelsArray
+    this.chartsData.barChartLabels = this.labelsArray;
+    console.log(JSON.stringify(this.chartsData));
     return this.chartsData;
   }
 
   getPieChartData() {
     const mockDataPie = require('./../Mock-Data/mock-submissiontobound-ratio.json');
-    this.valuesArray.push(mockDataPie.submission);
-    this.valuesArray.push(mockDataPie.quoted);
-    this.valuesArray.push(mockDataPie.bound);
+    this.valuesArray = [mockDataPie.submission, mockDataPie.quoted, mockDataPie.bound];
 
     // TODO 
     // call api service here and add assign data to valuesArray
-
+    this.chartsData.pie = true;
     this.chartsData.pieChartValues = this.valuesArray;
     return this.chartsData;
   }
