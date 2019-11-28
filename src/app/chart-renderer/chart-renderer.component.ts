@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { DataLoaderService } from './../Services/data-loader.service';
 import { element } from 'protractor';
-import {  customizerDataModel } from './../Charts/ChartModels';
+import { customizerDataModel } from './../Charts/ChartModels';
 
 @Component({
   selector: 'app-chart-renderer',
@@ -11,23 +11,28 @@ import {  customizerDataModel } from './../Charts/ChartModels';
 export class ChartRendererComponent implements OnInit {
 
   public dataVal: any;
+  @Input() reports: any//= new Array();
 
   constructor(
-    private data: DataLoaderService,
+    private dataLoadObj: DataLoaderService,
     private custumData: customizerDataModel,
   ) {
 
-    this.loadData();
-    
   }
   ngOnInit() {
-    
+    this.loadData();
+    console.log(this.reports)
   }
   loadData() {
 
     // Need to be seggregated based on chart type...
-    
-    this.dataVal = this.data.getNewBusinessData();
+
+    if (this.reports == 'bar') {
+      this.dataVal = this.dataLoadObj.getNewBusinessData();
+    }
+    else {
+      this.dataVal = this.dataLoadObj.get_SubmissionToBound_Report();
+    }
 
   }
 

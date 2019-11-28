@@ -27,7 +27,10 @@ export class PieChartComponent {
     },
   ];
   public chartOption = {
-    legend: { position: 'right' },
+    legend: { position: 'left' ,
+    labels: {
+      fontColor: '#d5dee0', 
+    },},
     tooltips: {
       custom: function(tooltip) {
         if (!tooltip) return;

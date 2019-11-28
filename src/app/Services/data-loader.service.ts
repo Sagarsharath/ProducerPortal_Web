@@ -38,6 +38,19 @@ export class DataLoaderService {
     return this.chartsData;
   }
 
+  get_SubmissionToBound_Report(){
+      const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
+      this.valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
+      this.chartsData.pie =true;
+      console.log(mockRatioData);
+      console.log(mockRatioData.submissionToBoundRatio);
+      
+      this.chartsData.pieChartValues = this.valuesArray;
+      this.chartsData.description = chartsConfig._submissionToBoundRatio;
+      this.chartsData.pieChartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
+      this.chartsData.additionalInfo = chartsConfig._ratio+mockRatioData.submissionToBoundRatio;
+      return this.chartsData;
+  }
   getBarChartsData() {
 
     const mockData = require('./../Mock-Data/mock-nbpremium.json');

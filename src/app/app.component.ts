@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ProducerPortalUI';
+  public title  = 'bar';
+  public title2 = 'pie';
+  public reqReport; // need to be changed 
+  constructor(){
+    this.reqReport = [1,2,3];
+  }
 }

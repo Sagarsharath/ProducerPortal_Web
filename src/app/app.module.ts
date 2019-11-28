@@ -8,6 +8,17 @@ import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
 import { HttpClientModule} from '@angular/common/http';
 import { ChartRendererComponent } from './chart-renderer/chart-renderer.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatCardModule,
+  MatTableModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -21,7 +32,18 @@ import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

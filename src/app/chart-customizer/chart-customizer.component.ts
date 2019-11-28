@@ -12,6 +12,8 @@ export class ChartCustomizerComponent implements OnInit {
   @Input() dataChild : any;
   //@Input() customizerData : customizerDataModel;
   //@Input() Labels : any;
+  public loadBar =false;
+  public loadPie =false;
   @ViewChild(BarChartComponent, { static: false }) barChartComponent: BarChartComponent;
   constructor() {
         
@@ -19,6 +21,19 @@ export class ChartCustomizerComponent implements OnInit {
 
 
   ngOnInit() {
+    //this.loadChart();
   }
+  // loadChart(){
+    
+  //   if(this.dataChild.bar==true){
+  //       this.loadBar=true;
+  //       this.dataChild.bar ==false;
 
+  //   }
+  //   else if(this.dataChild.pie==true)
+  //   {
+  //     this.loadPie=true;
+  //   }
+  //   console.log(this.loadBar,this.loadPie)
+  // }
 }
