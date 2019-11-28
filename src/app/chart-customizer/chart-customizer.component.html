@@ -6,27 +6,12 @@
 
 </head>
 <body>
-    <!-- <div class="topinfo">
-        <table>
-            <tr>
-                <td>{{dataChild.description}}</td>
-                <td style="text-align: right!important;">{{dataChild.additionalInfo}} </td>
-            </tr>
-            </table>
-         <b>{{dataChild.description}}</b>
-        <div class="topright"> {{dataChild.additionalInfo}} </div>
-    </div> -->
     <div class="main">
-        <div>
+        <!-- <div>
                <b> {{dataChild.description}}</b>
             <span>   {{dataChild.additionalInfo}} </span>
-        </div>
-            
-         
-        <bar-chart [barChartData]="dataChild.barChartValues" [barChartLabels]="dataChild.barChartLabels"
-            *ngIf="dataChild.bar"></bar-chart>
-        <pie-chart [pieChartData]="dataChild.pieChartValues" [pieChartLabels]="dataChild.pieChartLabels"
-            *ngIf="dataChild.pie"></pie-chart>
+        </div> -->
+       <ng-container appAddChart [data]="dataChild" [chart]="childReport"></ng-container> 
     </div>
 
 </body>

@@ -12,6 +12,10 @@ export class chartTypes {
     providedIn: 'root'
 })
 export class customizerDataModel extends chartTypes {
+    public barChartDescription : string;
+    public barChartAdditionalInfo: string;
+    public pieChartDescription : string;
+    public pieChartAdditionalInfo: string;
     public description: string;
     public additionalInfo: string;
 }

@@ -1,0 +1,43 @@
+
+body {
+    font-family: "Lato", sans-serif;
+    border-radius: 25px;
+    border: 2px  ;
+    background: gradient(left, #005382 0%, #abd6f0 100%);
+    background-image: -webkit-linear-gradient(left, rgb(0, 83, 130) 0%, rgb(77, 174, 230) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+  }
+div{
+    padding-bottom: 20px;
+    margin-left:20px;
+    text-align: left;
+    color:#d5dee0 ;
+    >span{
+      text-align: right;
+      margin-left : 170px;
+    }
+  }
+  
+
+.topinfo {
+    margin-top: 80px;
+    text-align: left;
+    margin-left: 280px;
+    font-size: 14px;
+}
+.topright{
+//  margin-left: 200px;
+ align-content: right!important;
+  margin-right: 300px;
+}
+td{
+  width: 50%;
+}

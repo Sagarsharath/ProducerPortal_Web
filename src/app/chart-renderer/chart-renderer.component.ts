@@ -21,16 +21,16 @@ export class ChartRendererComponent implements OnInit {
   }
   ngOnInit() {
     this.loadData();
-    console.log(this.reports)
   }
   loadData() {
 
     // Need to be seggregated based on chart type...
 
     if (this.reports == 'bar') {
-      this.dataVal = this.dataLoadObj.getNewBusinessData();
+      this.dataVal = this.dataLoadObj.get_NewBusinessData_Report();
     }
     else {
+      
       this.dataVal = this.dataLoadObj.get_SubmissionToBound_Report();
     }
 

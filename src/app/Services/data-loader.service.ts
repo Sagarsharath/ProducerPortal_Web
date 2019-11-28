@@ -21,7 +21,7 @@ export class DataLoaderService {
   constructor(private api: ApiServiceService,
     private chartsData: ChartDataModel) { }
   
-  getNewBusinessData() {
+  get_NewBusinessData_Report() {
     const mockData = require('./../Mock-Data/mock-newbusiness.json');
     // TODO
     // need to add api call...
@@ -33,8 +33,8 @@ export class DataLoaderService {
     ];
     this.chartsData.bar = true;
     this.chartsData.barChartLabels = chartsConfig.labelsForNewBusiness;
-    this.chartsData.description = chartsConfig._headingForMonthlyPremium;
-    this.chartsData.additionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
+    this.chartsData.barChartDescription = chartsConfig._headingForMonthlyPremium;
+    this.chartsData.barChartAdditionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
     return this.chartsData;
   }
 
@@ -42,13 +42,12 @@ export class DataLoaderService {
       const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
       this.valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
       this.chartsData.pie =true;
-      console.log(mockRatioData);
-      console.log(mockRatioData.submissionToBoundRatio);
+      //this.chartsData.bar=false;
       
       this.chartsData.pieChartValues = this.valuesArray;
-      this.chartsData.description = chartsConfig._submissionToBoundRatio;
+      this.chartsData.pieChartDescription = chartsConfig._submissionToBoundRatio;
       this.chartsData.pieChartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
-      this.chartsData.additionalInfo = chartsConfig._ratio+mockRatioData.submissionToBoundRatio;
+      this.chartsData.pieChartAdditionalInfo = chartsConfig._ratio+mockRatioData.submissionToBoundRatio;
       return this.chartsData;
   }
   getBarChartsData() {
