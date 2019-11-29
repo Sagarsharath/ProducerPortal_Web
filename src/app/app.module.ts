@@ -20,7 +20,8 @@ import {MatButtonModule,
   MatCardModule,
   MatTableModule } from '@angular/material';
 import { AddChartDirective } from './add-chart.directive';
-import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component'
+import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
+import { LineChartComponent } from './Charts/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.co
     ChartRendererComponent,
     PieChartComponent,
     AddChartDirective,
-    ChartDescriptorComponent
+    ChartDescriptorComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.co
     MatCardModule,
     MatTableModule
   ],
-  entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent ],
+  entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

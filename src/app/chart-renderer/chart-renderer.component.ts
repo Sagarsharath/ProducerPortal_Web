@@ -28,11 +28,19 @@ export class ChartRendererComponent implements OnInit {
 
     if (this.reports == 'bar') {
       this.dataVal = this.dataLoadObj.get_NewBusinessData_Report();
+      console.log(this.dataVal)
     }
-    else {
-      
+    else if(this.reports == 'pie'){
       this.dataVal = this.dataLoadObj.get_SubmissionToBound_Report();
+      console.log(this.dataVal)
     }
+     else {
+    // //  this.dataVal = this.dataLoadObj.getPieChartData();
+      this.dataVal = this.dataLoadObj.getBarChartsData();
+    //  console.log(this.dataVal)
+    // this.dataVal.description = "line";
+    // this.dataVal.additionalInfo = "smdks";
+     }
 
   }
 

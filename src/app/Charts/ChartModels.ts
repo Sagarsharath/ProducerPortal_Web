@@ -29,6 +29,7 @@ export class ChartDataModel extends customizerDataModel {
     public pieChartValues: any[];
     // these data is fixed for currently known piechart data, need to remove it if changes
     public pieChartLabels = ['submission', 'quoted', 'bound'];
+   
 }
 @Injectable({
     providedIn: 'root'

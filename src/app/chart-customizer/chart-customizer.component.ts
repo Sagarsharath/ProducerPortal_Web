@@ -16,8 +16,6 @@ export class ChartCustomizerComponent implements OnInit {
   public loadBar =false;
   public loadPie =false;
    constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    
   ) {
         
   }
@@ -29,14 +27,5 @@ export class ChartCustomizerComponent implements OnInit {
  
   
 }
-@Injectable({
-  providedIn: 'root'
-})
-export class componentTypes{
-  public  component: Type<any>;
-   public  data: any;
-  
-}
-export class AdItem {
-  constructor(public component: Type<any>, public data: any) {}
-}
+
+

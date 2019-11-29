@@ -29,7 +29,7 @@ export class DataLoaderService {
       this.valuesArray.push(element.totalPremium);
     });
     this.chartsData.barChartValues = [
-      { data: this.valuesArray, label: 'Total Premium' }
+      { data: this.valuesArray, label: 'Total Premium' ,backgroundColor:'rgba(255,255,0,0.28)'}
     ];
     this.chartsData.bar = true;
     this.chartsData.barChartLabels = chartsConfig.labelsForNewBusiness;
@@ -41,9 +41,7 @@ export class DataLoaderService {
   get_SubmissionToBound_Report(){
       const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
       this.valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
-      this.chartsData.pie =true;
-      //this.chartsData.bar=false;
-      
+      //var currentdata= new ChartDataModel();
       this.chartsData.pieChartValues = this.valuesArray;
       this.chartsData.pieChartDescription = chartsConfig._submissionToBoundRatio;
       this.chartsData.pieChartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
@@ -53,12 +51,10 @@ export class DataLoaderService {
   getBarChartsData() {
 
     const mockData = require('./../Mock-Data/mock-nbpremium.json');
-    mockData.forEach(element => {
-      this.labelsArray.push(element.description),
-        this.valuesArray.push(element.premium)
-
-
-    });
+    // mockData.forEach(element => {
+    //   this.labelsArray.push(element.description), 
+    //     this.valuesArray.push(element.premium)
+    // });
 
     // uncomment below code & remove mockData when api is ready
 
@@ -74,11 +70,11 @@ export class DataLoaderService {
     //       console.log(data);
     //     }
     //   );
-    this.chartsData.barChartValues = [
-      { data: this.valuesArray, label: 'premium' }
-    ];
-    this.chartsData.barChartLabels = this.labelsArray;
-    console.log(JSON.stringify(this.chartsData));
+    // this.chartsData.barChartValues = [
+    //   { data: this.valuesArray, label: 'premium' }
+    // ];
+    // this.chartsData.barChartLabels = this.labelsArray;
+    // console.log(JSON.stringify(this.chartsData));
     return this.chartsData;
   }
 
@@ -89,7 +85,8 @@ export class DataLoaderService {
     // TODO 
     // call api service here and add assign data to valuesArray
     this.chartsData.pie = true;
-    this.chartsData.pieChartValues = this.valuesArray;
+    this.chartsData.pieChartValues = [22,55,66];
+    this.chartsData.pieChartLabels = ['fr','f','fh'];
     return this.chartsData;
   }
 }

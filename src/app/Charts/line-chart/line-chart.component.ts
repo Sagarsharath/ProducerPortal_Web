@@ -1,28 +1,22 @@
-import { Component, Input } from '@angular/core';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Component, } from '@angular/core';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
+
 @Component({
-  selector: 'bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  selector: 'line-chart',
+  templateUrl: './line-chart.component.html',
+  styleUrls: ['./line-chart.component.scss']
 })
 
-export class BarChartComponent {
+export class LineChartComponent {
 
-  @Input() barChartLabels: Label[];
-  @Input() barChartData: ChartDataSets[];
-  barChartType: ChartType =  'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
-  constructor(){}
-  barChartOptions: ChartOptions = {
+  lineChartData: ChartDataSets[];
+
+  lineChartLabels: Label[] ;
+
+  lineChartOptions = {
     responsive: true,
-    legend: { position: 'right' ,
-    labels: {
-      fontColor: '#d5dee0', 
-      
-    },
-    },
+    legend: { position: 'right' },
     scales: {
       xAxes: [{
         stacked: true,
@@ -56,16 +50,23 @@ export class BarChartComponent {
         }
       }]
     },
-     tooltips: {
+    tooltips: {
       custom: function(tooltip) {
         if (!tooltip) return;
         tooltip.displayColors = false;
-        //tooltip._bodyAlign 
       }
   }
-}
+  };
 
+  lineChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,255,0,0.28)',
+    },
+  ];
+
+  lineChartLegend = true;
+  lineChartPlugins = [];
+  lineChartType = 'line';
   
-    
 }
-
