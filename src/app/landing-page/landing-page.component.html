@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="sidenav">
+        <img src="./../../assets/Images/client-logo.png">
+        <div>
+            <label (click)="changeComponent('dashboard')"> DashBoard </label>
+            <label (click)="changeComponent('1')">Premium Report</label>
+            <label (click)="changeComponent('2')">Submission to Bound</label>
+            <label (click)="changeComponent('3')">LOB Renewal Premium</label>
+
+        </div>
+    </div>
+    <div class="topnav">
+        <div class="topnav-right">
+            <label style='align-items:center'>Welcome</label>
+            <label>Logout</label>
+        </div>
+    </div>
+    <div class='main'>
+        <div class='allcharts'>
+            <app-dashboard *ngIf="renderComponent=='dashboard'"></app-dashboard>
+        </div>
+        <div class='singlechart'>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.MonthlyPremium" [reports]="renderComponent"></app-chart-renderer>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.SubmissionToBound" [reports]="renderComponent"></app-chart-renderer>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.LOBRenewal"[reports]="renderComponent"></app-chart-renderer>
+        </div>
+    </div>
+</body>

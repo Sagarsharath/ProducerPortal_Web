@@ -4,14 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class chartTypes {
-    public pie = false;
-    public bar = false;
-}
 @Injectable({
     providedIn: 'root'
 })
-export class customizerDataModel extends chartTypes {
+export class customizerDataModel {
     public barChartDescription : string;
     public barChartAdditionalInfo: string;
     public pieChartDescription : string;
@@ -23,7 +19,6 @@ export class customizerDataModel extends chartTypes {
     providedIn: 'root'
 })
 export class ChartDataModel extends customizerDataModel {
-    public chartType: chartTypes;
     public barChartValues: ChartDataSets[];
     public barChartLabels: Label[];
     public pieChartValues: any[];
@@ -42,5 +37,8 @@ export class defaultColors {
         '#736329',
         '#6b1616',
         '#521343',
-        '#05134d',];
+        '#3a4d99',
+        '#c68ee6',
+        '#cc91bc'
+    ];
 }

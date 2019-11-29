@@ -18,10 +18,15 @@ import {MatButtonModule,
   MatSelectModule,
   MatSidenavModule,
   MatCardModule,
-  MatTableModule } from '@angular/material';
+  MatTableModule, 
+  MatToolbar,
+  MatToolbarModule} from '@angular/material';
 import { AddChartDirective } from './add-chart.directive';
 import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
 import { LineChartComponent } from './Charts/line-chart/line-chart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,8 @@ import { LineChartComponent } from './Charts/line-chart/line-chart.component';
     AddChartDirective,
     ChartDescriptorComponent,
     LineChartComponent,
+    DashboardComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,8 @@ import { LineChartComponent } from './Charts/line-chart/line-chart.component';
     MatSelectModule,
     MatSidenavModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,MatToolbarModule
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers: [],

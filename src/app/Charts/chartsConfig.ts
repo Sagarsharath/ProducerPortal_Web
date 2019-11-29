@@ -1,5 +1,11 @@
+export enum chartToRender {
+    MonthlyPremium = 'MonthlyPremium',
+    SubmissionToBound = 'SubmissionToBound',
+    LOBRenewal = 'LOBRenewal'
+}
 export class chartsConfig {
     // For Monthly Premium Report
+    
     public static labelsForNewBusiness = [
         'JAN', 'FEB', 'MAR', 'APR',
         'MAY', 'JUN', 'JUL', 'AUG',
@@ -16,4 +22,8 @@ export class chartsConfig {
     ];
     public static _submissionToBoundRatio = "SUBMISSION TO BOUND RATIO";
     public static _ratio = "Ratio : ";
+
+    // For LOB Renewal Premium report
+    public static _LobReport = 'LOB New Business Premium ';
+    public static _total = "Total Premium : ";
 }
