@@ -55,6 +55,7 @@ body {
     }
   }
   .topnav {
+    margin-left: 178px;
     overflow: hidden;
     background:  linear-gradient(to left, #018ad8  0%, #0b496d 100%);
     background-color: #333;
@@ -73,8 +74,8 @@ body {
   }
   
   .topnav label:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: rgb(100, 176, 214);
+    color: white;
   }
   
   .topnav label.active {

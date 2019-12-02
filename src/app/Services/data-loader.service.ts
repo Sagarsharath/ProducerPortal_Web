@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, } from '@angular/core';
 import { ApiServiceService } from './../Services/api-service.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import {  customizerDataModel, ChartDataModel, defaultColors } from './../Charts/ChartModels';
@@ -7,7 +7,7 @@ import { Color, Label } from 'ng2-charts';
 import { Observable, of } from 'rxjs';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Router } from '@angular/router';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,14 @@ export class DataLoaderService {
   public valuesArray = new Array();
   public labelsArray = new Array();
   index = 5;
+  public http: HttpClient;
   constructor() { }
   private api = new ApiServiceService();
   private chartsData= new ChartDataModel();
   
   get_NewBusinessData_Report() {
     const mockData = require('./../Mock-Data/mock-newbusiness.json');
+    console.log(this.api.getInfo());
     mockData.spans.forEach(element => {
       this.valuesArray.push(element.totalPremium);
     });

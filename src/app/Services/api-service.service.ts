@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
+import { Injectable, ErrorHandler } from '@angular/core';
+import { HttpClient, HttpHeaders,HttpResponse,HttpHandler } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 
@@ -20,14 +20,16 @@ const headers = new HttpHeaders({ 'Accept': 'application/json', 'Content-Type': 
 export class ApiServiceService {
 
   public response : any;
-  constructor(private http: HttpClient) {     
+  private x : HttpHandler;
+  private http =  new HttpClient(this.x)
+  constructor() {     
   }
  
   getInfo() : Observable<any>
   {
    let response = this.http.get<HttpResponse<any>>("http://dummy.restapiexample.com/api/v1/employees", { headers, withCredentials: false });  
   // let response = this.http.get<HttpResponse<any>>("http://localhost:50673/api/values/getData", { headers, withCredentials: false });  
-   return response;   
+   return response;
   }
   
 }

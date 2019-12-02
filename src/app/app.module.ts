@@ -5,11 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartCustomizerComponent} from './chart-customizer/chart-customizer.component'
 import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ChartRendererComponent } from './chart-renderer/chart-renderer.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddChartDirective } from './add-chart.directive';
+import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
+import { LineChartComponent } from './Charts/line-chart/line-chart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiServiceService } from './Services/api-service.service';
+import { DataLoaderService } from './Services/data-loader.service';
 import {MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
@@ -20,13 +29,9 @@ import {MatButtonModule,
   MatCardModule,
   MatTableModule, 
   MatToolbar,
-  MatToolbarModule} from '@angular/material';
-import { AddChartDirective } from './add-chart.directive';
-import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
-import { LineChartComponent } from './Charts/line-chart/line-chart.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+  MatToolbarModule,
+} from '@angular/material';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LineChartComponent,
     DashboardComponent,
     LandingPageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,10 +63,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSidenavModule,
     MatCardModule,
     MatTableModule,
-    MatCheckboxModule,MatToolbarModule
+    MatCheckboxModule,MatToolbarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
-  providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
