@@ -1,25 +1,17 @@
 import { ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Injectable } from '@angular/core';
+
 @Injectable({
     providedIn: 'root'
 })
-@Injectable({
-    providedIn: 'root'
-})
-export class customizerDataModel {
+export class ChartDataModel 
+ {
     public description: string;
     public additionalInfo: string;
-}
-@Injectable({
-    providedIn: 'root'
-})
-export class ChartDataModel extends customizerDataModel {
-    public barChartValues: ChartDataSets[];
-    public barChartLabels: Label[];
+    public chartLabels: Label[];
     public pieChartValues: any[];
-    // these data is fixed for currently known piechart data, need to remove it if changes
-    public pieChartLabels = ['submission', 'quoted', 'bound'];
+    public barChartValues: ChartDataSets[];
    
 }
 @Injectable({

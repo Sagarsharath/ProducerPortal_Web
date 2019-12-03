@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild, Input,ComponentFactoryResolver,Type,ComponentFactory,ViewContainerRef,ComponentRef, Injectable } from '@angular/core';
-import { BarChartComponent } from '../Charts/bar-chart/bar-chart.component';
-import { AddChartDirective } from './../add-chart.directive';
-import { customizerDataModel } from './../Charts/ChartModels';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'chart-customizer',

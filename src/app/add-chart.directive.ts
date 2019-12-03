@@ -31,7 +31,7 @@ export class AddChartDirective {
       var factory = this.resolver.resolveComponentFactory<any>(BarChartComponent);
       this.barChartComp = this.container.createComponent(factory);
       this.barChartComp.instance.barChartData = this.data.barChartValues;
-      this.barChartComp.instance.barChartLabels = this.data.barChartLabels;
+      this.barChartComp.instance.barChartLabels = this.data.chartLabels;
 
     }
     else if (this.chart == chartToRender.SubmissionToBound || this.chart == chartToRender.LOBRenewal) {
@@ -42,7 +42,7 @@ export class AddChartDirective {
       var factory = this.resolver.resolveComponentFactory<any>(PieChartComponent);
       this.pieChartComp = this.container.createComponent(factory);
       this.pieChartComp.instance.pieChartData = this.data.pieChartValues;
-      this.pieChartComp.instance.pieChartLabels = this.data.pieChartLabels;
+      this.pieChartComp.instance.pieChartLabels = this.data.chartLabels;
     }
 
   }

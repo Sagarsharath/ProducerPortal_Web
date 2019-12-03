@@ -29,13 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    let currentUrl = window.location.href;
-    let tmpVar = currentUrl.includes('/login');
-    if (currentUrl.includes('/login')) {
-      window.onpopstate = function (event) {
-        history.go(1);
-      }
-    }
+   
   }
 
   submit() {
@@ -44,8 +38,6 @@ export class LoginComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-
-
     if (this.api.login(this.controls.email.value, this.controls.password.value)) {
       this.loading = true;
       setTimeout(() => {
