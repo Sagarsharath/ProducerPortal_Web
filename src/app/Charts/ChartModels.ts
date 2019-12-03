@@ -1,4 +1,4 @@
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Injectable } from '@angular/core';
 @Injectable({
@@ -8,10 +8,6 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class customizerDataModel {
-    public barChartDescription : string;
-    public barChartAdditionalInfo: string;
-    public pieChartDescription : string;
-    public pieChartAdditionalInfo: string;
     public description: string;
     public additionalInfo: string;
 }
@@ -39,6 +35,7 @@ export class defaultColors {
         '#521343',
         '#3a4d99',
         '#c68ee6',
-        '#cc91bc'
+        '#cc91bc',
+        '#a16a94',
     ];
 }

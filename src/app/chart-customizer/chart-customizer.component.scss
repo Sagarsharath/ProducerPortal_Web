@@ -3,8 +3,10 @@ body {
     font-family: "Lato", sans-serif;
     border-radius: 25px;
     border: 2px  ;
-    background: gradient(left, #005382 0%, #abd6f0 100%);
-    background-image: -webkit-linear-gradient(left, rgb(0, 83, 130) 0%, rgb(77, 174, 230) 100%);
+    //background: gradient(left, #005382 0%, #abd6f0 100%);
+    //background:#5ab5ce; 
+    //background-image: -webkit-linear-gradient(left, rgb(0, 83, 130) 0%, rgb(77, 174, 230) 100%);
+    background-image: -webkit-linear-gradient(left, #65b6d6 0%, #65b6d6 100%);
     background-position-x: initial;
     background-position-y: initial;
     background-size: initial;
@@ -27,6 +29,8 @@ body {
     >span{
       text-align: right;
       margin-left : 180px;
+      
+
     }
   }
   

@@ -11,26 +11,23 @@ export class ChartRendererComponent implements OnInit {
 
   public dataVal: any;
   @Input() reports: any;
-
-  constructor(
+  constructor( private loader :DataLoaderService
   ) {
-
+    
   }
   ngOnInit() {
     this.loadData();
   }
   loadData() {
-  
-    var loader = new DataLoaderService()
     if (this.reports == chartToRender.MonthlyPremium) {
-      this.dataVal = loader.get_NewBusinessData_Report();
+      this.dataVal = this.loader.get_NewBusinessData_Report();
     }
     else if(this.reports == chartToRender.SubmissionToBound){
-      this.dataVal = loader.get_SubmissionToBound_Report();
+      this.dataVal = this.loader.get_SubmissionToBound_Report();
       console.log(this.dataVal)
     }
      else if(this.reports == chartToRender.LOBRenewal) {
-      this.dataVal = loader.get_LOB_NBRenewal_Report();
+      this.dataVal = this.loader.get_LOB_NBRenewal_Report();
      }
 
   }

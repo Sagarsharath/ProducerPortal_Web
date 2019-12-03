@@ -1,113 +1,103 @@
-import { Injectable, } from '@angular/core';
+import { Injectable, Injector, } from '@angular/core';
 import { ApiServiceService } from './../Services/api-service.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import {  customizerDataModel, ChartDataModel, defaultColors } from './../Charts/ChartModels';
+import { customizerDataModel, ChartDataModel, defaultColors } from './../Charts/ChartModels';
 import { chartsConfig } from './../Charts/chartsConfig'
 import { Color, Label } from 'ng2-charts';
 import { Observable, of } from 'rxjs';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders,HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable({
+
   providedIn: 'root'
 })
 export class DataLoaderService {
-
-  public valuesArray = new Array();
-  public labelsArray = new Array();
   index = 5;
-  public http: HttpClient;
-  constructor() { }
-  private api = new ApiServiceService();
-  private chartsData= new ChartDataModel();
-  
+  constructor(
+    private api: ApiServiceService, private http: HttpClient
+  ) {
+  }
+
   get_NewBusinessData_Report() {
     const mockData = require('./../Mock-Data/mock-newbusiness.json');
-    console.log(this.api.getInfo());
+    let valuesArray = new Array();
     mockData.spans.forEach(element => {
-      this.valuesArray.push(element.totalPremium);
+      valuesArray.push(element.totalPremium);
     });
     // TODO
     // need to add api call...
-    this.chartsData.barChartValues = [
-      { data: this.valuesArray, label: 'Total Premium' ,backgroundColor:'rgba(255,255,0,0.28)'}
+    let chartsData = new ChartDataModel()
+    this.getBarChartsData();
+    chartsData.barChartValues = [
+      { data: valuesArray, label: 'Total Premium', backgroundColor: defaultColors.RGB[9] }
     ];
-    this.chartsData.barChartLabels = chartsConfig.labelsForNewBusiness;
-    this.chartsData.barChartDescription = chartsConfig._headingForMonthlyPremium;
-    this.chartsData.barChartAdditionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
-    return this.chartsData;
+    chartsData.barChartLabels = chartsConfig.labelsForNewBusiness;
+    chartsData.description = chartsConfig._headingForMonthlyPremium;
+    chartsData.additionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
+    console.log(chartsData)
+    return chartsData;
   }
 
-  get_SubmissionToBound_Report(){
-      const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
-      this.valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
-      //var currentdata= new ChartDataModel();
-      this.chartsData.pieChartValues = this.valuesArray;
-      this.chartsData.pieChartDescription = chartsConfig._submissionToBoundRatio;
-      this.chartsData.pieChartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
-      this.chartsData.pieChartAdditionalInfo = chartsConfig._ratio+mockRatioData.submissionToBoundRatio;
-      return this.chartsData;
+  get_SubmissionToBound_Report() {
+    const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
+    let valuesArray = new Array();
+    let labelsArray = new Array();
+    valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
+
+    var chartsData = new ChartDataModel();
+    chartsData.additionalInfo = chartsConfig._ratio + mockRatioData.submissionToBoundRatio;
+    chartsData.description = chartsConfig._submissionToBoundRatio;
+    chartsData.pieChartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
+    chartsData.pieChartValues = valuesArray;
+    return chartsData;
   }
 
-  get_LOB_NBRenewal_Report(){
+  get_LOB_NBRenewal_Report() {
     const lobdata = require('./../Mock-Data/mock-Lob-nbpremium.json');
-    var sum =0
+    let valuesArray = new Array();
+    let labelsArray = new Array();
+    var sum = 0
     lobdata.forEach(element => {
-      this.valuesArray.push(element.premium);
-      this.labelsArray.push(element.description);
+      valuesArray.push(element.premium);
+      labelsArray.push(element.description);
       sum = sum + element.premium;
     });
-    this.chartsData.pieChartValues = this.valuesArray;
-    this.chartsData.pieChartLabels = this.labelsArray;
-    this.chartsData.pieChartDescription = chartsConfig._LobReport;
-    this.chartsData.pieChartAdditionalInfo = chartsConfig._total+sum;
-    return this.chartsData;
+    var chartsData = new ChartDataModel();
+    chartsData.pieChartValues = valuesArray;
+    chartsData.pieChartLabels = labelsArray;
+    chartsData.description = chartsConfig._LobReport;
+    chartsData.additionalInfo = chartsConfig._total + sum;
+    console.log(chartsData)
+    return chartsData;
   }
 
   getBarChartsData() {
 
     const mockData = require('./../Mock-Data/mock-Lob-nbpremium.json');
     var sum = 0;
-    mockData.forEach(element => {
-      this.labelsArray.push(element.description), 
-        this.valuesArray.push(element.premium)
-        sum = sum+element.premium
-    });
-
+    let valuesArray = new Array();
     // uncomment below code & remove mockData when api is ready
 
-    // this.api.getInfo()
-    //   .subscribe(
-    //     (data) => {
-    //       for (var val in data) {
-    //         if (this.index >= 0) {
-    //           this.valuesArray.push(val);
-    //           this.index--;
-    //         }
-    //       }
-    //       console.log(data);
-    //     }
-    //   );
-    this.chartsData.barChartValues = [
-      { data: this.valuesArray, label: 'premium' }
-    ];
-    this.chartsData.barChartLabels = this.labelsArray;
-    this.chartsData.barChartDescription = chartsConfig._headingForMonthlyPremium;
-    //this.chartsData.barChartAdditionalInfo = chartsConfig._avgNBPremiumText + mockData.sum.toFixed(2);
-    console.log(JSON.stringify(this.chartsData));
-    return this.chartsData;
+    this.api.getInfo()
+      .subscribe(
+        (data) => {
+          for (var val in data) {
+            if (this.index >= 0) {
+              valuesArray.push(val);
+              this.index--;
+            }
+          }
+          console.log(data);
+          return data;
+        }
+      );
+
+
   }
 
-  getPieChartData() {
-    const mockDataPie = require('./../Mock-Data/mock-submissiontobound-ratio.json');
-    this.valuesArray = [mockDataPie.submission, mockDataPie.quoted, mockDataPie.bound];
-
-    // TODO 
-    // call api service here and add assign data to valuesArray
-    this.chartsData.pieChartValues = [22,55,66];
-    this.chartsData.pieChartLabels = ['fr','f','fh'];
-    return this.chartsData;
+  checklogin(username: any, passwaord: any) {
+    return this.api.login(username, passwaord);
   }
-  
 }

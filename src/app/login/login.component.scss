@@ -37,7 +37,12 @@
 			::-ms-input-placeholder { /* Microsoft Edge */
 				font-size: 16px;
 			}
-
+      >div{
+        padding-top: 10px;
+        >button{
+          color: #fff;background-color:#4db3d0;border-color:#4db3d0;border-radius: 30px;margin-top:20px;
+        }
+      }
 
 		}
 		.row-5 {margin-top:40px;
@@ -83,8 +88,8 @@ label input[type="checkbox"] + span {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   border-radius: 2px;
   margin-right: 10px;
   border: 2px solid #aaa;
@@ -95,8 +100,8 @@ label input[type="checkbox"] + span:before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 22px;
-  height: 22px;
+  width: 14px;
+  height: 14px;
   -webkit-transform: translatex(-50%) translatey(-50%);
           transform: translatex(-50%) translatey(-50%);
  /* transition: box-shadow 0.2s;*/
@@ -252,4 +257,22 @@ input{
     stroke-dashoffset: 0;
   }
 }
-
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}

@@ -19,29 +19,28 @@ export class BarChartComponent {
     responsive: true,
     legend: { position: 'right' ,
     labels: {
-      fontColor: '#d5dee0', 
-      
+      fontColor: '#ffffff',       
     },
     },
     scales: {
       xAxes: [{
         stacked: true,
         ticks: {
-          fontColor: '#d5dee0',  
+          fontColor: '#ffffff',  
         },
         gridLines: {
-          color: '#868d8f' 
+          color: '#65b6d6' 
         },
         scaleLabel: {
           display: true,
           labelString: '', // can be used to display y axis info
-          fontColor: '#d5dee0', 
+          fontColor: '#ffffff', 
         }
       }],
       yAxes: [{
         stacked: true,
         ticks: {
-          fontColor: '#d5dee0',
+          fontColor: '#ffffff',
           min: 0,
           beginAtZero: true,
 
@@ -52,7 +51,7 @@ export class BarChartComponent {
         scaleLabel: {
           display: true,
           labelString: '', // can be used to display y axis info
-          fontColor: '', 
+          fontColor: '#ffffff', 
         }
       }]
     },

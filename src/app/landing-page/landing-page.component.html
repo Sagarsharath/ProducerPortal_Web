@@ -7,19 +7,18 @@
 
 <body>
     <div class="sidenav">
-        <img src="./../../assets/Images/client-logo.png">
+        <img src="./../../assets/Images/client-logo.png" style="background-color:white;" height="50" width="190">
         <div>
             <label (click)="changeComponent('dashboard')"> DashBoard </label>
             <label (click)="changeComponent('1')">Premium Report</label>
             <label (click)="changeComponent('2')">Submission to Bound</label>
             <label (click)="changeComponent('3')">LOB Renewal Premium</label>
-
         </div>
     </div>
     <div class="topnav">
         <div class="topnav-right">
             <label style='align-items:center'>Welcome</label>
-            <label>Logout</label>
+            <label (click)="logOut()">Logout</label>
         </div>
     </div>
     <div class='main'>
@@ -27,9 +26,12 @@
             <app-dashboard *ngIf="renderComponent=='dashboard'"></app-dashboard>
         </div>
         <div class='singlechart'>
-            <app-chart-renderer *ngIf="renderComponent==defaultCharts.MonthlyPremium" [reports]="renderComponent"></app-chart-renderer>
-            <app-chart-renderer *ngIf="renderComponent==defaultCharts.SubmissionToBound" [reports]="renderComponent"></app-chart-renderer>
-            <app-chart-renderer *ngIf="renderComponent==defaultCharts.LOBRenewal"[reports]="renderComponent"></app-chart-renderer>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.MonthlyPremium" [reports]="renderComponent">
+            </app-chart-renderer>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.SubmissionToBound" [reports]="renderComponent">
+            </app-chart-renderer>
+            <app-chart-renderer *ngIf="renderComponent==defaultCharts.LOBRenewal" [reports]="renderComponent">
+            </app-chart-renderer>
         </div>
     </div>
 </body>

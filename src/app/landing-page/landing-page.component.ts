@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { chartToRender} from './../Charts/chartsConfig'
+import { chartToRender } from './../Charts/chartsConfig';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,18 +10,19 @@ import { chartToRender} from './../Charts/chartsConfig'
 })
 export class LandingPageComponent implements OnInit {
 
-  public title  = 'bar';
+  public title = 'bar';
   public title2 = 'pie';
-  public renderComponent : string;
+  public renderComponent: string;
   public defaultCharts = chartToRender;
   events: string[] = [];
   opened: boolean;
-  constructor() { }
+
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
-  changeComponent(toComponent:string){
-    
+  changeComponent(toComponent: string) {
+
     switch (toComponent) {
       case '1': this.renderComponent = this.defaultCharts.MonthlyPremium;
         break;
@@ -28,9 +30,14 @@ export class LandingPageComponent implements OnInit {
         break;
       case '3': this.renderComponent = this.defaultCharts.LOBRenewal;
         break;
-      default : this.renderComponent = toComponent;
+      default: this.renderComponent = toComponent;
     }
 
-    
+
+  }
+  logOut() {
+    localStorage.removeItem('loggedIn')
+    this.router.navigate(['/login']);
+
   }
 }

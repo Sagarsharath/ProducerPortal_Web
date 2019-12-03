@@ -25,7 +25,7 @@ export class AddChartDirective {
 
     if (this.chart == chartToRender.MonthlyPremium) {
 
-      this.setCustomizer(this.data.barChartDescription, this.data.barChartAdditionalInfo)
+      this.setCustomizer(this.data.description, this.data.additionalInfo)
 
       //chart
       var factory = this.resolver.resolveComponentFactory<any>(BarChartComponent);
@@ -36,21 +36,19 @@ export class AddChartDirective {
     }
     else if (this.chart == chartToRender.SubmissionToBound || this.chart == chartToRender.LOBRenewal) {
 
-      this.setCustomizer(this.data.pieChartDescription, this.data.pieChartAdditionalInfo)
+      this.setCustomizer(this.data.description, this.data.additionalInfo)
 
       //chart      
       var factory = this.resolver.resolveComponentFactory<any>(PieChartComponent);
       this.pieChartComp = this.container.createComponent(factory);
       this.pieChartComp.instance.pieChartData = this.data.pieChartValues;
       this.pieChartComp.instance.pieChartLabels = this.data.pieChartLabels;
-
-
     }
 
   }
   //sets the customizer component based on data
   setCustomizer(description: any, addInfo: any) {
-    
+
     const componentType2 = ChartDescriptorComponent;
     const factory2 = this.resolver.resolveComponentFactory<any>(componentType2);
     this.descriptorComp = this.container.createComponent(factory2);

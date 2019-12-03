@@ -29,7 +29,8 @@ export class PieChartComponent {
   public chartOption = {
     legend: { position: 'left' ,
     labels: {
-      fontColor: '#d5dee0', 
+     // fontColor: '#65b6d6', 
+     fontColor: '#ffffff', 
     },},
     tooltips: {
       custom: function(tooltip) {
@@ -42,8 +43,9 @@ export class PieChartComponent {
                 data.datasets[0].data.forEach(element => {
                   sum = sum + element;
                 });
-                 var percentage  = ((data.datasets[0].data[tooltipItem.index]/sum)*100).toFixed(2)
-                 var label= data.labels[tooltipItem.index]+"("+ percentage+"%)";   
+                 var currVal = data.datasets[0].data[tooltipItem.index]
+                 var percentage  = ((currVal/sum)*100).toFixed(2)
+                 var label= data.labels[tooltipItem.index]+" : "+currVal+" ("+ percentage+"%)";   
                  return label;    
               }
             }  

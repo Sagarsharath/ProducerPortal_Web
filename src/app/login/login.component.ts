@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import {} from './../Services/api-service.service'
+import { ApiServiceService } from './../Services/api-service.service'
 import { error } from '@angular/compiler/src/util';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -19,9 +19,10 @@ export class LoginComponent implements OnInit {
   response: boolean = true;
   rememberme: boolean = false;
   agentFullName: string;
+
   get controls() { return this.formGroup.controls; }
-  constructor( 
-    //private appStore: AppStoreService,
+  constructor(
+    private api: ApiServiceService,
     private router: Router) {
     this.formGroup = this.createFormGroup();
 
@@ -43,42 +44,23 @@ export class LoginComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.loading = true;
-    
-    //Login API Service call
-    // this.appStore.login(this.controls.email.value, this.controls.password.value, this.rememberme).subscribe(
-    //   (res) => {
-    //     if (res) {
-    //       this.agentFullName = res.FirstName + ' ' + res.LastName;
-    //       localStorage.setItem('AgentName', this.agentFullName);
-    //       localStorage.setItem('UserType',res.UserType.toString());
-    //       this.response = true;
-    //       if(res.UserType ==1)
-    //       {
-    //         this.router.navigate(['/charts']);
-    //       }
-    //       else
-    //       {
-    //         this.router.navigate(['/charts']);
-    //       }
 
-    //     }
-    //     this.loading = false;
-    //   },(error => {
-    //     if (error.status == 401)
-    //     {
-    //     this.response = false;
-    //   }
 
-    //    })
-    // );
-    if(this.controls.email.value=='cogitate'&&this.controls.password.value=='cogitate'){
-      this.router.navigate(['/landingPage']);
+    if (this.api.login(this.controls.email.value, this.controls.password.value)) {
+      this.loading = true;
+      setTimeout(() => {
+        this.router.navigate(['/landingPage'])
+      }
+        , 2000);
+      localStorage.setItem('Id', this.controls.email.value);
+
+
     }
-    else{
+    else {
       this.router.navigate(['/login']);
+      this.response = false;
     }
-    
+
 
   }
   createFormGroup(): FormGroup {
@@ -89,7 +71,6 @@ export class LoginComponent implements OnInit {
     })
 
   }
-
 
   remembermeLogin(): void {
     if (this.rememberme) {

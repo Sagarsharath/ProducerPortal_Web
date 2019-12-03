@@ -24,6 +24,6 @@ export class chartsConfig {
     public static _ratio = "Ratio : ";
 
     // For LOB Renewal Premium report
-    public static _LobReport = 'LOB New Business Premium ';
+    public static _LobReport = 'LOB NEW BUSINESS PREMIUM ';
     public static _total = "Total Premium : ";
 }

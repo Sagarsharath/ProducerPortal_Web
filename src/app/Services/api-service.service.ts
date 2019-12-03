@@ -1,35 +1,31 @@
-import { Injectable, ErrorHandler } from '@angular/core';
-import { HttpClient, HttpHeaders,HttpResponse,HttpHandler } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpResponse, HttpHandler } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-
-
-const httpOptions =
-{
-  headers:
-    new HttpHeaders(
-      {
-        "Content-Type": "application/json",
-        'Accept': 'application/json'
-      }),
-  withCredentials: true,
-};
-const headers = new HttpHeaders({ 'Accept': 'application/json', 'Content-Type': 'application/json','Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept' });
+const headers = new HttpHeaders({ 'Accept': 'application/json', 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept' });
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  public response : any;
-  private x : HttpHandler;
-  private http =  new HttpClient(this.x)
-  constructor() {     
+  public response: any;
+  isLoggedin = false;
+  constructor(private http: HttpClient) { }
+
+  getInfo(): Observable<any> {
+    let response = this.http.get('http://jsonplaceholder.typicode.com/users', { headers, withCredentials: true });
+    return response;
+
   }
- 
-  getInfo() : Observable<any>
-  {
-   let response = this.http.get<HttpResponse<any>>("http://dummy.restapiexample.com/api/v1/employees", { headers, withCredentials: false });  
-  // let response = this.http.get<HttpResponse<any>>("http://localhost:50673/api/values/getData", { headers, withCredentials: false });  
-   return response;
+  login(userid: any, password: any) {
+    let response = this.http.get<HttpResponse<any>>("http://dummy.restapiexample.com/api/v1/employees", { headers, withCredentials: false });
+    if (userid == 'cogitate' && password == 'cogitate') {
+      localStorage.setItem('loggedIn', 'true');
+      console.log(localStorage.getItem('loggedIn'));
+    }
+    return true;
   }
-  
+  logout() {
+    localStorage.removeItem('loggedIn');
+  }
+
 }

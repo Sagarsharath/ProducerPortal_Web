@@ -1,6 +1,7 @@
 
 body {
     font-family: "Lato", sans-serif;
+    color: #bbc8ce;
   }
   
   .sidenav {
@@ -10,7 +11,8 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background: #0b496d ;// linear-gradient(to top, #005382 0%, #018ad8 100%);
+    background: #0b496d ;
+    background: #65b6d6 ;// linear-gradient(to top, #005382 0%, #018ad8 100%);
     overflow-x: hidden;
     >div{
         padding-top: 100px;
@@ -37,7 +39,7 @@ body {
 
   .sidenav label:hover {
    
-    background-color: rgb(100, 176, 214);
+    background-color: rgb(154, 193, 212);
     color: white;
     cursor: pointer;
   }
@@ -46,19 +48,24 @@ body {
     margin-left: 160px; 
     font-size: 28px; 
     padding: 10px 50px;
+    color: #bbc8ce;
     >.allcharts{
+      margin-top: 40px;
         padding-left: 65px;
     }
     >.singlechart{
-        margin-left: 145px;
-        margin-top: 50px;
+        margin-left: 93px;
+        margin-top: 60px;
     }
   }
   .topnav {
-    margin-left: 178px;
-    overflow: hidden;
-    background:  linear-gradient(to left, #018ad8  0%, #0b496d 100%);
-    background-color: #333;
+    //margin-left: 178px;
+    height: 50px;
+    overflow: hidden;    
+  position: fixed;
+  width: 100%;
+    background: #65b6d6 ;
+    //background:  linear-gradient(to left, #018ad8  0%, #0b496d 100%);
     padding-top: 0%;
     top: 0;
     left: 0;
@@ -74,7 +81,7 @@ body {
   }
   
   .topnav label:hover {
-    background-color: rgb(100, 176, 214);
+    background-color: rgb(154, 193, 212);
     color: white;
   }
   

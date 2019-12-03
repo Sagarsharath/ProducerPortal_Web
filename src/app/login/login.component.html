@@ -1,59 +1,47 @@
-<form [formGroup]="formGroup"  (ngSubmit)="submit()">
-    <div class="login-wrap">
-      <div class="box-1">
-        <img src="assets/Images/Carousal.gif" alt="Key"> 
-        <!-- <carousel-slider></carousel-slider> -->
-      </div>
-      <div class="box-2">
-        <div class="row-1">
-            <img src="assets/Images/client-logo.png" alt="" />
-          <!-- <div class="col-1"></div> -->
-          <div class="clearfix"></div>
-        </div>
-        <div class="row-7">
-  
-          <div class="clearfix"></div>
-        </div>
-        <div class="row-2">
-          <div class="head-2">Login</div>
-        </div>
-        <div class="row-3">
-          <p>Enter your registered ID to continue.</p>
-          <p>&nbsp;</p>
-        </div>
-        <div class="row-4">
-          <div>
-            <input type="text" formControlName="email" class="form-control" placeholder="Registered ID" >
-            <div *ngIf="submitted && controls.email.errors" class="invalid-feedback">
-              <div *ngIf="controls.email.errors.required">Id is required</div>
-            </div>
-            <input type="password" formControlName="password" class="form-control" placeholder="Password" >
-            <div *ngIf="submitted && controls.password.errors" class="invalid-feedback">
-                <div *ngIf="controls.password.errors.required">Password is required</div>
-              </div>
-          </div>
-          <div class="pull-left MT30">
-            <label>
-              <input formControlName="rememberMe" type="checkbox" (click)="remembermeLogin()" />
-              <span class="pull-left"> <span>
-                  <svg class="checkmark" viewBox="0 0 24 34">
-                      <path class="checkmark-path" fill="none" stroke="white"
-                        d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-                    </svg>
-                </span> </span> <em class="pull-left fontsize14" style="margin-top: 2px;">Remember Me</em> </label>
-          </div>
-          <div class="pull-right">
-            <button class="btn btn-primary" (click)="submit()" type="submit" [disabled]="!formGroup.valid">
-              CONTINUE
-            </button>
-            <div class="text-danger" *ngIf="!response" style="margin-top: 10px; color: rgb(199, 25, 25);">Invalid credentials</div>
-          </div>
-        </div>
-        <div class="row-6" style="bottom: 0px">
-          <span class="fontsize12">Powered by <a href="https://www.cogitate.us" target="_blank">Cogitate Technology Solutions</a> | Copyright 2019, all rights reserved  </span>
-        </div>
-      </div>
-      <div class="clearfix"></div>
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <div class="login-wrap">
+    <div class="box-1">
+      <img src="assets/Images/Carousal.gif" alt="Key">
     </div>
-  </form>
-  
+    <div class="box-2">
+      <div class="row-1">
+        <img src="assets/Images/client-logo.png" alt="" />
+        <div class="clearfix"></div>
+      </div>
+      <div class="row-7">
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="row-2">
+        <div class="head-2">Login</div>
+      </div>
+      <div class="row-3">
+        <p>Enter your registered ID to continue.</p>
+        <p>&nbsp;</p>
+      </div>
+      <div class="row-4">
+        <div>
+          <input type="text" formControlName="email" class="form-control" placeholder="Registered ID">
+          <div *ngIf="submitted && controls.email.errors" class="invalid-feedback">
+            <div *ngIf="controls.email.errors.required">Id is required</div>
+          </div>
+          <input type="password" formControlName="password" class="form-control" placeholder="Password">
+          <div *ngIf="submitted && controls.password.errors" class="invalid-feedback">
+            <div *ngIf="controls.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <div class="pull-left MT30">
+          <label>
+            <input formControlName="rememberMe" type="checkbox" (click)="remembermeLogin()" />
+            <span class="pull-left"> <span>
+                <svg class="checkmark" viewBox="0 0 24 24">
+                  <path class="checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+                </svg>
+              </span> </span> <em class="pull-left fontsize14" style="margin-top: 2px;">Remember Me</em> </label>
+        </div>
+        <div class="pull-right">
+          <button mat-raised-button [class.spinner]="loading" [disabled]="loading" (click)="submit()">SIGN IN</button>
+
+          <div class="text-danger" *ngIf="!response" style="margin-top: 10px; color: rgb(199, 25, 25);">Invalid
+            credentials</div>
+        </div>
