@@ -15,8 +15,9 @@ export class BarChartComponent {
   barChartLegend = true;
   barChartPlugins = [];
   constructor(){}
+
   barChartOptions: ChartOptions = {
-    responsive: true,
+    responsive: true,    
     legend: { position: 'right' ,
     labels: {
       fontColor: '#ffffff',       
@@ -50,7 +51,7 @@ export class BarChartComponent {
         },
         scaleLabel: {
           display: true,
-          labelString: '', // can be used to display y axis info
+          labelString: '',  // can be used to display y axis info
           fontColor: '#ffffff', 
         }
       }]
@@ -61,6 +62,8 @@ export class BarChartComponent {
         tooltip.displayColors = false;
         //tooltip._bodyAlign 
       }
+      // callbacks: {          
+      //   label:"";}
   }
 }
 

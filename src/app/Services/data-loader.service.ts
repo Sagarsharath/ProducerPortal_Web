@@ -14,18 +14,26 @@ export class DataLoaderService {
 
   get_NewBusinessData_Report() {
     const mockData = require('./../Mock-Data/mock-newbusiness.json');
+    //const mockData = require('./../Mock-Data/temp.json');
     let valuesArray = new Array();
+    let labelsArray = new Array();
     mockData.spans.forEach(element => {
       valuesArray.push(element.totalPremium);
+      labelsArray.push(element.spanName)
     });
     // TODO
     // need to add api call...
-    let chartsData = new ChartDataModel()
+    this.api.callNewBusinessApi()
+      .subscribe(
+        (data) => {
+          console.log(data);
+        }
+      );
+    let chartsData = new ChartDataModel();
     this.getBarChartsData();
-    chartsData.barChartValues = [
-      { data: valuesArray, label: 'Total Premium', backgroundColor: defaultColors.RGB[9] }
-    ];
-    chartsData.chartLabels = chartsConfig.labelsForNewBusiness;
+    chartsData.values = valuesArray;
+    chartsData.barlabel = 'Total Premium';
+    chartsData.chartLabels = labelsArray //chartsConfig.labelsForNewBusiness;
     chartsData.description = chartsConfig._headingForMonthlyPremium;
     chartsData.additionalInfo = chartsConfig._avgNBPremiumText + mockData.averagePremium.toFixed(2);
     return chartsData;
@@ -35,12 +43,11 @@ export class DataLoaderService {
     const mockRatioData = require('./../Mock-Data/mock-submissiontobound-ratio.json');
     let valuesArray = new Array();
     valuesArray = [mockRatioData.submission, mockRatioData.quoted, mockRatioData.bound];
-
     var chartsData = new ChartDataModel();
     chartsData.additionalInfo = chartsConfig._ratio + mockRatioData.submissionToBoundRatio;
     chartsData.description = chartsConfig._submissionToBoundRatio;
     chartsData.chartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
-    chartsData.pieChartValues = valuesArray;
+    chartsData.values = valuesArray;
     return chartsData;
   }
 
@@ -55,7 +62,7 @@ export class DataLoaderService {
       sum = sum + element.premium;
     });
     var chartsData = new ChartDataModel();
-    chartsData.pieChartValues = valuesArray;
+    chartsData.values = valuesArray;
     chartsData.chartLabels = labelsArray;
     chartsData.description = chartsConfig._LobReport;
     chartsData.additionalInfo = chartsConfig._total + sum;
@@ -69,18 +76,18 @@ export class DataLoaderService {
     let valuesArray = new Array();
     // uncomment below code & remove mockData when api is ready
 
-    this.api.getInfo()
-      .subscribe(
-        (data) => {
-          for (var val in data) {
-            if (this.index >= 0) {
-              valuesArray.push(val);
-              this.index--;
-            }
-          }
-          return data;
-        }
-      );
+    // this.api.getInfo()
+    //   .subscribe(
+    //     (data) => {
+    //       for (var val in data) {
+    //         if (this.index >= 0) {
+    //           valuesArray.push(val);
+    //           this.index--;
+    //         }
+    //       }
+    //       return data;
+    //     }
+    //   );
 
 
   }

@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class ChartDataModel 
- {
+export class ChartDataModel {
+    constructor() { }
     public description: string;
     public additionalInfo: string;
+    public values: any[];
+    public barlabel: string;
     public chartLabels: Label[];
-    public pieChartValues: any[];
-    public barChartValues: ChartDataSets[];
-   
+
 }
 @Injectable({
     providedIn: 'root'

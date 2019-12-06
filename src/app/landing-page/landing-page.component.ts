@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-
-  public title = 'bar';
-  public title2 = 'pie';
+  public name : string;
   public renderComponent: string;
   public defaultCharts = chartToRender;
   events: string[] = [];
@@ -20,6 +18,7 @@ export class LandingPageComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
+      this.name = localStorage.getItem('userFullName')
   }
   changeComponent(toComponent: string) {
 

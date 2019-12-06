@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartCustomizerComponent} from './chart-customizer/chart-customizer.component'
 import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartRendererComponent } from './chart-renderer/chart-renderer.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,7 @@ import {MatButtonModule,
   MatToolbarModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
+import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
@@ -61,11 +63,14 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatTableModule,
     MatCheckboxModule,MatToolbarModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
-  
+  providers:[
+    {provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

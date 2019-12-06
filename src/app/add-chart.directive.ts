@@ -4,7 +4,8 @@ import { chartToRender } from './Charts/chartsConfig'
 import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
 import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
-import { LineChartComponent } from './Charts/line-chart/line-chart.component'
+import { LineChartComponent } from './Charts/line-chart/line-chart.component';
+import { defaultColors } from './Charts/ChartModels';
 
 @Directive({
   selector: '[appAddChart]'
@@ -31,6 +32,11 @@ export class AddChartDirective {
       var factory = this.resolver.resolveComponentFactory<any>(BarChartComponent);
       this.barChartComp = this.container.createComponent(factory);
       this.barChartComp.instance.barChartData = this.data.barChartValues;
+      this.barChartComp.instance.barChartData = [
+        {
+          data: this.data.values, label: this.data.barlabel, backgroundColor: defaultColors.RGB[9], // barThickness: 15, maxBarThickness: 35,
+        }
+      ]
       this.barChartComp.instance.barChartLabels = this.data.chartLabels;
 
     }
@@ -41,7 +47,7 @@ export class AddChartDirective {
       //chart      
       var factory = this.resolver.resolveComponentFactory<any>(PieChartComponent);
       this.pieChartComp = this.container.createComponent(factory);
-      this.pieChartComp.instance.pieChartData = this.data.pieChartValues;
+      this.pieChartComp.instance.pieChartData = this.data.values;
       this.pieChartComp.instance.pieChartLabels = this.data.chartLabels;
     }
 

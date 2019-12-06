@@ -5,54 +5,49 @@ import { ApiServiceService } from './../Services/api-service.service'
 import { error } from '@angular/compiler/src/util';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
 export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   formGroup: FormGroup;
   response: boolean = true;
   rememberme: boolean = false;
-  agentFullName: string;
-
+  userFullName: string;
   get controls() { return this.formGroup.controls; }
   constructor(
     private api: ApiServiceService,
     private router: Router) {
     this.formGroup = this.createFormGroup();
-
   }
-
   ngOnInit() {
-   
-  }
 
+  }
   submit() {
     event.preventDefault();
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
-    if (this.api.login(this.controls.email.value, this.controls.password.value)) {
-      this.loading = true;
-      setTimeout(() => {
-        this.router.navigate(['/landingPage'])
-      }
-        , 2000);
-      localStorage.setItem('Id', this.controls.email.value);
-
-
-    }
-    else {
-      this.router.navigate(['/login']);
-      this.response = false;
-    }
-
+    this.api.signIn(this.controls.email.value, this.controls.password.value)
+      .subscribe(
+        (data) => {
+          this.loading = true;
+          // if (data.Status == 100) {
+          //   var resObj = data.ResponseObject;
+          //   localStorage.setItem('loggedIn', 'true');
+          //   localStorage.setItem('userFullName', resObj.FirstName + ' ' + resObj.LastName);
+          this.router.navigate(['/landingPage']);
+          // }
+          // else {
+          //   this.response = false;
+          //   this.loading = false;
+          // }
+        }
+      )
 
   }
   createFormGroup(): FormGroup {
@@ -61,9 +56,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required),
       rememberMe: new FormControl('')
     })
-
   }
-
   remembermeLogin(): void {
     if (this.rememberme) {
       this.rememberme = false;
@@ -72,5 +65,4 @@ export class LoginComponent implements OnInit {
       this.rememberme = true;
     }
   }
-
 }
