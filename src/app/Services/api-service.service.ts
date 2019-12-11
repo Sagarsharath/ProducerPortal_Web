@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpHandler } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { createCipher } from 'crypto';
+import { map } from 'rxjs/operators';
 // const headers = new HttpHeaders(
 //   {
 //      'Accept': 'application/json', 
 //      'Content-Type': 'application/json', 
-//      'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6ImY4N2JlYTM3LTI0MjEtNGVkNC05ZGFkLTYyOTgzZmFmNTNkZiIsImlhdCI6IjA1LTEyLTIwMTkgMDg6NTc6NDUiLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1NTM2MjY1LCJleHAiOjE1NzU1MzY5ODUsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.AQ7oMkPJwftP7e8xr5Xo0ENB6HPIDnbHiObdvK8hYvk'
+//      'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6ImQ2ZjkyYmVhLWJlY2YtNDM1Zi1iYTM5LTFiOThiZjUwOTY5YyIsImlhdCI6IjEyLzA5LzIwMTkgMTA6MzI6MTEgQU0iLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1ODg3NTMxLCJleHAiOjE1NzU4ODgyNTEsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.VTW_zOf3XZvmq8M1R3xiDSkTVVbLd_lvVHjHDFWjcR8'
 //   });
 
 
@@ -17,6 +18,7 @@ export class ApiServiceService {
 
   public response: any;
   isLoggedin = false;
+  proxyUrl = 'http://cors-anywhere.herokuapp.com/';
   constructor(private http: HttpClient) { }
 
   
@@ -26,20 +28,13 @@ export class ApiServiceService {
 
   //}
   callNewBusinessApi() : Observable<any>{
-    //  let headers = new HttpHeaders({
-    //    'Accept': 'application/json', 
-    //    'Content-Type': 'application/json', 
-    //   'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6IjQ1NDEzMjgwLTY1ZmYtNDY3YS05NzJkLWZjODgxNTI4NDg5NiIsImlhdCI6IjA1LTEyLTIwMTkgMDY6Mzc6MDMiLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1NTI3ODIzLCJleHAiOjE1NzU1Mjg1NDMsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.qMctkMZnmFNl14aMk77j_e9qj7PSBStoeXwfaso3rxc'
-      //});
-let auth_token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6IjcwODIyYTJkLThkNzctNDY5ZS1iNTFhLWQwOGM2MWNiZmMwOCIsImlhdCI6IjA1LTEyLTIwMTkgMDc6MTA6NDAiLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1NTI5ODQwLCJleHAiOjE1NzU1MzA1NjAsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.oagOUUGm2B8QlzNUQVUOzOddHQn2ZFLEw4qdgv8gZ_w';
-      let headers = new HttpHeaders();
-      headers.append('Accept', 'application/json');
-      headers.append('Content-Type', 'application/json')
-      //headers.set('Authorization', 'Bearer '+ auth_token);
-   
-    const url ='http://192.168.0.68/APIGateway/reports/nbpremium'
-    let response = this.http.get(url,{ headers:headers, withCredentials:true})
-    console.log(response);
+     let headers = new HttpHeaders({
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+       'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6ImZiNzI0ZjI4LTg1M2MtNDNkYy1hNzQyLTQzMjM2OTVlY2M1YSIsImlhdCI6IjEyLzEwLzIwMTkgMTI6MTE6NDkiLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1OTc5OTA5LCJleHAiOjE1NzU5ODA2MjksImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.fDte307UAy1KR4x_0zZVHfuXyr1D-eI9fMufvVzoM48'
+      });
+    const url = 'http://192.168.0.68/APIGateway/reports/nbpremium';
+    let response = this.http.get(url,{ headers:headers, withCredentials:true});
     return response;
   }
   login(userid: any, password: any) {
@@ -50,19 +45,43 @@ let auth_token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIi
     }
         return true;
   }
-  signIn(username,password) {
-    const url ='http://cors-anywhere.herokuapp.com/http://test.cogitate.us/SSONew/api/Login/IsLoginValid';
-    let headers = new HttpHeaders();
-      headers.append('Accept', 'application/json');
-      headers.append('Content-Type', 'application/json');
-      headers.append('siteID','4');
-    let data = {"UserName":username,"Password":password}
-    let response = this.http.post(url,data , {headers:headers, withCredentials:false});
+  signIn(username,password) : Observable<UserModel> {
+    const url = this.proxyUrl+'http://test.cogitate.us/SSONew/api/Login/IsLoginValid';
+    let headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'siteId': '4'
+    });
+    // var data = new postdata_login(
+    //   {
+    //     UserName = username,
+    //     Password = password
+    //   }
+    // );
+    var data = new postdata_login(username,password);
+    //let data = {"UserName":username,"Password":password}
+    let response = this.http.post(url,data,{headers:headers}).pipe(map(x=>x as UserModel));
     return response;
   }
   logout() {
     localStorage.clear();
   }
-
-
 }
+export class postdata_login{  
+  UserName: string;
+  Password: string;
+  constructor(UserName,Password){
+    this.UserName = UserName;
+    this.Password = Password;
+  }
+}
+export class UserModel{
+  Message: string;
+  Status : Number;
+  ResponseObject : RObject;
+}
+export class RObject{
+  FirstName: string;
+  LastName: string;
+}
+

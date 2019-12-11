@@ -35,7 +35,7 @@ export class LandingPageComponent implements OnInit {
 
   }
   logOut() {
-    localStorage.removeItem('loggedIn')
+    localStorage.clear()
     this.router.navigate(['/login']);
 
   }

@@ -32,20 +32,23 @@ export class LoginComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
+    this.loading = true;
     this.api.signIn(this.controls.email.value, this.controls.password.value)
-      .subscribe(
+           .subscribe(
         (data) => {
-          this.loading = true;
-          // if (data.Status == 100) {
-          //   var resObj = data.ResponseObject;
-          //   localStorage.setItem('loggedIn', 'true');
-          //   localStorage.setItem('userFullName', resObj.FirstName + ' ' + resObj.LastName);
-          this.router.navigate(['/landingPage']);
-          // }
-          // else {
-          //   this.response = false;
-          //   this.loading = false;
-          // }
+          this.loading = false;
+          if (data.Status == 100) {
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('userFullName', data.ResponseObject.FirstName + ' ' + data.ResponseObject.LastName);
+            if (this.rememberme) {
+            }
+            this.loading = true;
+            this.router.navigate(['/landingPage']);
+          }
+          else {
+            this.response = false;
+            this.loading = false;
+          }
         }
       )
 

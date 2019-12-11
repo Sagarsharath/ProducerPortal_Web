@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ChartType, ChartOptions, ChartColor,ChartDataSets } from 'chart.js';
+import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Colors, Color } from 'ng2-charts';
-import { getNsPrefix } from '@angular/compiler';
 import { defaultColors } from './../ChartModels'
 @Component({
   selector: 'pie-chart',
