@@ -14,7 +14,6 @@ export class DataLoaderService {
 
   get_NewBusinessData_Report() {
     const mockData = require('./../Mock-Data/mock-newbusiness.json');
-    //const mockData = require('./../Mock-Data/temp.json');
     let valuesArray = new Array();
     let labelsArray = new Array();
     mockData.spans.forEach(element => {
@@ -23,6 +22,7 @@ export class DataLoaderService {
     });
     // TODO
     // need to add api call...
+    //  test api code
     this.api.callNewBusinessApi()
       .subscribe(
         (data) => {
@@ -48,6 +48,13 @@ export class DataLoaderService {
     chartsData.description = chartsConfig._submissionToBoundRatio;
     chartsData.chartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
     chartsData.values = valuesArray;
+    // test api code
+    this.api.tempcode()
+    .subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
     return chartsData;
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { chartToRender } from './../Charts/chartsConfig';
 import { Router } from '@angular/router';
+import { ApiServiceService } from '../Services/api-service.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -15,10 +16,16 @@ export class LandingPageComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+    private api : ApiServiceService) { }
 
   ngOnInit() {
-      this.name = localStorage.getItem('userFullName')
+    const urlArr = this.router.url.split('/');
+    const token = urlArr[urlArr.length-1];
+    console.log(token);
+    localStorage.setItem('token',token)
+    this.name = localStorage.getItem('userFullName')
+
   }
   changeComponent(toComponent: string) {
 

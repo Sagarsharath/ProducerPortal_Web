@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { ApiServiceService } from './../Services/api-service.service'
 import { error } from '@angular/compiler/src/util';
 import { catchError } from 'rxjs/operators';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { of } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class LoginComponent implements OnInit {
   loading = false;
@@ -20,11 +22,19 @@ export class LoginComponent implements OnInit {
   get controls() { return this.formGroup.controls; }
   constructor(
     private api: ApiServiceService,
-    private router: Router) {
+    private router: Router,
+    private location: Location) {
     this.formGroup = this.createFormGroup();
   }
   ngOnInit() {
-
+    console.log(window.location.href );
+   this.api.loginRedirect()
+   .subscribe(
+     data=>{
+       console.log(data)
+     }
+   )
+   //window.location.href ='http://dev.cogitate.us/SSONew/Login/VerifyPPCookieToken?siteId=1';
   }
   submit() {
     event.preventDefault();

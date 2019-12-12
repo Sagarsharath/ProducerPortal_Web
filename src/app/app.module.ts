@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Location} from '@angular/common'
 import {MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
@@ -43,7 +44,7 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     LineChartComponent,
     DashboardComponent,
     LandingPageComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,12 +65,14 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     MatTableModule,
     MatCheckboxModule,MatToolbarModule,
     ReactiveFormsModule
+    
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers:[
-    {provide: HTTP_INTERCEPTORS,
-      useClass: CustomHttpInterceptor,
-      multi: true}
+    // {provide: HTTP_INTERCEPTORS,
+    //   useClass: CustomHttpInterceptor,
+    //   multi: true},
+       Location
   ],
   bootstrap: [AppComponent]
 })

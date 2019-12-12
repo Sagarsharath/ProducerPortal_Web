@@ -24,7 +24,6 @@ export class ChartRendererComponent implements OnInit {
     }
     else if(this.reports == chartToRender.SubmissionToBound){
       this.dataVal = this.loader.get_SubmissionToBound_Report();
-      console.log(this.dataVal)
     }
      else if(this.reports == chartToRender.LOBRenewal) {
       this.dataVal = this.loader.get_LOB_NBRenewal_Report();
