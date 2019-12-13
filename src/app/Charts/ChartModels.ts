@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ChartDataModel {
     constructor() { }
     public description: string;
-    public additionalInfo: string;
+    public additionalInfo: String;
     public values: any[];
     public barlabel: string;
     public chartLabels: Label[];

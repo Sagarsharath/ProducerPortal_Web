@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chart-descriptor',
@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartDescriptorComponent implements OnInit {
 
-  public description : any;
-  public additionalInfo : any;
+  @Input() description : any;
+  @Input() additionalInfo : any;
   constructor() { }
 
   ngOnInit() {

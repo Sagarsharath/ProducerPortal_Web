@@ -1,13 +1,15 @@
 <div class="chart-wrapper">
-        <canvas baseChart 
-        height="30vh" width="80vw"
-        [data]="pieChartData" 
-        [labels]="pieChartLabels"
+    <div *ngIf="pieChartData.length>0"> 
+      <canvas 
+        baseChart height="30vh" width="80vw" 
+        [data]="pieChartData"
+        [labels]="pieChartLabels" 
         [chartType]="pieChartType"
-        [options]="chartOption"
+        [options]="chartOption" 
         [plugins]="pieChartPlugins"
-        [legend]="pieChartLegend"
+        [legend]="pieChartLegend" 
         [colors]="pieChartColors">
       </canvas>
     </div>
-    
+    <div *ngIf="pieChartData.length==0" class="nodata">No data to show</div>
+</div>

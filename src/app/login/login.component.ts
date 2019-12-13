@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
        console.log(data)
      }
    )
-   //window.location.href ='http://dev.cogitate.us/SSONew/Login/VerifyPPCookieToken?siteId=1';
+   //window.location.href ='http://dev.cogitate.us/SSONew/Login/VerifyPPCookieToken?siteId=1&redirectURL=';
   }
   submit() {
     event.preventDefault();

@@ -27,11 +27,9 @@ export class AddChartDirective {
     if (this.chart == chartToRender.MonthlyPremium) {
 
       this.setCustomizer(this.data.description, this.data.additionalInfo)
-
       //chart
       var factory = this.resolver.resolveComponentFactory<any>(BarChartComponent);
       this.barChartComp = this.container.createComponent(factory);
-      this.barChartComp.instance.barChartData = this.data.barChartValues;
       this.barChartComp.instance.barChartData = [
         {
           data: this.data.values, label: this.data.barlabel, backgroundColor: defaultColors.RGB[9], // barThickness: 15, maxBarThickness: 35,
@@ -55,8 +53,7 @@ export class AddChartDirective {
   //sets the customizer component based on data
   setCustomizer(description: any, addInfo: any) {
 
-    const componentType2 = ChartDescriptorComponent;
-    const factory2 = this.resolver.resolveComponentFactory<any>(componentType2);
+    const factory2 = this.resolver.resolveComponentFactory<any>(ChartDescriptorComponent);
     this.descriptorComp = this.container.createComponent(factory2);
     this.descriptorComp.instance.description = description;
     this.descriptorComp.instance.additionalInfo = addInfo;

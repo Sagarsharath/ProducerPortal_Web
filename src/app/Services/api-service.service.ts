@@ -3,23 +3,22 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpHandler } from '@angular/com
 import { Observable, of } from 'rxjs';
 import { createCipher } from 'crypto';
 import { map } from 'rxjs/operators';
-// const headers = new HttpHeaders(
-//   {
-//      'Accept': 'application/json', 
-//      'Content-Type': 'application/json', 
-//      'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6ImQ2ZjkyYmVhLWJlY2YtNDM1Zi1iYTM5LTFiOThiZjUwOTY5YyIsImlhdCI6IjEyLzA5LzIwMTkgMTA6MzI6MTEgQU0iLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1ODg3NTMxLCJleHAiOjE1NzU4ODgyNTEsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.VTW_zOf3XZvmq8M1R3xiDSkTVVbLd_lvVHjHDFWjcR8'
-//   });
+const headers = new HttpHeaders(
+  {
+     'Accept': 'application/json', 
+     'Content-Type': 'application/json', 
+     'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InJhdmkiLCJBZ2VudElkIjoiMTAwMDQwIiwianRpIjoiODdjOTkyMTMtMWNjOS00NWE2LWEzMmItYjk4M2VmMThlOTVjIiwiaWF0IjoiMTIvMTMvMjAxOSA2OjU4OjQ0IEFNIiwibmJwcmVtaXVtIjoibmJwcmVtaXVtIiwic3VibWlzc2lvbnRvYm91bmQiOiJzdWJtaXNzaW9udG9ib3VuZCIsInBpZiI6InBpZiIsImxvYm5icHJlbWl1bSI6ImxvYm5icHJlbWl1bSIsImNhcnJpZXJuYnByZW1pdW0iOiJjYXJyaWVybmJwcmVtaXVtIiwibmJmIjoxNTc2MjIwMzI0LCJleHAiOjE1NzYyMjEwNDQsImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.n9nNsTcnrqao82q8pE9aiqlcscaC26XFi5bLzhr8raw'
+  });
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
-
   public response: any;
   isLoggedin = false;
   proxyUrl = 'http://cors-anywhere.herokuapp.com/';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {  }
   
   loginRedirect() : Observable<any>{
     let headers = new HttpHeaders({
@@ -30,25 +29,22 @@ export class ApiServiceService {
   }
 
   callNewBusinessApi() : Observable<any>{
-     let headers = new HttpHeaders({
-       'Accept': 'application/json',
-       'Content-Type': 'application/json',
-       'Authorization':'Bearer '+ localStorage.getItem('token') //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6ImZiNzI0ZjI4LTg1M2MtNDNkYy1hNzQyLTQzMjM2OTVlY2M1YSIsImlhdCI6IjEyLzEwLzIwMTkgMTI6MTE6NDkiLCJuYnByZW1pdW0iOiJuYnByZW1pdW0iLCJyYnByZW1pdW0iOiJyYnByZW1pdW0iLCJzdWJtaXNzaW9udG9ib3VuZCI6InN1Ym1pc3Npb250b2JvdW5kIiwibmJmIjoxNTc1OTc5OTA5LCJleHAiOjE1NzU5ODA2MjksImlzcyI6Imh0dHA6Ly93d3cuYy1zaGFycGNvcm5lci5jb20vbWVtYmVycy9jYXRjaGVyLXdvbmciLCJhdWQiOiJDYXRjaGVyIFdvbmcifQ.fDte307UAy1KR4x_0zZVHfuXyr1D-eI9fMufvVzoM48'
-      });
-    const url = this.proxyUrl+'http://dev.cogitate.us/APIGateway/reports/nbpremium';
+    const url = 'http://dev.cogitate.us/APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
     let response = this.http.get(url,{ headers:headers, withCredentials:true});
     return response;
   }
-  tempcode() :  Observable<any>{
-    let headers = new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization':'Bearer '+ localStorage.getItem('token') //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im5pdGluIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6IjBjMWNhMGViLTRiZGItNDU0MS1hMzg5LTUyYzRkZGMzMTc1OSIsImlhdCI6IjEyLzEyLzIwMTkgNTo1OToyNiBBTSIsIm5icHJlbWl1bSI6Im5icHJlbWl1bSIsInJicHJlbWl1bSI6InJicHJlbWl1bSIsInN1Ym1pc3Npb250b2JvdW5kIjoic3VibWlzc2lvbnRvYm91bmQiLCJuYmYiOjE1NzYxMzAzNjYsImV4cCI6MTU3NjEzMTA4NiwiaXNzIjoiaHR0cDovL3d3dy5jLXNoYXJwY29ybmVyLmNvbS9tZW1iZXJzL2NhdGNoZXItd29uZyIsImF1ZCI6IkNhdGNoZXIgV29uZyJ9.YOBLWBil34seBb1vocToU8PWzPZe3d01ZnFYL9ClRGs'
-     });
-   const url = 'http://dev.cogitate.us/APIGateway/reports/nbpremium';
+
+  submissionToBoundApi() : Observable<any>{
+   const url = 'http://dev.cogitate.us/APIGateway/reports/submissiontobound?fromDate=2017/01/01&toDate=2019/01/01';
    let response = this.http.get(url,{ headers:headers, withCredentials:true});
    return response;
  }
+
+ lob_newBusinessApi(): Observable<any>{
+ const url = 'http://dev.cogitate.us/APIGateway/reports/lob/nbpremium?fromDate=2017/01/01&toDate=2019/01/01';
+ let response = this.http.get(url,{ headers:headers, withCredentials:true});
+ return response;
+}
   login(userid: any, password: any) {
     //let response = this.http.get<HttpResponse<any>>("http://dummy.restapiexample.com/api/v1/employees", { headers, withCredentials: false });
     if (userid == 'cogitate' && password == 'cogitate') {
@@ -89,4 +85,3 @@ export class RObject {
   FirstName: string;
   LastName: string;
 }
-

@@ -13,8 +13,13 @@ export class BarChartComponent {
   @Input() barChartData: ChartDataSets[];
   barChartType: ChartType =  'bar';
   barChartLegend = true;
+  loader:boolean;
   barChartPlugins = [];
-  constructor(){}
+  constructor(
+
+  ){
+    
+  }
 
   barChartOptions: ChartOptions = {
     responsive: true,    
