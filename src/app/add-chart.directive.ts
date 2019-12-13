@@ -10,7 +10,7 @@ import { defaultColors } from './Charts/ChartModels';
 @Directive({
   selector: '[appAddChart]'
 })
-export class AddChartDirective {
+export class AddChartDirective implements OnInit, OnChanges {
   @Input() data: any;
   @Input() chart: any;
   barChartComp: ComponentRef<BarChartComponent>;
@@ -22,9 +22,14 @@ export class AddChartDirective {
 
   }
   ngOnInit() {
+    this.initializeCharts();
+  }
+  ngOnChanges(){
+    this.initializeCharts();
+  }
 
-
-    if (this.chart == chartToRender.MonthlyPremium) {
+  private initializeCharts(){
+    if (this.chart == chartToRender.MonthlyPremium && this.data != undefined) {
 
       this.setCustomizer(this.data.description, this.data.additionalInfo)
       //chart
@@ -38,7 +43,7 @@ export class AddChartDirective {
       this.barChartComp.instance.barChartLabels = this.data.chartLabels;
 
     }
-    else if (this.chart == chartToRender.SubmissionToBound || this.chart == chartToRender.LOBRenewal) {
+    else if (this.chart == chartToRender.SubmissionToBound && this.data != undefined || this.chart == chartToRender.LOBRenewal && this.data != undefined) {
 
       this.setCustomizer(this.data.description, this.data.additionalInfo)
 
@@ -48,7 +53,6 @@ export class AddChartDirective {
       this.pieChartComp.instance.pieChartData = this.data.values;
       this.pieChartComp.instance.pieChartLabels = this.data.chartLabels;
     }
-
   }
   //sets the customizer component based on data
   setCustomizer(description: any, addInfo: any) {

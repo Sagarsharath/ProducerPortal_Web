@@ -6,11 +6,12 @@ import { error } from '@angular/compiler/src/util';
 import { catchError } from 'rxjs/operators';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { of } from 'rxjs';
+import { DataStoreService } from '../Services/data-store/data-store-service/data-store.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}]
+  providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }]
 })
 export class LoginComponent implements OnInit {
   loading = false;
@@ -22,19 +23,19 @@ export class LoginComponent implements OnInit {
   get controls() { return this.formGroup.controls; }
   constructor(
     private api: ApiServiceService,
-    private router: Router,
-    private location: Location) {
+    private dataStore: DataStoreService,
+    private router: Router, ) {
     this.formGroup = this.createFormGroup();
   }
   ngOnInit() {
-    console.log(window.location.href );
-   this.api.loginRedirect()
-   .subscribe(
-     data=>{
-       console.log(data)
-     }
-   )
-   //window.location.href ='http://dev.cogitate.us/SSONew/Login/VerifyPPCookieToken?siteId=1&redirectURL=';
+    console.log(window.location.href);
+    this.api.loginRedirect()
+      .subscribe(
+        data => {
+          console.log(data)
+        }
+      )
+
   }
   submit() {
     event.preventDefault();
@@ -43,24 +44,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.api.signIn(this.controls.email.value, this.controls.password.value)
-           .subscribe(
-        (data) => {
-          this.loading = false;
-          if (data.Status == 100) {
-            localStorage.setItem('loggedIn', 'true');
-            localStorage.setItem('userFullName', data.ResponseObject.FirstName + ' ' + data.ResponseObject.LastName);
-            if (this.rememberme) {
-            }
-            this.loading = true;
-            this.router.navigate(['/landingPage']);
-          }
-          else {
-            this.response = false;
-            this.loading = false;
-          }
-        }
-      )
+    this.dataStore.authenticate(this.controls.email.value).subscribe(
+      data => {
+        console.log(data.token)
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('token', data.token);
+        this.router.navigate(['/landingPage']);
+      })
 
   }
   createFormGroup(): FormGroup {

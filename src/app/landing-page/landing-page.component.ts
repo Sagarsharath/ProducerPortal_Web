@@ -22,8 +22,6 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
     const urlArr = this.router.url.split('/');
     const token = urlArr[urlArr.length-1];
-    console.log(token);
-    localStorage.setItem('token',token)
     this.name = localStorage.getItem('userFullName')
 
   }

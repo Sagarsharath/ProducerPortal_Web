@@ -21,18 +21,24 @@ export class ChartRendererComponent implements OnInit {
   }
   loadData() {
     if (this.reports == chartToRender.MonthlyPremium) {
-      //this.loader.get_NewBusinessData_Report(this.dataVal);
-      this.dataStore.getNBPremiumDetails().subscribe(x=> {
+      this.dataStore.authenticate("100040");
+     this.dataStore.getNBPremiumDetails().subscribe(x=> {
         this.dataVal = x;
+        console.log(x)
       });
-
-
+      console.log(this.dataVal);
     }
     else if(this.reports == chartToRender.SubmissionToBound){
-      this.dataVal = this.loader.get_SubmissionToBound_Report();
+      this.dataStore.get_SubmissionToBound_Report().subscribe(x=> {
+        this.dataVal = x;
+        console.log(x)
+      });
     }
      else if(this.reports == chartToRender.LOBRenewal) {
-      this.dataVal = this.loader.get_LOB_NBRenewal_Report();
+      this.dataStore.get_LOB_nbpremium().subscribe(x=> {
+        this.dataVal = x;
+        console.log(x)
+      });
      }
 
   }
