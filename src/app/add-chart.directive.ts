@@ -29,6 +29,7 @@ export class AddChartDirective implements OnInit, OnChanges {
   }
 
   private initializeCharts(){
+
     if (this.chart == chartToRender.MonthlyPremium && this.data != undefined) {
 
       this.setCustomizer(this.data.description, this.data.additionalInfo)

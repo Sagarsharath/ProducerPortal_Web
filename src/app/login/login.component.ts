@@ -28,13 +28,6 @@ export class LoginComponent implements OnInit {
     this.formGroup = this.createFormGroup();
   }
   ngOnInit() {
-    console.log(window.location.href);
-    this.api.loginRedirect()
-      .subscribe(
-        data => {
-          console.log(data)
-        }
-      )
 
   }
   submit() {
@@ -44,14 +37,20 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.dataStore.authenticate(this.controls.email.value).subscribe(
+    this.dataStore.authenticate(this.controls.email.value).subscribe(     
+     
       data => {
-        console.log(data.token)
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('token', data.token);
         this.router.navigate(['/landingPage']);
+      },
+      (error)=>{
+        if(error.status==401){
+          this.response = false;
+          this.loading = false;
+        }
       })
-
+      
   }
   createFormGroup(): FormGroup {
     return new FormGroup({

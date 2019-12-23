@@ -1,5 +1,5 @@
 <div class="chart-wrapper">
-    <div *ngIf="pieChartData.length>0"> 
+    <div *ngIf="pieChartData.length>0">  
       <canvas 
         baseChart height="30vh" width="80vw" 
         [data]="pieChartData"
@@ -11,5 +11,4 @@
         [colors]="pieChartColors">
       </canvas>
     </div>
-    <div *ngIf="pieChartData.length==0" class="nodata">No data to show</div>
 </div>

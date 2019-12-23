@@ -12,19 +12,25 @@ export class ChartRendererComponent implements OnInit {
 
   public dataVal: any;
   @Input() reports: any;
+  spinner = false;
   constructor( private loader :DataLoaderService,private dataStore:DataStoreService
   ) {
     
   }
   ngOnInit() {
+    this.spinner = true;
     this.loadData();
+    this.spinner = false;
   }
   loadData() {
     if (this.reports == chartToRender.MonthlyPremium) {
-      this.dataStore.authenticate("100040");
+    //  this.dataStore.authenticate("100040");
      this.dataStore.getNBPremiumDetails().subscribe(x=> {
         this.dataVal = x;
         console.log(x)
+      },
+      (error)=>{
+        console.log(error)
       });
       console.log(this.dataVal);
     }

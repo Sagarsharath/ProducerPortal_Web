@@ -10,16 +10,23 @@ export class ChartCustomizerComponent implements OnInit {
   @Input() dataChild : any;
   @Input() childReport : any;
   @Input() desc : any;
-  public loadBar =false;
-  public loadPie =false;
-   constructor(
-  ) {
-        
-  }
+  timeLeft: number = 20;
+  interval;
 
 
   ngOnInit() {
-   
+    this.startTimer()
+  }
+  startTimer() {
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } 
+    },1000)
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
   }
  
   

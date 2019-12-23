@@ -7,6 +7,8 @@
 </head>
 <body>
     <div class="main">
+       <div *ngIf="(dataChild==undefined && timeLeft>0)" class="nodata">Loading..</div>
+       <div *ngIf="(dataChild==undefined && timeLeft==0)" class="nodata">No data</div>
        <ng-container appAddChart [data]="dataChild" [chart]="childReport"></ng-container> 
     </div>
 

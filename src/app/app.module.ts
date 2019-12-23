@@ -30,6 +30,7 @@ import {MatButtonModule,
   MatToolbarModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
 
 @NgModule({
@@ -64,8 +65,8 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     MatCardModule,
     MatTableModule,
     MatCheckboxModule,MatToolbarModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    Ng4LoadingSpinnerModule    
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers:[
