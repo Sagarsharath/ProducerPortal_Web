@@ -27,7 +27,6 @@ export class ChartRendererComponent implements OnInit {
     //  this.dataStore.authenticate("100040");
      this.dataStore.getNBPremiumDetails().subscribe(x=> {
         this.dataVal = x;
-        console.log(x)
       },
       (error)=>{
         console.log(error)

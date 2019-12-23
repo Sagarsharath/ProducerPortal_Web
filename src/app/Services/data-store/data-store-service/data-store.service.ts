@@ -15,7 +15,7 @@ export class DataStoreService {
   constructor(private apiService: ApiCallingService, private mapper: ChartDataModelMapper) { }
 
   authenticate(userid : string) : Observable<any>{
-    let url = 'http://dev.cogitate.us/APIGateway/auth/validate';
+    let url = 'APIGateway/auth/validate';
     let response = this.apiService.post(url,userid);
     console.log(response)
     return response;
@@ -23,7 +23,7 @@ export class DataStoreService {
   }
   
   getNBPremiumDetails(fromDate:Date = null,toDate:Date = null):Observable<ChartDataModel>{
-    let url = 'http://dev.cogitate.us/APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
+    let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
     if(fromDate != null && toDate != null){
       url = url+ '?fromDAte=' + fromDate + '&toDate=' + toDate;
     }
@@ -32,13 +32,13 @@ export class DataStoreService {
   }
    
   get_SubmissionToBound_Report() : Observable<ChartDataModel>{
-    let url = 'http://dev.cogitate.us/APIGateway/reports/submissiontobound?fromDate=2017/01/01&toDate=2019/01/01';
+    let url = 'APIGateway/reports/submissiontobound?fromDate=2017/01/01&toDate=2019/01/01';
     
     let response = this.apiService.get(url).pipe(map(x=> this.mapper.toChartDataFromSubmissionBound(x),catchError(this.handleError(url))));
     return response;
   }
    get_LOB_nbpremium() : Observable<ChartDataModel>{
-    let url = 'http://dev.cogitate.us/APIGateway/reports/lob/nbpremium?fromDate=2017/01/01&toDate=2019/01/01';
+    let url = 'APIGateway/reports/lob/nbpremium?fromDate=2017/01/01&toDate=2019/01/01';
     
     let response = this.apiService.get(url).pipe(map(x=> this.mapper.toChartDataFromLobNew(x),catchError(this.handleError(url))));
     return response;

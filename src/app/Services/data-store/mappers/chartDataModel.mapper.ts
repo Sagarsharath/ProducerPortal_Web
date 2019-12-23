@@ -36,8 +36,9 @@ export class ChartDataModelMapper {
         }
         chartsdata.values = valuesArray;
         chartsdata.chartLabels = chartsConfig.labelsFor_SubmissionToBound_Chart;
-        chartsdata.additionalInfo == chartsConfig._ratio + model.submissionToBoundRatio;
+        chartsdata.additionalInfo = chartsConfig._ratio + model.submissionToBoundRatio.toString();
         chartsdata.description = chartsConfig._submissionToBoundRatio;
+        console.log(model);
         return chartsdata;
     }
     public toChartDataFromLobNew(model: LobnbPremium_Model[]): ChartDataModel {

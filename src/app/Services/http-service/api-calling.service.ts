@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { IApiService } from './interfaces/api-service.interface';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
 
-const apiPath = ''//environment.serverUrl;
+const apiPath = environment.serverUrl;
 
 const tokenHeaderName: string = "authToken";
 
@@ -31,7 +31,7 @@ export class ApiCallingService implements IApiService {
   get(url): Observable<any> {
     const headers = this.setHeaders();   
     console.log(headers)
-    let response = this.http.get(url, { headers, withCredentials: true })
+    let response = this.http.get(apiPath+url, { headers, withCredentials: true })
       .pipe(
          catchError(this.handleError(url)));
     return response;
@@ -40,7 +40,9 @@ export class ApiCallingService implements IApiService {
   post(url: string, data: any): Observable<any> {
    
     const headers = this.setHeaders();  
-    return this.http.post(apiPath + url, data, { headers, withCredentials: true });
+    return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
+      catchError(this.handleError(url))
+    );
   }
 
   put(url: string, data: any): Observable<any> {    
