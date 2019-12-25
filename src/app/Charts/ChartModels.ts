@@ -19,10 +19,10 @@ export class ChartDataModel {
 })
 export class defaultColors {
     public static RGB = [
-        '#8f6f85',
+        '#a697a0',
         '#94aab5',
         '#94b59d',
-        '#736329',
+        '#ad9a53',
         '#6b1616',
         '#521343',
         '#3a4d99',

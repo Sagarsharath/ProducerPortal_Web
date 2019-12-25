@@ -15,11 +15,7 @@ export class BarChartComponent {
   barChartLegend = true;
   loader:boolean;
   barChartPlugins = [];
-  constructor(
-
-  ){
-    
-  }
+  constructor() { }
 
   barChartOptions: ChartOptions = {
     responsive: true,    
@@ -28,9 +24,17 @@ export class BarChartComponent {
       fontColor: '#ffffff',       
     },
     },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        clamp : true,
+        offset:3,
+        padding:1  
+      }
+    },
     scales: {
       xAxes: [{
-        stacked: true,
         ticks: {
           fontColor: '#ffffff',  
         },
@@ -67,8 +71,6 @@ export class BarChartComponent {
         tooltip.displayColors = false;
         //tooltip._bodyAlign 
       }
-      // callbacks: {          
-      //   label:"";}
   }
 }
 

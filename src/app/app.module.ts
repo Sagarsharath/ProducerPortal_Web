@@ -32,6 +32,7 @@ import {MatButtonModule,
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -66,14 +67,15 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     MatTableModule,
     MatCheckboxModule,MatToolbarModule,
     ReactiveFormsModule,
-    Ng4LoadingSpinnerModule    
+    Ng4LoadingSpinnerModule,
+        
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers:[
     // {provide: HTTP_INTERCEPTORS,
     //   useClass: CustomHttpInterceptor,
     //   multi: true},
-       Location
+       Location, CookieService
   ],
   bootstrap: [AppComponent]
 })

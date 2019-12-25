@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiServiceService } from './../Services/api-service.service'
-import { error } from '@angular/compiler/src/util';
-import { catchError } from 'rxjs/operators';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { of } from 'rxjs';
 import { DataStoreService } from '../Services/data-store/data-store-service/data-store.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,43 +11,61 @@ import { DataStoreService } from '../Services/data-store/data-store-service/data
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }]
 })
 export class LoginComponent implements OnInit {
-  loading = false;
-  submitted = false;
+  
   formGroup: FormGroup;
   response: boolean = true;
-  rememberme: boolean = false;
   userFullName: string;
   get controls() { return this.formGroup.controls; }
   constructor(
-    private api: ApiServiceService,
     private dataStore: DataStoreService,
     private router: Router, ) {
     this.formGroup = this.createFormGroup();
   }
   ngOnInit() {
-
+    this.checkIfLoginHasToken()
   }
-  submit() {
-    event.preventDefault();
-    this.submitted = true;
-    if (this.formGroup.invalid) {
-      return;
+  checkIfLoginHasToken() {
+    if (this.router.url.includes('login')) {
+      var token = this.router.url.split('login')[1];
+      if (token.length != 0) {
+        token = token.substr(1, token.length - 1); // for removing '/' at the beginning
+        this.ValidateToken(token);
+      }
+      else {
+        this.redirect()
+      }
     }
-    this.loading = true;
-    this.dataStore.authenticate(this.controls.email.value).subscribe(     
-     
+    else {
+      this.redirect()
+    }
+  }
+  redirect() {
+    const redirectHost = location.origin;
+    window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=1&redirectURL='+redirectHost+'/login' ; 
+  }
+
+  ValidateToken(token: string) {
+    this.dataStore.ValidateSSOToken(token).subscribe(
+      (data) => {
+        console.log(data) //get userId from this api & pass it to AuthenticateUser 
+      }
+    );
+    this.AuthenticateUser("100040");
+  }
+
+  AuthenticateUser(userid: string) {
+    this.dataStore.authenticate(userid).subscribe(
       data => {
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('token', data.token);
         this.router.navigate(['/landingPage']);
       },
-      (error)=>{
-        if(error.status==401){
+      (error) => {
+        if (error.status == 401) {
           this.response = false;
-          this.loading = false;
         }
-      })
-      
+      }
+    )
   }
   createFormGroup(): FormGroup {
     return new FormGroup({
@@ -59,12 +74,5 @@ export class LoginComponent implements OnInit {
       rememberMe: new FormControl('')
     })
   }
-  remembermeLogin(): void {
-    if (this.rememberme) {
-      this.rememberme = false;
-    }
-    else {
-      this.rememberme = true;
-    }
-  }
+ 
 }

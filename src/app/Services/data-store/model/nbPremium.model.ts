@@ -13,7 +13,7 @@ export class SubmissionToBound_Model {
     submissionToBoundRatio : Number
 }
 export class LobnbPremium_Model{
-   description: string;
+    description: string;
     totalGrossRevenue: Number;
     totalNETRevenue: Number;
     premium : number;

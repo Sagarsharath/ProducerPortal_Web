@@ -17,11 +17,21 @@ export class DataStoreService {
   authenticate(userid : string) : Observable<any>{
     let url = 'APIGateway/auth/validate';
     let response = this.apiService.post(url,userid);
-    console.log(response)
     return response;
 
   }
+
+  ValidateSSOToken(token : string) : Observable<any>{
+    let url = 'SSONew/api/Login/ValidateToken?token='+token;
+    let response = this.apiService.get(url);
+    return response;
+  }  
   
+  deleteToken(){
+    // call api to delete the token
+    let url='';
+    
+  }
   getNBPremiumDetails(fromDate:Date = null,toDate:Date = null):Observable<ChartDataModel>{
     let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
     if(fromDate != null && toDate != null){

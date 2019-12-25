@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ApiServiceService } from './api-service.service';
 import {
   CanActivate, Router,
   ActivatedRouteSnapshot,
@@ -11,7 +10,7 @@ import {
 })
 export class AuthenticationGaurdService implements CanActivate {
  
-  constructor(private api: ApiServiceService, private router: Router) {
+  constructor( private router: Router) {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
