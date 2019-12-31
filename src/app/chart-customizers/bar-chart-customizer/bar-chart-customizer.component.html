@@ -2,8 +2,8 @@
   <div class="descriptor">
     <div>
       MONTHLY PREMIUM REPORT
-        <span>   {{additionalInfo}} </span>
+      <span> {{additionalInfo}} </span>
     </div>
-</div>
-  <bar-chart [chartData]="chartData"> </bar-chart>
+  </div>
+  <ng-container initializeChart [chartType]="chartType" [chartData]="chartData"></ng-container>
 </div>

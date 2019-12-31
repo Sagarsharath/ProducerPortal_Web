@@ -15,7 +15,7 @@ export class NbPremiumRendererComponent implements OnInit {
   constructor(private mapper: DataModelMapper, private dataStore: DataStoreService) { }
 
   ngOnInit() {
-    this.loadData();
+    // this.loadData();
   }
 
   private loadData() {

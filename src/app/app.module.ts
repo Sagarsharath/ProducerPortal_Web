@@ -39,6 +39,7 @@ import {LineChartComponent} from './ng-charts/line-chart/line-chart.component';
 import {OldBarChartComponent} from './Charts/bar-chart/bar-chart.component';
 import {OldLineChartComponent} from './Charts/line-chart/line-chart.component';
 import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
+import { InitializeChart } from './chart-customizers/initializeChart.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
     BarChartCustomizerComponent,
     NbPremiumRendererComponent,
     OldBarChartComponent,
-    OldLineChartComponent
+    OldLineChartComponent,
+    InitializeChart
   ],
   imports: [
     BrowserModule,

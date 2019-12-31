@@ -10,6 +10,8 @@ import { BarChartComponent } from 'src/app/ng-charts/bar-chart/bar-chart.compone
 export class BarChartCustomizerComponent implements OnInit, OnChanges {
   @ViewChild(BarChartComponent, { static: false }) chartComponent: BarChartComponent;
 
+  @Input()
+  chartType:string;
 
   @Input()
   average: Number;

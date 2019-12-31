@@ -12,7 +12,15 @@ export class ChartComponentBase {
   legend: boolean;
   plugins = [];
   constructor() {
+  }
 
+  initializeChartData(): void {
+    this.chartData = new NgChartDataModel();
+    this.chartData.dataSets = [
+      {
+        data: []
+      }
+    ];
   }
 
   chartOptions: ChartOptions;

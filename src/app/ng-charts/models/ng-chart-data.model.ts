@@ -3,9 +3,5 @@ import { ChartDataSets } from 'chart.js';
 
 export class NgChartDataModel{
   labels: Label[] = [];
-  dataSets: ChartDataSets[] =  [
-    {
-      data: [], label: "" // barThickness: 15, maxBarThickness: 35,
-    }
-  ];;
+  dataSets: ChartDataSets[];
 }
