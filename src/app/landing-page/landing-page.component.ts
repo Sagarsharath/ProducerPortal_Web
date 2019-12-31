@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { chartToRender } from './../Charts/chartsConfig';
 import { Router } from '@angular/router';
-import { ApiServiceService } from '../Services/api-service.service';
+import { DataStoreService } from './../Services/data-store/data-store-service/data-store.service'
+
 
 @Component({
   selector: 'app-landing-page',
@@ -10,19 +11,16 @@ import { ApiServiceService } from '../Services/api-service.service';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  public name : string;
-  public renderComponent: string;
+  public name: string;
+  public renderComponent = 'dashboard';
   public defaultCharts = chartToRender;
   events: string[] = [];
   opened: boolean;
 
   constructor(public router: Router,
-    private api : ApiServiceService) { }
+    private datastore: DataStoreService, ) { }
 
   ngOnInit() {
-    const urlArr = this.router.url.split('/');
-    const token = urlArr[urlArr.length-1];
-    this.name = localStorage.getItem('userFullName')
 
   }
   changeComponent(toComponent: string) {
@@ -37,11 +35,10 @@ export class LandingPageComponent implements OnInit {
       default: this.renderComponent = toComponent;
     }
 
-
   }
   logOut() {
-    localStorage.clear()
+    localStorage.clear();
+    this.datastore.deleteToken();
     this.router.navigate(['/login']);
-
   }
 }

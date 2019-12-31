@@ -20,7 +20,7 @@ const tokenHeaderName: string = "authToken";
 export class ApiCallingService implements IApiService {
 
   constructor(private http: HttpClient //, private snackBar: MatSnackBar
-    ) {
+  ) {
 
   }
   private extractdata(res: Response) {
@@ -29,24 +29,24 @@ export class ApiCallingService implements IApiService {
   }
 
   get(url): Observable<any> {
-    const headers = this.setHeaders();   
+    const headers = this.setHeaders();
     console.log(headers)
-    let response = this.http.get(apiPath+url, { headers, withCredentials: true })
+    let response = this.http.get(apiPath + url, { headers, withCredentials: true })
       .pipe(
-         catchError(this.handleError(url)));
+        catchError(this.handleError(url)));
     return response;
   }
 
   post(url: string, data: any): Observable<any> {
-   
-    const headers = this.setHeaders();  
+
+    const headers = this.setHeaders();
     return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
       catchError(this.handleError(url))
     );
   }
 
-  put(url: string, data: any): Observable<any> {    
-    const headers = this.setHeaders();  
+  put(url: string, data: any): Observable<any> {
+    const headers = this.setHeaders();
     return this.http.put(apiPath + url, data, { headers, withCredentials: true }).pipe(
       catchError(this.handleError(url))
     );
@@ -69,14 +69,14 @@ export class ApiCallingService implements IApiService {
       throw error;
     };
   }
-  
-  private setHeaders(){
+
+  private setHeaders() {
     const headers = new HttpHeaders({
       'Accept': 'application/json',
-       'Content-Type': 'application/json',
-       'Authorization':'Bearer '+localStorage.getItem('token')
-      });
- return headers
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return headers
   }
 
 }

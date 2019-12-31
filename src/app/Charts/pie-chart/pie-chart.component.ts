@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Colors, Color } from 'ng2-charts';
 import { defaultColors } from './../ChartModels'
-import * as pluginDataLabels from 'chart.js';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 @Component({
   selector: 'pie-chart',
   templateUrl: './pie-chart.component.html',
@@ -26,7 +26,6 @@ export class PieChartComponent {
     },
   ];
   public chartOption = {
-    
     legend: { position: 'left' ,
     labels: {
      fontColor: '#ffffff', 
@@ -34,8 +33,7 @@ export class PieChartComponent {
     plugins: {
       datalabels: {
         formatter: (value, ctx) => {
-          const label = ctx.chart.data.labels[ctx.index];
-          return label;
+          return value;
         },
       },
     },
@@ -52,7 +50,7 @@ export class PieChartComponent {
                 });
                  var currVal = data.datasets[0].data[tooltipItem.index]
                  var percentage  = ((currVal/sum)*100).toFixed(2)
-                 var label= data.labels[tooltipItem.index]+" : "+currVal+" ("+ percentage+"%)";   
+                 var label= data.labels[tooltipItem.index]+" : "+currVal+" ("+ percentage+"%)";
                  return label;    
               }
             }  
@@ -60,12 +58,7 @@ export class PieChartComponent {
                  
       }
   public pieChartPlugins = [pluginDataLabels];
-  constructor(private clr :defaultColors) {
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
+  constructor() {
 
   }
- 
- 
-
 }

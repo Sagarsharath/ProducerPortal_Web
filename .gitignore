@@ -1,1 +1,4 @@
 # Add file patterns below to ignore in commits
+node_modules
+dist
+.gitignore

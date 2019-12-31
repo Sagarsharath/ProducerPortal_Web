@@ -31,6 +31,7 @@ import {MatButtonModule,
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
 import { BarChartCustomizerComponent } from './chart-customizers/bar-chart-customizer/bar-chart-customizer.component';
 import { NbPremiumRendererComponent } from './nb-premium-renderer/nb-premium-renderer.component';
 
@@ -79,8 +80,7 @@ import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
     // {provide: HTTP_INTERCEPTORS,
     //   useClass: CustomHttpInterceptor,
     //   multi: true},
-       Location,
-       DataModelMapper
+       Location, CookieService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { DataLoaderService } from './../Services/data-loader.service';
 import { chartToRender} from './../Charts/chartsConfig';
 import { DataStoreService } from '../Services/data-store/data-store-service/data-store.service';
 
@@ -13,7 +12,7 @@ export class ChartRendererComponent implements OnInit {
   public dataVal: any;
   @Input() reports: any;
   spinner = false;
-  constructor( private loader :DataLoaderService,private dataStore:DataStoreService
+  constructor( private dataStore:DataStoreService
   ) {
     
   }

@@ -17,7 +17,6 @@ export class DataStoreService {
   authenticate(userid: string): Observable<any> {
     let url = 'APIGateway/auth/validate';
     let response = this.apiService.post(url, userid);
-    console.log(response)
     return response;
 
   }
