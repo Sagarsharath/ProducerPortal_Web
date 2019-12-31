@@ -20,7 +20,11 @@ export class DataStoreService {
     return response;
 
   }
-
+  deleteCookie(){
+    // call api to delete the token
+    let url='SSONew/Login/ClearAllCookies';
+    this.apiService.get(url);
+  }
   getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPremium> {
     let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
     if (fromDate != null && toDate != null) {
@@ -42,7 +46,12 @@ export class DataStoreService {
     let response = this.apiService.get(url).pipe(map(x => this.mapper.toChartDataFromLobNew(x), catchError(this.handleError(url))));
     return response;
   }
-
+  
+  ValidateSSOToken(token : string) : Observable<any>{
+    let url = 'SSONew/api/Login/ValidateToken?token='+token;
+    let response = this.apiService.get(url);
+    return response;
+  } 
 
   // Handle errors in api calls if any
   private handleError(operation = 'operation') {

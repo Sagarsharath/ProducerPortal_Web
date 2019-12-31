@@ -3,12 +3,12 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 @Component({
-  selector: 'line-chart',
+  selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
 
-export class LineChartComponent {
+export class OldLineChartComponent {
 
   lineChartData: ChartDataSets[];
 

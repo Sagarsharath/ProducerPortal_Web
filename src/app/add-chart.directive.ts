@@ -1,10 +1,10 @@
 
 import { Directive, Input, OnInit, ComponentFactoryResolver, ViewContainerRef, Type, OnChanges, ComponentRef } from '@angular/core'
 import { chartToRender } from './Charts/chartsConfig'
-import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
+import { OldBarChartComponent } from './Charts/bar-chart/bar-chart.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
 import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
-import { LineChartComponent } from './Charts/line-chart/line-chart.component';
+import { OldLineChartComponent } from './Charts/line-chart/line-chart.component';
 import { defaultColors } from './Charts/ChartModels';
 
 @Directive({
@@ -13,10 +13,10 @@ import { defaultColors } from './Charts/ChartModels';
 export class AddChartDirective implements OnInit, OnChanges {
   @Input() data: any;
   @Input() chart: any;
-  barChartComp: ComponentRef<BarChartComponent>;
+  barChartComp: ComponentRef<OldBarChartComponent>;
   pieChartComp: ComponentRef<PieChartComponent>;
   descriptorComp: ComponentRef<ChartDescriptorComponent>;
-  linechart: ComponentRef<LineChartComponent>;
+  linechart: ComponentRef<OldLineChartComponent>;
   constructor(private resolver: ComponentFactoryResolver,
     private container: ViewContainerRef) {
 
@@ -34,7 +34,7 @@ export class AddChartDirective implements OnInit, OnChanges {
 
       this.setCustomizer(this.data.description, this.data.additionalInfo)
       //chart
-      var factory = this.resolver.resolveComponentFactory<any>(BarChartComponent);
+      var factory = this.resolver.resolveComponentFactory<any>(OldBarChartComponent);
       this.barChartComp = this.container.createComponent(factory);
       this.barChartComp.instance.barChartData = [
         {

@@ -7,7 +7,7 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./bar-chart.component.scss']
 })
 
-export class BarChartComponent {
+export class OldBarChartComponent {
 
   @Input() barChartLabels: Label[];
   @Input() barChartData: ChartDataSets[];

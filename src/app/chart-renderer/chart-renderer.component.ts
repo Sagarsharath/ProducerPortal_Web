@@ -23,7 +23,7 @@ export class ChartRendererComponent implements OnInit {
   }
   loadData() {
     if (this.reports == chartToRender.MonthlyPremium) {
-    //  this.dataStore.authenticate("100040");
+     //this.dataStore.authenticate("100040");
      this.dataStore.getNBPremiumDetails().subscribe(x=> {
         this.dataVal = x;
       },

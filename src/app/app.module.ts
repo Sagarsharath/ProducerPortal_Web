@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AddChartDirective } from './add-chart.directive';
 import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
-import { LineChartComponent } from './Charts/line-chart/line-chart.component';
+// import { LineChartComponent } from './Charts/line-chart/line-chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -36,6 +36,9 @@ import { BarChartCustomizerComponent } from './chart-customizers/bar-chart-custo
 import { NbPremiumRendererComponent } from './nb-premium-renderer/nb-premium-renderer.component';
 
 import {BarChartComponent} from './ng-charts/bar-chart/bar-chart.component';
+import {LineChartComponent} from './ng-charts/line-chart/line-chart.component';
+import {OldBarChartComponent} from './Charts/bar-chart/bar-chart.component';
+import {OldLineChartComponent} from './Charts/line-chart/line-chart.component';
 import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
 
 @NgModule({
@@ -52,7 +55,9 @@ import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
     LandingPageComponent,
     LoginComponent,
     BarChartCustomizerComponent,
-    NbPremiumRendererComponent
+    NbPremiumRendererComponent,
+    OldBarChartComponent,
+    OldLineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -75,12 +80,14 @@ import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule
   ],
-  entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
+  entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent ,OldBarChartComponent],
   providers:[
     // {provide: HTTP_INTERCEPTORS,
     //   useClass: CustomHttpInterceptor,
     //   multi: true},
-       Location, CookieService
+       Location, 
+       CookieService,
+       DataModelMapper
   ],
   bootstrap: [AppComponent]
 })

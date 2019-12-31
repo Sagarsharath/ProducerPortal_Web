@@ -38,7 +38,6 @@ export class LandingPageComponent implements OnInit {
   }
   logOut() {
     localStorage.clear();
-    this.datastore.deleteToken();
-    this.router.navigate(['/login']);
+     this.datastore.deleteCookie();
   }
 }
