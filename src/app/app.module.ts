@@ -4,7 +4,6 @@ import { ChartsModule} from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartCustomizerComponent} from './chart-customizer/chart-customizer.component'
-import { BarChartComponent } from './Charts/bar-chart/bar-chart.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartRendererComponent } from './chart-renderer/chart-renderer.component';
 import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
@@ -26,12 +25,17 @@ import {MatButtonModule,
   MatSelectModule,
   MatSidenavModule,
   MatCardModule,
-  MatTableModule, 
+  MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
+import { BarChartCustomizerComponent } from './chart-customizers/bar-chart-customizer/bar-chart-customizer.component';
+import { NbPremiumRendererComponent } from './nb-premium-renderer/nb-premium-renderer.component';
+
+import {BarChartComponent} from './ng-charts/bar-chart/bar-chart.component';
+import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,9 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     LineChartComponent,
     DashboardComponent,
     LandingPageComponent,
-    LoginComponent
+    LoginComponent,
+    BarChartCustomizerComponent,
+    NbPremiumRendererComponent
   ],
   imports: [
     BrowserModule,
@@ -66,14 +72,15 @@ import { CustomHttpInterceptor } from './Services/custom-http-interceptor.servic
     MatTableModule,
     MatCheckboxModule,MatToolbarModule,
     ReactiveFormsModule,
-    Ng4LoadingSpinnerModule    
+    Ng4LoadingSpinnerModule
   ],
   entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent,LineChartComponent ],
   providers:[
     // {provide: HTTP_INTERCEPTORS,
     //   useClass: CustomHttpInterceptor,
     //   multi: true},
-       Location
+       Location,
+       DataModelMapper
   ],
   bootstrap: [AppComponent]
 })

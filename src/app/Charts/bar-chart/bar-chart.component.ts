@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 @Component({
-  selector: 'bar-chart',
+  selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
@@ -11,36 +11,38 @@ export class BarChartComponent {
 
   @Input() barChartLabels: Label[];
   @Input() barChartData: ChartDataSets[];
-  barChartType: ChartType =  'bar';
+  barChartType: ChartType = 'bar';
   barChartLegend = true;
-  loader:boolean;
+  loader: boolean;
   barChartPlugins = [];
+
   constructor(
 
-  ){
-    
+  ) {
+
   }
 
   barChartOptions: ChartOptions = {
-    responsive: true,    
-    legend: { position: 'right' ,
-    labels: {
-      fontColor: '#ffffff',       
-    },
+    responsive: true,
+    legend: {
+      position: 'right',
+      labels: {
+        fontColor: '#ffffff',
+      },
     },
     scales: {
       xAxes: [{
         stacked: true,
         ticks: {
-          fontColor: '#ffffff',  
+          fontColor: '#ffffff',
         },
         gridLines: {
-          color: '#65b6d6' 
+          color: '#65b6d6'
         },
         scaleLabel: {
           display: true,
           labelString: '', // can be used to display y axis info
-          fontColor: '#ffffff', 
+          fontColor: '#ffffff',
         }
       }],
       yAxes: [{
@@ -52,27 +54,27 @@ export class BarChartComponent {
 
         },
         gridLines: {
-          color: '#868d8f' 
+          color: '#868d8f'
         },
         scaleLabel: {
           display: true,
           labelString: '',  // can be used to display y axis info
-          fontColor: '#ffffff', 
+          fontColor: '#ffffff',
         }
       }]
     },
-     tooltips: {
-      custom: function(tooltip) {
+    tooltips: {
+      custom: function (tooltip) {
         if (!tooltip) return;
         tooltip.displayColors = false;
-        //tooltip._bodyAlign 
+        //tooltip._bodyAlign
       }
-      // callbacks: {          
+      // callbacks: {
       //   label:"";}
+    }
   }
-}
 
-  
-    
+
+
 }
 
