@@ -9,7 +9,7 @@ import {
   providedIn: 'root'
 })
 export class AuthenticationGaurdService implements CanActivate {
- 
+
   constructor( private router: Router) {
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {

@@ -11,6 +11,7 @@ import { NgChartDataModel } from '../ng-charts/models/ng-chart-data.model';
 })
 export class NbPremiumRendererComponent implements OnInit {
   chartData: NgChartDataModel;
+  average: Number = 0;
   constructor(private mapper: DataModelMapper, private dataStore: DataStoreService) { }
 
   ngOnInit() {
@@ -19,6 +20,7 @@ export class NbPremiumRendererComponent implements OnInit {
 
   private loadData() {
     this.dataStore.getNBPremiumDetails().subscribe(x => {
+      this.average = x.averagePremium;
       this.chartData = this.mapper.toDataModel(x);
     });
   }

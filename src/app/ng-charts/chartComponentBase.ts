@@ -6,13 +6,14 @@ import { DataModelMapper } from '../nb-premium-renderer/data-model.mapper';
 
 export class ChartComponentBase {
 
+  @Input()
+  chartData: NgChartDataModel;
   chartType: ChartType;
   legend: boolean;
   plugins = [];
   constructor() {
 
   }
-
 
   chartOptions: ChartOptions;
 }
