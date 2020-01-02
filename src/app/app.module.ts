@@ -1,23 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ChartsModule} from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChartCustomizerComponent} from './chart-customizer/chart-customizer.component'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChartRendererComponent } from './chart-renderer/chart-renderer.component';
-import { PieChartComponent } from './Charts/pie-chart/pie-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AddChartDirective } from './add-chart.directive';
-import { ChartDescriptorComponent } from './chart-descriptor/chart-descriptor.component';
-// import { LineChartComponent } from './Charts/line-chart/line-chart.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './business/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Location} from '@angular/common'
-import {MatButtonModule,
+import { Location } from '@angular/common'
+import {
+  MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -30,35 +25,40 @@ import {MatButtonModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { CustomHttpInterceptor } from './Services/custom-http-interceptor.service';
-import { BarChartCustomizerComponent } from './chart-customizers/bar-chart-customizer/bar-chart-customizer.component';
-import { NbPremiumRendererComponent } from './nb-premium-renderer/nb-premium-renderer.component';
+import { BarChartCustomizerComponent } from './chart-customizers/additional-info-customizer/bar-chart-customizer/bar-chart-customizer.component';
+import { NbPremiumRendererComponent } from './business/renderers/nb-premium-renderer/nb-premium-renderer.component';
 
-import {BarChartComponent} from './ng-charts/bar-chart/bar-chart.component';
-import {LineChartComponent} from './ng-charts/line-chart/line-chart.component';
-import {OldBarChartComponent} from './Charts/bar-chart/bar-chart.component';
-import {OldLineChartComponent} from './Charts/line-chart/line-chart.component';
-import { DataModelMapper } from './nb-premium-renderer/data-model.mapper';
+import { BarChartComponent } from './ng-charts/bar-chart/bar-chart.component';
+import { LineChartComponent } from './ng-charts/line-chart/line-chart.component';
 import { InitializeChart } from './chart-customizers/initializeChart.directive';
+import { AdditionalInfoDescriptorComponent } from './chart-customizers/additional-info-customizer/additional-info-descriptor/additional-info-descriptor.component';
+import { PieChartComponent } from './ng-charts/pie-chart/pie-chart.component';
+import { PieChartCustomizerComponent } from './chart-customizers/additional-info-customizer/pie-chart-customizer/pie-chart-customizer.component';
+import { BoundRatioRendererComponent } from './business/renderers/bound-ratio-renderer/bound-ratio-renderer.component';
+import { LobNbPremiumRendererComponent } from './business/renderers/lob-nb-premium-renderer/lob-nb-premium-renderer.component';
+import { PremiumReportComponent } from './business/premium-report/premium-report.component';
+import { BoundReportComponent } from './business/bound-report/bound-report.component';
+import { LobReportComponent } from './business/lob-report/lob-report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartCustomizerComponent,
     BarChartComponent,
-    ChartRendererComponent,
-    PieChartComponent,
-    AddChartDirective,
-    ChartDescriptorComponent,
     LineChartComponent,
     DashboardComponent,
     LandingPageComponent,
     LoginComponent,
     BarChartCustomizerComponent,
     NbPremiumRendererComponent,
-    OldBarChartComponent,
-    OldLineChartComponent,
-    InitializeChart
+    InitializeChart,
+    AdditionalInfoDescriptorComponent,
+    PieChartComponent,
+    PieChartCustomizerComponent,
+    BoundRatioRendererComponent,
+    LobNbPremiumRendererComponent,
+    PremiumReportComponent,
+    BoundReportComponent,
+    LobReportComponent
   ],
   imports: [
     BrowserModule,
@@ -77,17 +77,12 @@ import { InitializeChart } from './chart-customizers/initializeChart.directive';
     MatSidenavModule,
     MatCardModule,
     MatTableModule,
-    MatCheckboxModule,MatToolbarModule,
+    MatCheckboxModule, MatToolbarModule,
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule
   ],
-  entryComponents: [ BarChartComponent, PieChartComponent,ChartDescriptorComponent ,OldBarChartComponent],
-  providers:[
-    // {provide: HTTP_INTERCEPTORS,
-    //   useClass: CustomHttpInterceptor,
-    //   multi: true},
-       Location,
-       DataModelMapper
+  providers: [
+    Location
   ],
   bootstrap: [AppComponent]
 })

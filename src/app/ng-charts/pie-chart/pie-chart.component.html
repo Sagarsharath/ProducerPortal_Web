@@ -1,10 +1,11 @@
 <div>
   <canvas baseChart
-    [datasets]="chartData.datasets"
+    [data]="chartData.datasets"
     [labels]="chartData.labels"
     [options]="chartOptions"
     [plugins]="plugins"
     [legend]="legend"
-    [chartType]="'bar'">
+    [chartType]="'pie'"
+    [colors]="colors">
   </canvas>
 </div>

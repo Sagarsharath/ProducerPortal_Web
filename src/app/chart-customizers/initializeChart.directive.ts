@@ -2,6 +2,7 @@ import { OnInit, OnChanges, Directive, ComponentFactoryResolver, ViewContainerRe
 import { BarChartComponent } from '../ng-charts/bar-chart/bar-chart.component';
 import { NgChartDataModel } from '../ng-charts/models/ng-chart-data.model';
 import { IChartComponent } from '../ng-charts/models/chart-component.interface';
+import { ChartOptions } from 'chart.js';
 
 
 const charts: { [type: string]: Type<IChartComponent> } = {
@@ -13,11 +14,14 @@ const charts: { [type: string]: Type<IChartComponent> } = {
 })
 export class InitializeChart implements OnInit, OnChanges {
   component: ComponentRef<IChartComponent>;
+
+
   @Input()
   chartType: string;
 
   @Input()
-  chartData: NgChartDataModel;
+  chartOptions: ChartOptions;
+
   constructor(private resolver: ComponentFactoryResolver,
     private container: ViewContainerRef) {
 
@@ -45,8 +49,8 @@ export class InitializeChart implements OnInit, OnChanges {
   }
 
   private setChartData() {
-    if (this.chartData != undefined) {
-      this.component.instance.chartData = this.chartData;
+    if (this.chartOptions != undefined) {
+      this.component.instance.chartOptions = this.chartOptions;
     }
 
   }

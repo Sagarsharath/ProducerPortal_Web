@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiCallingService } from '../../http-service/api-calling.service';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { NBPremium } from '../model/nbPremium.model';
-import { ChartDataModelMapper } from '../mappers/chartDataModel.mapper';
-import { ChartDataModel } from 'src/app/Charts/ChartModels';
+import { NBPremium, SubmissionToBound_Model, LobnbPremium_Model } from '../model/nbPremium.model';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class DataStoreService {
 
-  constructor(private apiService: ApiCallingService, private mapper: ChartDataModelMapper) { }
+  constructor(private apiService: ApiCallingService) { }
 
   authenticate(userid: string): Observable<any> {
     let url = 'APIGateway/auth/validate';
@@ -20,9 +18,9 @@ export class DataStoreService {
     return response;
 
   }
-  deleteCookie(){
+  deleteCookie() {
     // call api to delete the token
-    let url='SSONew/Login/ClearAllCookies';
+    let url = 'SSONew/Login/ClearAllCookies';
     this.apiService.get(url);
   }
   getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPremium> {
@@ -34,24 +32,24 @@ export class DataStoreService {
     return response;
   }
 
-  get_SubmissionToBound_Report(): Observable<ChartDataModel> {
+  get_SubmissionToBound_Report(): Observable<SubmissionToBound_Model> {
     let url = 'APIGateway/reports/submissiontobound?fromDate=2017/01/01&toDate=2019/01/01';
 
-    let response = this.apiService.get(url).pipe(map(x => this.mapper.toChartDataFromSubmissionBound(x), catchError(this.handleError(url))));
+    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
-  get_LOB_nbpremium(): Observable<ChartDataModel> {
+  get_LOB_nbpremium(): Observable<LobnbPremium_Model[]> {
     let url = 'APIGateway/reports/lob/nbpremium?fromDate=2017/01/01&toDate=2019/01/01';
 
-    let response = this.apiService.get(url).pipe(map(x => this.mapper.toChartDataFromLobNew(x), catchError(this.handleError(url))));
+    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
-  
-  ValidateSSOToken(token : string) : Observable<any>{
-    let url = 'SSONew/api/Login/ValidateToken?token='+token;
+
+  ValidateSSOToken(token: string): Observable<any> {
+    let url = 'SSONew/api/Login/ValidateToken?token=' + token;
     let response = this.apiService.get(url);
     return response;
-  } 
+  }
 
   // Handle errors in api calls if any
   private handleError(operation = 'operation') {

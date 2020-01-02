@@ -1,0 +1,14 @@
+.descriptor {
+  padding-bottom: 20px;
+  margin-left: 10px;
+  text-align: left;
+  color: white;
+
+  //color: #5ab5ce;
+  >span {
+    text-align: right !important;
+    margin-left: 70px;
+    float: right;
+    padding-right: 10px;
+  }
+}
