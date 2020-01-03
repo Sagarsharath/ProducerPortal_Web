@@ -39,6 +39,7 @@ import { LobNbPremiumRendererComponent } from './business/renderers/lob-nb-premi
 import { PremiumReportComponent } from './business/premium-report/premium-report.component';
 import { BoundReportComponent } from './business/bound-report/bound-report.component';
 import { LobReportComponent } from './business/lob-report/lob-report.component';
+import { RbPremiumRendererComponent } from './business/renderers/rb-premium-renderer/rb-premium-renderer.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { LobReportComponent } from './business/lob-report/lob-report.component';
     LobNbPremiumRendererComponent,
     PremiumReportComponent,
     BoundReportComponent,
-    LobReportComponent
+    LobReportComponent,
+    RbPremiumRendererComponent
   ],
   imports: [
     BrowserModule,

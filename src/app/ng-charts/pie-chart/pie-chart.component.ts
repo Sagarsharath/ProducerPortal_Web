@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ChartOptions } from 'chart.js';
 import { PieChartDataModel } from '../models/pie-chart-data.model';
 import { Colors } from 'ng2-charts';
+import { ChartComponentBase } from '../chartComponentBase';
 
 @Component({
   selector: 'pie-chart',

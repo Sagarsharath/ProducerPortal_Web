@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiCallingService } from '../../http-service/api-calling.service';
 import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { NBPremium, SubmissionToBound_Model, LobnbPremium_Model } from '../model/nbPremium.model';
 import { map, catchError } from 'rxjs/operators';
 
@@ -23,8 +22,8 @@ export class DataStoreService {
     let url = 'SSONew/Login/ClearAllCookies';
     this.apiService.get(url);
   }
-  getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPremium> {
-    let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/01/01';
+  getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPrmium> {
+    let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/12/03';
     if (fromDate != null && toDate != null) {
       url = url + '?fromDAte=' + fromDate + '&toDate=' + toDate;
     }
