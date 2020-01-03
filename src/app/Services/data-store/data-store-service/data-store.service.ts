@@ -22,7 +22,7 @@ export class DataStoreService {
     let url = 'SSONew/Login/ClearAllCookies';
     this.apiService.get(url);
   }
-  getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPrmium> {
+  getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBPremium> {
     let url = 'APIGateway/reports/nbpremium?fromdate=2017/01/01&todate=2019/12/03';
     if (fromDate != null && toDate != null) {
       url = url + '?fromDAte=' + fromDate + '&toDate=' + toDate;
