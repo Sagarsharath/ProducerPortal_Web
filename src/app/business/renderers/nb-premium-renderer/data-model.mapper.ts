@@ -1,6 +1,4 @@
-import { NBPremium } from '../../../Services/data-store/model/nbPremium.model';
-
-
+import { NBorRBPremium } from '../../../Services/data-store/model/nbPremium.model';
 import { NgChartDataModel } from '../../../ng-charts/models/ng-chart-data.model';
 import { Injectable } from '@angular/core';
 
@@ -8,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DataModelMapper {
 
-  public toDataModel(model: NBPremium): NgChartDataModel {
+  public toDataModel(model: NBorRBPremium): NgChartDataModel {
     let chartsData = new NgChartDataModel();
     let valuesArray = [];
     let labelsArray = [];
@@ -22,7 +20,7 @@ export class DataModelMapper {
     }
     chartsData.datasets = [
       {
-        data:valuesArray
+        data:valuesArray , label:'Total Premium'
       }
     ];
 

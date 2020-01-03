@@ -12,7 +12,8 @@ import { DataModelMapper } from './data-model.mapper';
 export class BoundRatioRendererComponent implements OnInit {
   chartData: PieChartDataModel;
   ratio: Number = 0;
-  additionalInfo: string;
+  additionalInfoText = 'Ratio : ';
+  additionalInfo: string ;
 
   constructor(private dataStore: DataStoreService, private mapper: DataModelMapper) { }
 
@@ -23,7 +24,7 @@ export class BoundRatioRendererComponent implements OnInit {
   private loadData() {
     this.dataStore.get_SubmissionToBound_Report().subscribe(x => {
       this.chartData = this.mapper.toDataModel(x);
-      this.additionalInfo = this.additionalInfo + this.ratio;
+      this.additionalInfo = this.additionalInfoText + x.submissionToBoundRatio;
     });
 
   }

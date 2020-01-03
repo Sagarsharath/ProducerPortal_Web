@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PieChartDataModel } from 'src/app/ng-charts/models/pie-chart-data.model';
-import { ChartLegendOptions, ChartPluginsOptions, ChartTooltipOptions, ChartOptions, plugins } from 'chart.js';
+import { ChartLegendOptions, ChartPluginsOptions, ChartTooltipOptions, ChartOptions, plugins, ChartPoint } from 'chart.js';
 import { Colors, defaultColors } from 'ng2-charts';
 
 @Component({
@@ -24,10 +24,10 @@ export class PieChartCustomizerComponent implements OnInit {
     '#94aab5',
     '#94b59d',
     '#ad9a53',
-    '#6b1616',
-    '#521343',
-    '#3a4d99',
-    '#c68ee6',
+    '#d49d9d',
+    '#9fc1c2',
+    '#6a77ad',
+    '#c9add9',
     '#cc91bc',
     '#a16a94',
   ];
@@ -76,9 +76,8 @@ export class PieChartCustomizerComponent implements OnInit {
           data.datasets[0].data.forEach(element => {
             sum = sum + element;
           });
-          var currVal = data.datasets[0].data[tooltipItem.index];
-          // var percentage = ((currVal / sum) * 100).toFixed(2);
-          var percentage = "";
+          let currVal :any= data.datasets[0].data[tooltipItem.index];
+          var percentage = ((currVal/sum)*100).toFixed(2)
           var label = data.labels[tooltipItem.index] + " : " + currVal + " (" + percentage + "%)";
           return label;
         }

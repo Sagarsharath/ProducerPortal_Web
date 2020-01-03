@@ -1,8 +1,8 @@
-import { LobnbPremium_Model } from 'src/app/Services/data-store/model/nbPremium.model';
+import { LobPremium_Model } from 'src/app/Services/data-store/model/nbPremium.model';
 import { PieChartDataModel } from 'src/app/ng-charts/models/pie-chart-data.model';
 
 export class DataModelMapper {
-  toDataModel(model: LobnbPremium_Model[]): PieChartDataModel {
+  toDataModel(model: LobPremium_Model[]): PieChartDataModel {
     let chartData: PieChartDataModel = new PieChartDataModel();
     let valuesArray = [];
     let labelsArray = [];

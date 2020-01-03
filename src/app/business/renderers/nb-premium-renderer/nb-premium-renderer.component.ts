@@ -13,6 +13,7 @@ export class NbPremiumRendererComponent implements OnInit {
   chartData: NgChartDataModel;
   average: Number = 0;
   additionalInfo: string;
+  additionalInfoText = 'Average :';
   constructor(private mapper: DataModelMapper, private dataStore: DataStoreService) { }
 
   ngOnInit() {
@@ -22,7 +23,7 @@ export class NbPremiumRendererComponent implements OnInit {
   private loadData() {
     this.dataStore.getNBPremiumDetails().subscribe(x => {
       this.average = x.averagePremium;
-      this.additionalInfo = this.additionalInfo + this.average;
+      this.additionalInfo = this.additionalInfoText + this.average;
       this.chartData = this.mapper.toDataModel(x);
     });
   }

@@ -1,36 +1,53 @@
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="33%">
-                <!-- <app-chart-renderer [reports]="chart.MonthlyPremium"></app-chart-renderer> -->
                 <nb-premium-renderer></nb-premium-renderer>
-
         </div>
         <div fxFlex="33%">
-                <!-- <app-chart-renderer [reports]="chart.SubmissionToBound"></app-chart-renderer> -->
-                <bound-ratio-renderer></bound-ratio-renderer>
-
+                <rb-premium-renderer></rb-premium-renderer>
         </div>
         <div fxFlex="34%">
-                <!-- <app-chart-renderer [reports]="chart.SubmissionToBound"></app-chart-renderer> -->
-                <lob-nb-premium-renderer></lob-nb-premium-renderer>
+                <bound-ratio-renderer></bound-ratio-renderer>
+        </div>
+</div>
 
+<div class="container" fxLayout="row" fxLayout.xs="column"
+ fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+                <carrier-nb-premium-renderer></carrier-nb-premium-renderer>
+        </div>
+        <div fxFlex="50%">
+                <carrier-rb-premium-renderer></carrier-rb-premium-renderer>
+        </div>
+</div>
+
+<div class="container" fxLayout="row" fxLayout.xs="column"
+ fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="33%">
+                <lob-nb-premium-renderer></lob-nb-premium-renderer>
+        </div>
+        <div fxFlex="33%">
+                <lob-rb-premium-renderer></lob-rb-premium-renderer>
+        </div>
+        <div fxFlex="34%">
+                <pif-report-renderer></pif-report-renderer>
         </div>
 </div>
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="33%">
-                <!-- <app-chart-renderer [reports]="chart.MonthlyPremium"></app-chart-renderer> -->
-                <nb-premium-renderer></nb-premium-renderer>
-
+        <div fxFlex="50%">
+                <nb-rb-monthly-report-renderer></nb-rb-monthly-report-renderer>
         </div>
-        <div fxFlex="33%">
-                <!-- <app-chart-renderer [reports]="chart.SubmissionToBound"></app-chart-renderer> -->
-                <bound-ratio-renderer></bound-ratio-renderer>
-
+        <div fxFlex="50%">
+                <nb-rb-comparision-report-renderer></nb-rb-comparision-report-renderer>
         </div>
-        <div fxFlex="34%">
-                <!-- <app-chart-renderer [reports]="chart.SubmissionToBound"></app-chart-renderer> -->
-                <lob-nb-premium-renderer></lob-nb-premium-renderer>
-
+</div>
+<div class="container" fxLayout="row" fxLayout.xs="column"
+ fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+                <!-- <nb-rb-yearly-report-renderer></nb-rb-yearly-report-renderer> -->
+        </div>
+        <div fxFlex="50%">
+               
         </div>
 </div>

@@ -40,6 +40,15 @@ import { PremiumReportComponent } from './business/premium-report/premium-report
 import { BoundReportComponent } from './business/bound-report/bound-report.component';
 import { LobReportComponent } from './business/lob-report/lob-report.component';
 import { RbPremiumRendererComponent } from './business/renderers/rb-premium-renderer/rb-premium-renderer.component';
+import { LobRbPremiumRendererComponent } from './business/renderers/lob-rb-premium-renderer/lob-rb-premium-renderer.component';
+import { CarrierRbPremiumRendererComponent } from './business/renderers/carrier-rb-premium-renderer/carrier-rb-premium-renderer.component';
+import { CarrierNbPremiumRendererComponent } from './business/renderers/carrier-nb-premium-renderer/carrier-nb-premium-renderer.component';
+import { PifReportRendererComponent } from './business/renderers/pif-report-renderer/pif-report-renderer.component';
+import { NbRbMonthlyReportRendererComponent } from './business/renderers/nb-rb-monthly-report-renderer/nb-rb-monthly-report-renderer.component';
+import { NbRbComparisionReportRendererComponent } from './business/renderers/nb-rb-comparision-report-renderer/nb-rb-comparision-report-renderer.component';
+import { DoughnutChartComponent } from './ng-charts/doughnut-chart/doughnut-chart.component';
+import { NbRbYearlyReportRendererComponent } from './business/renderers/nb-rb-yearly-report-renderer/nb-rb-yearly-report-renderer.component';
+import { DoughnutChartCustomizerComponent } from './chart-customizers/additional-info-customizer/doughnut-chart-customizer/doughnut-chart-customizer.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +69,16 @@ import { RbPremiumRendererComponent } from './business/renderers/rb-premium-rend
     PremiumReportComponent,
     BoundReportComponent,
     LobReportComponent,
-    RbPremiumRendererComponent
+    RbPremiumRendererComponent,
+    LobRbPremiumRendererComponent,
+    CarrierRbPremiumRendererComponent,
+    CarrierNbPremiumRendererComponent,
+    PifReportRendererComponent,
+    NbRbMonthlyReportRendererComponent,
+    NbRbComparisionReportRendererComponent,
+    DoughnutChartComponent,
+    NbRbYearlyReportRendererComponent,
+    DoughnutChartCustomizerComponent
   ],
   imports: [
     BrowserModule,

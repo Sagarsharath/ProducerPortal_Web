@@ -38,6 +38,8 @@ export class LandingPageComponent implements OnInit {
   }
   logOut() {
     localStorage.clear();
-     this.datastore.deleteCookie();
+    window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies','_self');
+
+
   }
 }

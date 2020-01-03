@@ -13,6 +13,7 @@ export class LobNbPremiumRendererComponent implements OnInit {
   chartData: PieChartDataModel;
   sum: number = 0;
   additionalInfo: string;
+  additionalInfoText='Total Premium : ';
   constructor(private dataStore: DataStoreService, private mapper: DataModelMapper) {
   }
 
@@ -26,10 +27,11 @@ export class LobNbPremiumRendererComponent implements OnInit {
       this.chartData = this.mapper.toDataModel(x);
       x.forEach(element => {
         this.sum = this.sum + element.premium;
+        this.additionalInfo = this.additionalInfoText + this.sum;
       });
     });
 
-    this.additionalInfo = this.additionalInfo + this.sum;
+    
 
   }
 

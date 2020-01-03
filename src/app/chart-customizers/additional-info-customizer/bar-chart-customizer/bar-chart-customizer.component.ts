@@ -39,12 +39,16 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
     this.legendOptions = {
       position: 'right',
       labels: {
-        fontColor: '#ffffff',
+        fontColor: '#ffffff',        
+        boxWidth:20
       },
+      
+      
     };
     this.scalesOptions = {
+    
       xAxes: [{
-        stacked: true,
+        stacked: false,
         ticks: {
           fontColor: '#ffffff',
         },
@@ -58,7 +62,7 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
         }
       }],
       yAxes: [{
-        stacked: true,
+        stacked: false,
         ticks: {
           fontColor: '#ffffff',
           min: 0,
@@ -85,7 +89,14 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
       responsive: true,
       legend: this.legendOptions,
       scales: this.scalesOptions,
-      tooltips: this.tooltipsOptions
+      tooltips: this.tooltipsOptions,
+      
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
     }
   }
 
