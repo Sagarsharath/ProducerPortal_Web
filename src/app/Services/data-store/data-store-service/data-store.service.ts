@@ -3,6 +3,7 @@ import { ApiCallingService } from '../../http-service/api-calling.service';
 import { Observable, of } from 'rxjs';
 import { NBorRBPremium, SubmissionToBound_Model, LobPremium_Model, PIFModel, CarrierModel } from '../model/nbPremium.model';
 import { map, catchError } from 'rxjs/operators';
+import { format } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -72,10 +73,14 @@ export class DataStoreService {
     return response;
   }
   getQueryString(fromDate: Date , toDate: Date){
+
     if (fromDate != null && toDate != null) {
-      return '?fromDAte=' + fromDate + '&toDate=' + toDate;
+      return '?fromDAte=' +this.formatDate(fromDate) + '&toDate=' + this.formatDate(toDate)  ;
     }
     return '?fromdate=2017/06/03&&todate=2019/12/03';
+  }
+  formatDate(dateToFormat: Date) : string {
+    return  dateToFormat.getFullYear() +'/'+(dateToFormat.getMonth()+1)+'/'+(dateToFormat.getDay()+1);
   }
 
   // Handle errors in api calls if any

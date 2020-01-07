@@ -22,6 +22,10 @@ import {
   MatCardModule,
   MatTableModule,
   MatToolbarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatDatepicker,
+  MatMenuModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
@@ -99,7 +103,14 @@ import { DoughnutChartCustomizerComponent } from './chart-customizers/additional
     MatTableModule,
     MatCheckboxModule, MatToolbarModule,
     ReactiveFormsModule,
-    Ng4LoadingSpinnerModule
+    Ng4LoadingSpinnerModule,
+    MatToolbarModule,
+    MatButtonModule, MatSidenavModule, MatIconModule,
+   MatListModule,
+    MatSelectModule,
+     MatInputModule, MatDatepickerModule,
+      MatNativeDateModule,MatCardModule,
+   MatMenuModule,
   ],
   providers: [
     Location

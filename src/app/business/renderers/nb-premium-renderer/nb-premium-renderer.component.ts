@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataModelMapper } from './data-model.mapper';
 import { DataStoreService } from '../../../Services/data-store/data-store-service/data-store.service';
 import { NgChartDataModel } from '../../../ng-charts/models/ng-chart-data.model';
@@ -14,14 +14,20 @@ export class NbPremiumRendererComponent implements OnInit {
   average: Number = 0;
   additionalInfo: string;
   additionalInfoText = 'Average :';
+  
+  @Input() public fromDate: Date ;
+  @Input() public toDate: Date;
   constructor(private mapper: DataModelMapper, private dataStore: DataStoreService) { }
 
   ngOnInit() {
-    this.loadData();
+    this.loadData(this.fromDate,this.toDate);
+  }
+  ngOnChanges() {
+    this.loadData(this.fromDate,this.toDate);
   }
 
-  private loadData() {
-    this.dataStore.getNBPremiumDetails().subscribe(x => {
+  private loadData(from : Date, to:Date) {
+    this.dataStore.getNBPremiumDetails(from,to).subscribe(x => {
       this.average = x.averagePremium;
       this.additionalInfo = this.additionalInfoText + this.average;
       this.chartData = this.mapper.toDataModel(x);

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { PieChartDataModel } from 'src/app/ng-charts/models/pie-chart-data.model';
 import { DataStoreService } from 'src/app/Services/data-store/data-store-service/data-store.service';
 import { DataModelMapper } from './data-model.mapper';
@@ -9,20 +9,27 @@ import { DataModelMapper } from './data-model.mapper';
   styleUrls: ['./bound-ratio-renderer.component.scss'],
   providers:[DataModelMapper]
 })
-export class BoundRatioRendererComponent implements OnInit {
+export class BoundRatioRendererComponent implements OnInit,OnChanges {
+
   chartData: PieChartDataModel;
   ratio: Number = 0;
   additionalInfoText = 'Ratio : ';
   additionalInfo: string ;
+   
+  @Input() public fromDate: Date ;
+  @Input() public toDate: Date;
 
   constructor(private dataStore: DataStoreService, private mapper: DataModelMapper) { }
 
-  ngOnInit() {
-    this.loadData();
-  }
 
-  private loadData() {
-    this.dataStore.get_SubmissionToBound_Report().subscribe(x => {
+  ngOnInit() {
+    this.loadData(this.fromDate,this.toDate);
+  }
+  ngOnChanges(): void {
+    this.loadData(this.fromDate,this.toDate);
+  }
+  private loadData(from : Date, to:Date) {
+    this.dataStore.get_SubmissionToBound_Report(from,to).subscribe(x => {
       this.chartData = this.mapper.toDataModel(x);
       this.additionalInfo = this.additionalInfoText + x.submissionToBoundRatio;
     });

@@ -6,7 +6,7 @@ body {
   
   .sidenav {
     height: 100%;
-    width: 190px;
+    width: 160px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -32,7 +32,7 @@ body {
   .sidenav label {
     padding: 16px 8px 6px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 15px;
     color: white;
     display: block;
   }
@@ -47,11 +47,21 @@ body {
   .main {
     margin-left: 160px; 
     font-size: 28px; 
-    padding: 10px 50px;
+    padding: 10px 10px 10px 50px;
     color: #bbc8ce;
+  
     >.allcharts{
-      margin-top: 40px;
-        padding-left: 5px;
+      // margin-top: 40px;
+      padding-left: 5px;   
+      >.date-picker{     
+        margin-top: 40px;     
+        font-size: 22px; 
+        color:rgb(154, 193, 212);
+        text-align: right;
+        >span{
+          padding-left:  12px!important;
+        }
+      }
     }
     >.singlechart{
         margin-left: 93px;
@@ -60,10 +70,10 @@ body {
   }
   .topnav {
     //margin-left: 178px;
-    height: 50px;
+    height: 40px;
     overflow: hidden;    
-  position: fixed;
-  width: 100%;
+    position: fixed;
+    width: 100%;
     background: #65b6d6 ;
     //background:  linear-gradient(to left, #018ad8  0%, #0b496d 100%);
     padding-top: 0%;
@@ -75,7 +85,7 @@ body {
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 16px;
     text-decoration: none;
     font-size: 17px;
   }
@@ -106,5 +116,55 @@ body {
   }
 
 
-  
 
+  .select-style {
+    padding-top: 10px;
+    padding-left: 10px;
+    $select-padding: 5px;
+    $select-padding-l: $select-padding * 1.4;
+    $select-border: 1px solid;
+    $select-border-color: rgb(82, 137, 163);
+    $select-border-radius: 5px;
+    $select-text-color: gray;
+  
+    $caret-size: 5px;
+    $caret-color: $select-border-color;
+    
+    position: relative;
+    display: inline-block;
+    
+    &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      margin-top: $caret-size * -0.3;
+      right: $select-padding-l;
+      width: 0;
+      height: 0;
+      border: $caret-size solid transparent;
+      border-top-color: $caret-color;
+    }
+    
+    select {
+      color:  $select-text-color;
+      display: inline-block;
+      position: relative;
+      box-shadow: none;
+      appearance: none;
+      padding: $select-padding ($caret-size * 3 + $select-padding-l) $select-padding $select-padding-l;
+      border: $select-border;
+      border-color: $select-border-color;
+      border-radius: $select-border-radius;
+      background: transparent;
+      
+      &:focus {
+        outline: transparent;
+      }
+      
+      &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+      }
+    }
+  }

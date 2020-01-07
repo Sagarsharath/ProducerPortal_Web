@@ -1,53 +1,53 @@
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="33%">
-                <nb-premium-renderer></nb-premium-renderer>
+                <nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-premium-renderer>
         </div>
         <div fxFlex="33%">
-                <rb-premium-renderer></rb-premium-renderer>
+                <rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate" ></rb-premium-renderer>
         </div>
         <div fxFlex="34%">
-                <bound-ratio-renderer></bound-ratio-renderer>
+                <bound-ratio-renderer [fromDate]="fromDate" [toDate]="toDate"></bound-ratio-renderer>
         </div>
 </div>
 
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="50%">
-                <carrier-nb-premium-renderer></carrier-nb-premium-renderer>
+                <carrier-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></carrier-nb-premium-renderer>
         </div>
         <div fxFlex="50%">
-                <carrier-rb-premium-renderer></carrier-rb-premium-renderer>
+                <carrier-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></carrier-rb-premium-renderer>
         </div>
 </div>
 
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="33%">
-                <lob-nb-premium-renderer></lob-nb-premium-renderer>
+                <lob-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-nb-premium-renderer>
         </div>
         <div fxFlex="33%">
-                <lob-rb-premium-renderer></lob-rb-premium-renderer>
+                <lob-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-rb-premium-renderer>
         </div>
         <div fxFlex="34%">
-                <pif-report-renderer></pif-report-renderer>
+                <pif-report-renderer [fromDate]="fromDate" [toDate]="toDate"></pif-report-renderer>
         </div>
 </div>
 <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="50%">
-                <nb-rb-monthly-report-renderer></nb-rb-monthly-report-renderer>
+                <nb-rb-monthly-report-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-rb-monthly-report-renderer>
         </div>
         <div fxFlex="50%">
-                <nb-rb-comparision-report-renderer></nb-rb-comparision-report-renderer>
+                <nb-rb-comparision-report-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-rb-comparision-report-renderer>
         </div>
 </div>
-<div class="container" fxLayout="row" fxLayout.xs="column"
+<!-- <div class="container" fxLayout="row" fxLayout.xs="column"
  fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
         <div fxFlex="50%">
-                <!-- <nb-rb-yearly-report-renderer></nb-rb-yearly-report-renderer> -->
+                <nb-premium-renderer [fromDate]="tempdate" [toDate]="toDate"></nb-premium-renderer>
         </div>
         <div fxFlex="50%">
                
         </div>
-</div>
+</div> -->

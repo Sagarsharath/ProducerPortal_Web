@@ -12,15 +12,15 @@ export class DataModelMapper {
     let labelsArray = [];
     if (model.spans != undefined) {
       model.spans.forEach(element => {
-        valuesArray.push(element.totalPremium)
+        valuesArray.push(element.totalPremium);
       });
       model.spans.forEach(element => {
-        labelsArray.push(element.spanName)
+        labelsArray.push(element.spanName);
       });
     }
     chartsData.datasets = [
       {
-        data:valuesArray , label:'Total Premium'
+        data:valuesArray , label:'Total Premium' , 
       }
     ];
 

@@ -27,7 +27,10 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    this.configureChartOPtions();
+    if(this.chartData.datasets != undefined){
+      this.configureChartOPtions();
+    }
+    
   }
 
   ngOnChanges(): void {
@@ -37,6 +40,7 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
 
   private configureChartOPtions(): void {
     this.legendOptions = {
+      align : 'end',
       position: 'right',
       labels: {
         fontColor: '#ffffff',        

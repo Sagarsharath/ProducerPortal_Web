@@ -49,7 +49,6 @@ export class PieChartCustomizerComponent implements OnInit {
   ngOnInit() {
     this.configureChartOptions();
   }
-
   private configureChartOptions() {
     this.legend = {
       position: 'left',
