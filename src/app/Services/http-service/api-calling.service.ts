@@ -31,7 +31,7 @@ export class ApiCallingService implements IApiService {
   get(url): Observable<any> {
     const headers = this.setHeaders();
     console.log(headers)
-    let response = this.http.get(apiPath + url, { headers, withCredentials: true })
+    let response = this.http.get(apiPath + url, { headers })
       .pipe(
         catchError(this.handleError(url)));
     return response;

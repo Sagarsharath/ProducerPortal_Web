@@ -53,6 +53,7 @@ import { NbRbComparisionReportRendererComponent } from './business/renderers/nb-
 import { DoughnutChartComponent } from './ng-charts/doughnut-chart/doughnut-chart.component';
 import { NbRbYearlyReportRendererComponent } from './business/renderers/nb-rb-yearly-report-renderer/nb-rb-yearly-report-renderer.component';
 import { DoughnutChartCustomizerComponent } from './chart-customizers/additional-info-customizer/doughnut-chart-customizer/doughnut-chart-customizer.component';
+import { AgencyDetailsComponent } from './agency-details/agency-details.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { DoughnutChartCustomizerComponent } from './chart-customizers/additional
     NbRbComparisionReportRendererComponent,
     DoughnutChartComponent,
     NbRbYearlyReportRendererComponent,
-    DoughnutChartCustomizerComponent
+    DoughnutChartCustomizerComponent,
+    AgencyDetailsComponent
   ],
   imports: [
     BrowserModule,

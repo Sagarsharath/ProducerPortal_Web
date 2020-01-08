@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   checkIfLoginHasToken() {
     if (this.router.url.includes('login')) {
       var token = this.router.url.split('login')[1];
-      if (token.length != 0) {
+      if (token.length != 0&& !token.includes('login')) {
         token = token.substr(1, token.length - 1); // for removing '/' at the beginning
         this.ValidateToken(token);
       }
@@ -40,8 +40,9 @@ export class LoginComponent implements OnInit {
     }
   }
   redirect() {
-    const redirectHost = location.origin;
-    window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=1&redirectURL='+redirectHost+'/login' ; 
+
+     var redirectHost = location.href.includes('login') ? location.href.split('#')[0]+'/%23/login': location.href+'/%23/login';
+    window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=1&redirectURL='+redirectHost ; 
   }
 
   ValidateToken(token: string) {
