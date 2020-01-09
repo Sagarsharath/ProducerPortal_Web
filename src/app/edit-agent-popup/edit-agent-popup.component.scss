@@ -1,0 +1,39 @@
+mat-dialog-title{
+    color: #65b6d6;
+}
+mat-dialog-content{
+    width: 650px;
+    height: 5000px;
+}
+h1{
+    color: #65b6d6;
+}
+button{
+    color: #65b6d6;
+    background-color:#e3e9eb;
+    
+}
+td{
+    vertical-align: top;
+}
+tr{
+    padding-top: 0px;
+}
+input,mat-select,mat-option {
+    font-size: 12px;
+    width: 90%;
+  }
+  table{
+      width:100%
+  }
+
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    padding-left: 10px;
+    width: 80%;
+    >.half-inputField{
+        width: 40%!important;
+    }
+}

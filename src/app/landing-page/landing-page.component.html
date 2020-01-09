@@ -10,13 +10,13 @@
         <div>
             <label  (click)="changeComponent('dashboard')">DashBoard</label>            
             <label (click)="changeComponent('1')">Premium Report</label>
-            <label (click)="changeComponent('1')">Agency details</label>
-            <label (click)="changeComponent('1')">Marketing Brochure</label>
+            <label (click)="changeComponent('22')">Agency Contact</label>
+            <label (click)="changeComponent('3')">Marketing Brochure</label>
         </div>
     </div>
     <div class="topnav">
         <div class="topnav-right">
-            <label style='align-items:center'>Welcome {{name}}</label>
+            <label style='align-items:center'>{{AgencyName}}</label> ||
             <label (click)="logOut()">Logout</label>
         </div>
     </div>
@@ -41,5 +41,6 @@
         </div>
         <div class='singlechart'>
         </div>
+        <agency-details *ngIf="renderComponent=='agencyContact'"></agency-details>
     </div>
 </body>

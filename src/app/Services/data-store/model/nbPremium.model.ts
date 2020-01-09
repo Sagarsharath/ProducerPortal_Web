@@ -28,9 +28,4 @@ export class LobPremium_Model{
     totalNETRevenue: Number;
     premium : number;
 }
-export class PIF_Model{
-
-}
-export class Carrier_Model{
-    
-}
+// export 

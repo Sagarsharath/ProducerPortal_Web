@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
     }
   }
   redirect() {
-
-     var redirectHost = location.href.includes('login') ? location.href.split('#')[0]+'/%23/login': location.href+'/%23/login';
+     var redirectHost = location.href.includes('login') ? location.href.split('#')[0]+'/%23/login': location.href+'/%23/login';  // To make possible url to form '../../#/login'
     window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=1&redirectURL='+redirectHost ; 
   }
 
@@ -51,6 +50,7 @@ export class LoginComponent implements OnInit {
         console.log(data) //get userId from this api & pass it to AuthenticateUser 
       }
     );
+    localStorage.setItem('producerId','100040')
     this.AuthenticateUser("100040");
   }
 

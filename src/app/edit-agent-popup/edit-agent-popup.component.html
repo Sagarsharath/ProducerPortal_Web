@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Add/Edit Agent</h1>
+<form mat-dialog-content>
+    <form [formGroup]="formGroup" (ngSubmit)="saveAgent()" class="form">
+        <table>
+            <tr><td>
+                    <mat-form-field>
+                        <input matInput="name" placeholder="Name" formControlName="name">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>Select Title</mat-label>
+                        <mat-select matInput="title" formControlName="title">
+                            <mat-option value="President">President</mat-option>
+                            <mat-option value="Account Executive">Account Executive</mat-option>
+                            <mat-option value="others">others</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                    <mat-form-field class="half-inputField">
+                        <input matInput="Mobile" placeholder="Mobile" formControlName="mobile">
+                        <mat-icon matSuffix>smartphone</mat-icon>  
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field> <input matInput="Phone" placeholder="Phone" formControlName="phone">
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                </td>
+
+            </tr>
+            <tr>
+                <td>                    
+                    <mat-form-field>
+                      <input matInput="name" placeholder="Email"  formControlName="email">  
+                      <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                      <input matInput="Producer Id" placeholder="Producer Id"  formControlName="producerId">  
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="" (click)="saveAgent()" [disabled]="!formGroup.valid" mat-raised-button disabled cdkFocusInitial>Ok</button>
+    </div>

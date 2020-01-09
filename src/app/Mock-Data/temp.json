@@ -1,0 +1,23 @@
+{
+    "spans": [
+        {
+            "spanName": "Jun-2018",
+            "noOfPolicies": 8,
+            "totalPremium": 5520.0000,
+            "totalRevenue": 1317.9000
+        },
+        {
+            "spanName": "Jul-2018",
+            "noOfPolicies": 8,
+            "totalPremium": 0.0000,
+            "totalRevenue": -129.5000
+        },
+        {
+            "spanName": "Jul-2019",
+            "noOfPolicies": 8,
+            "totalPremium": 4670.0000,
+            "totalRevenue": 1093.9000
+        }
+    ],
+    "averagePremium": 3396.6666666666666666666666667
+}

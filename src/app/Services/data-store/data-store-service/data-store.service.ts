@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiCallingService } from '../../http-service/api-calling.service';
 import { Observable, of } from 'rxjs';
-import { NBorRBPremium, SubmissionToBound_Model, LobPremium_Model, PIFModel, CarrierModel } from '../model/nbPremium.model';
+import { NBorRBPremium, SubmissionToBound_Model, LobPremium_Model, PIFModel, CarrierModel, } from '../model/nbPremium.model';
+import {  AgentModel_api } from '../model/AgentContacts-api-Model'
 import { map, catchError } from 'rxjs/operators';
 import { format } from 'url';
 
@@ -65,7 +66,33 @@ export class DataStoreService {
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
-
+  get_AgencyDetails(){
+    let url = 'APIGateway/Agency';
+    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
+    return response;
+  }
+ get_AgentContacts() : Observable<AgentModel_api[]>{
+  let url = 'APIGateway/contact';
+  let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
+  return response;
+ }
+addAgentDetails(data:AgentModel_api){
+  let url = 'APIGateway/contact';
+  let response = this.apiService.post(url,data).pipe(catchError(this.handleError(url)));
+  console.log(response.subscribe(x=>x.status))
+  return response;
+}
+editAgentDetails(data: AgentModel_api){
+  let url = 'APIGateway/contact';
+  let response = this.apiService.put(url,data).pipe(catchError(this.handleError(url)));
+  console.log(response.subscribe(x=>x.status))
+  return response;
+}
+deleteAgentDetails(data: AgentModel_api){
+  let url = 'APIGateway/contact';
+  let response = this.apiService.delete(url,data).pipe(catchError(this.handleError(url)));
+  return response;
+}
 
   ValidateSSOToken(token: string): Observable<any> {
     let url = 'SSONew/api/Login/ValidateToken?token=' + token;

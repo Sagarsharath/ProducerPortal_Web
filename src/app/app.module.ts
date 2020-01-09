@@ -24,8 +24,12 @@ import {
   MatToolbarModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatDatepicker,
+  MatDialogModule,
   MatMenuModule,
+  MatExpansionModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
@@ -54,6 +58,8 @@ import { DoughnutChartComponent } from './ng-charts/doughnut-chart/doughnut-char
 import { NbRbYearlyReportRendererComponent } from './business/renderers/nb-rb-yearly-report-renderer/nb-rb-yearly-report-renderer.component';
 import { DoughnutChartCustomizerComponent } from './chart-customizers/additional-info-customizer/doughnut-chart-customizer/doughnut-chart-customizer.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
+import { EditAgentPopupComponent } from './edit-agent-popup/edit-agent-popup.component';
+import { DeleteAgentComponent } from './delete-agent/delete-agent.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +90,9 @@ import { AgencyDetailsComponent } from './agency-details/agency-details.componen
     DoughnutChartComponent,
     NbRbYearlyReportRendererComponent,
     DoughnutChartCustomizerComponent,
-    AgencyDetailsComponent
+    AgencyDetailsComponent,
+    EditAgentPopupComponent,
+    DeleteAgentComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,22 +109,28 @@ import { AgencyDetailsComponent } from './agency-details/agency-details.componen
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
-    MatCardModule,
+    MatCardModule,MatSnackBarModule,
     MatTableModule,
     MatCheckboxModule, MatToolbarModule,
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule,
     MatToolbarModule,
+    MatPaginatorModule,
     MatButtonModule, MatSidenavModule, MatIconModule,
-   MatListModule,
+    MatListModule,
     MatSelectModule,
-     MatInputModule, MatDatepickerModule,
-      MatNativeDateModule,MatCardModule,
-   MatMenuModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatInputModule, MatDatepickerModule,
+    MatNativeDateModule, MatCardModule,
+    MatMenuModule,
+  
   ],
   providers: [
     Location
   ],
+  entryComponents: [EditAgentPopupComponent,DeleteAgentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

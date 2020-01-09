@@ -53,8 +53,15 @@ export class ApiCallingService implements IApiService {
   }
 
   delete(url: string, data: any): Observable<any> {
-    return this.http.delete(apiPath + url).pipe(
-      catchError(this.handleError(url))
+    const headers = this.setHeaders();
+    const options ={
+      headers : headers,
+      body:data,
+      withCredentials : true
+    }
+    return this.http.delete(apiPath + url,options
+      ).pipe(
+       catchError(this.handleError(url))
     );
   }
 
