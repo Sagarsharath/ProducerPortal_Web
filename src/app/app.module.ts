@@ -10,6 +10,7 @@ import { DashboardComponent } from './business/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { Location } from '@angular/common'
 import {
   MatButtonModule,
@@ -30,6 +31,7 @@ import {
   MatPaginatorModule,
   MatProgressBarModule,
   MatSnackBarModule,
+  MatGridListModule,
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
@@ -60,6 +62,11 @@ import { DoughnutChartCustomizerComponent } from './chart-customizers/additional
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
 import { EditAgentPopupComponent } from './edit-agent-popup/edit-agent-popup.component';
 import { DeleteAgentComponent } from './delete-agent/delete-agent.component';
+import { FileManagerComponent } from './file-manager/file-manager.component';
+import { NewFolderDialogComponent } from './file-manager/modals/newFolderDialog/new-folder-dialog.component';
+import { RenameDialogComponent} from './file-manager/modals/renameDialog/rename-dialog.component';
+import { MarketingBrochureComponent } from './marketing-brochure/marketing-brochure.component'
+import { FileService } from './Services/file-service/file.service';
 
 @NgModule({
   declarations: [
@@ -93,6 +100,10 @@ import { DeleteAgentComponent } from './delete-agent/delete-agent.component';
     AgencyDetailsComponent,
     EditAgentPopupComponent,
     DeleteAgentComponent,
+    FileManagerComponent,
+    NewFolderDialogComponent,
+    RenameDialogComponent,
+    MarketingBrochureComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,12 +136,13 @@ import { DeleteAgentComponent } from './delete-agent/delete-agent.component';
     MatInputModule, MatDatepickerModule,
     MatNativeDateModule, MatCardModule,
     MatMenuModule,
-  
+   MatGridListModule,
+   
   ],
   providers: [
-    Location
+    Location,FileService
   ],
-  entryComponents: [EditAgentPopupComponent,DeleteAgentComponent],
+  entryComponents: [EditAgentPopupComponent,DeleteAgentComponent,NewFolderDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

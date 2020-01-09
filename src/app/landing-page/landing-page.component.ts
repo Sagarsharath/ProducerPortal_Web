@@ -45,7 +45,7 @@ export class LandingPageComponent implements OnInit {
         break;
       case '2': this.renderComponent = this.defaultCharts.SubmissionToBound;
         break;
-      case '3': this.renderComponent = this.defaultCharts.LOBRenewal;
+      case '3': this.renderComponent = 'brochure';
         break;
         case '22': this.renderComponent = 'agencyContact';
         break;
