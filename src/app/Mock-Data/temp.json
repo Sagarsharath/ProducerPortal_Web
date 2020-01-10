@@ -1,23 +1,68 @@
 {
-    "spans": [
+    "version": {
+        "major": 0,
+        "minor": 0,
+        "build": 0,
+        "revision": 0,
+        "majorRevision": 0,
+        "minorRevision": 0
+    },
+    "content": {
+        "headers": [
+            {
+                "key": "string",
+                "value": [
+                    "string"
+                ]
+            }
+        ]
+    },
+    "statusCode": 100,
+    "reasonPhrase": "string",
+    "headers": [
         {
-            "spanName": "Jun-2018",
-            "noOfPolicies": 8,
-            "totalPremium": 5520.0000,
-            "totalRevenue": 1317.9000
-        },
-        {
-            "spanName": "Jul-2018",
-            "noOfPolicies": 8,
-            "totalPremium": 0.0000,
-            "totalRevenue": -129.5000
-        },
-        {
-            "spanName": "Jul-2019",
-            "noOfPolicies": 8,
-            "totalPremium": 4670.0000,
-            "totalRevenue": 1093.9000
+            "key": "string",
+            "value": [
+                "string"
+            ]
         }
     ],
-    "averagePremium": 3396.6666666666666666666666667
+    "requestMessage": {
+        "version": {
+            "major": 0,
+            "minor": 0,
+            "build": 0,
+            "revision": 0,
+            "majorRevision": 0,
+            "minorRevision": 0
+        },
+        "content": {
+            "headers": [
+                {
+                    "key": "string",
+                    "value": [
+                        "string"
+                    ]
+                }
+            ]
+        },
+        "method": {
+            "method": "string"
+        },
+        "requestUri": "string",
+        "headers": [
+            {
+                "key": "string",
+                "value": [
+                    "string"
+                ]
+            }
+        ],
+        "properties": {
+            "additionalProp1": {},
+            "additionalProp2": {},
+            "additionalProp3": {}
+        }
+    },
+    "isSuccessStatusCode": true
 }

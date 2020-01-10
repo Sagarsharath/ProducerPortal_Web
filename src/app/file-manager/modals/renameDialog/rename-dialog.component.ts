@@ -7,8 +7,8 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./rename-dialog.component.scss']
 })
 export class RenameDialogComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
+  ngOnInit() {
+   
   }
 
   constructor(public dialogRef: MatDialogRef<RenameDialogComponent>) {}

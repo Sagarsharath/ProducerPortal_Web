@@ -50,6 +50,13 @@ export class FileService implements IFileService {
     return this.querySubject.asObservable();
   }
 
+  deleteInFolder(folderId: string){
+    this.map.forEach(element=>{
+      if(element.parent === folderId){
+        this.map.delete(element.id)
+      }
+    })
+  }
   get(id: string) {
     return this.map.get(id);
   }

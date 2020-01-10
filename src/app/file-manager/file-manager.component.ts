@@ -4,7 +4,7 @@ import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { NewFolderDialogComponent} from './modals/newFolderDialog/new-folder-dialog.component'
-import { RenameDialogComponent } from './modals/renameDialog/rename-Dialog.component';
+import { RenameDialogComponent } from './modals/renameDialog/rename-dialog.component';
 
 
 @Component({
@@ -27,8 +27,6 @@ export class FileManagerComponent implements OnChanges {
   @Output() navigatedUp = new EventEmitter();
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("In file Manager")
-    console.log(this.fileElements)
   }
 
   deleteElement(element: FileElement) {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FileService } from '../Services/file-service/file.service';
 import { FileElement } from '../file-manager/model/element';
 import { Observable } from 'rxjs';
+import { FileServiceMapper } from './FileService-mapper';
+import { DataStoreService } from '../Services/data-store/data-store-service/data-store.service';
+const mock = require("../Mock-Data/folderData.json");
 
 @Component({
   selector: 'marketing-brochure',
@@ -11,19 +14,25 @@ import { Observable } from 'rxjs';
 export class MarketingBrochureComponent implements OnInit {
   public fileElements: Observable<FileElement[]>;
 
-  constructor(public fileService: FileService) {}
+  constructor(public fileService: FileService,
+    private dataStore : DataStoreService) {
+    }
 
   currentRoot: FileElement;
   currentPath: string;
   canNavigateUp = false;
 
   ngOnInit() {
-    const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' });
-    this.fileService.add({ name: 'Folder B', isFolder: true, parent: 'root' });
-    this.fileService.add({ name: 'Folder C', isFolder: true, parent: folderA.id });
-    this.fileService.add({ name: 'File A', isFolder: false, parent: 'root' });
-    this.fileService.add({ name: 'File B', isFolder: false, parent: 'root' });
-
+    // TODO api call
+    console.log(mock)
+    // this.dataStore.get_marketingLibrary().subscribe(result=>{
+    //   const filemapper = new FileServiceMapper(this.fileService);
+    //   filemapper.addFiles(result,'root');
+    // })
+    // this.fileService.deleteInFolder('root')
+    this.deleteAllElements();
+    const filemapper = new FileServiceMapper(this.fileService);
+    filemapper.addFiles(mock,'root');    
     this.updateFileElementQuery();
   }
 
@@ -35,6 +44,17 @@ export class MarketingBrochureComponent implements OnInit {
   removeElement(element: FileElement) {
     this.fileService.delete(element.id);
     this.updateFileElementQuery();
+  }
+  deleteAllElements(){
+    this.updateFileElementQuery()
+    if(this.fileElements!=undefined){
+      this.fileElements.subscribe(result =>{
+        result.forEach(element=>{
+          this.fileService.delete(element.id);
+        })
+      })
+    }
+    
   }
 
   navigateToFolder(element: FileElement) {
@@ -70,6 +90,7 @@ export class MarketingBrochureComponent implements OnInit {
   updateFileElementQuery() {
     this.fileElements = this.fileService.queryInFolder(this.currentRoot ? this.currentRoot.id : 'root');
   }
+
 
   pushToPath(path: string, folderName: string) {
     let p = path ? path : '';

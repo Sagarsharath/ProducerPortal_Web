@@ -1,0 +1,102 @@
+[
+    {
+        "iconURI": "string",
+        "subFolders": [
+            {
+                "iconURI": "string",
+                "subFolders": [
+                    null
+                ],
+                "files": [
+                    {
+                        "uri": "string",
+                        "fileType": "string",
+                        "name": "FA21"
+                    },
+                    {
+                        "uri": "string",
+                        "fileType": "string",
+                        "name": "FA22"
+                    }
+                ],
+                "name": "A2"
+            },
+            {
+                "iconURI": "string",
+                "subFolders": [
+                    {
+                        "iconURI": "string",
+                        "subFolders": [
+                            {
+                                "iconURI": "string",
+                                "subFolders": [
+                                    null
+                                ],
+                                "files": [
+                                    {
+                                        "uri": "string",
+                                        "fileType": "string",
+                                        "name": "FA333"
+                                    }
+                                ],
+                                "name": "A333"
+                            }
+                        ],
+                        "files": [
+                            {
+                                "uri": "string",
+                                "fileType": "string",
+                                "name": "FA33"
+                            }
+                        ],
+                        "name": "A33"
+                    },
+                    {
+                        "iconURI": "string",
+                        "subFolders": [
+                            null
+                        ],
+                        "files": [
+                            {
+                                "uri": "string",
+                                "fileType": "string",
+                                "name": "FA34"
+                            }
+                        ],
+                        "name": "A34"
+                    }
+                ],
+                "files": [
+                    {
+                        "uri": "string",
+                        "fileType": "string",
+                        "name": "string"
+                    }
+                ],
+                "name": "A3"
+            }
+        ],
+        "files": [
+            {
+                "uri": "string",
+                "fileType": "string",
+                "name": "string"
+            }
+        ],
+        "name": "A1"
+    },
+    {
+        "iconURI": "string",
+        "subFolders": [
+            null
+        ],
+        "files": [
+            {
+                "uri": "string",
+                "fileType": "string",
+                "name": "string"
+            }
+        ],
+        "name": "B1"
+    }
+]

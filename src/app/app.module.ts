@@ -10,7 +10,6 @@ import { DashboardComponent } from './business/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { Location } from '@angular/common'
 import {
   MatButtonModule,
@@ -67,6 +66,7 @@ import { NewFolderDialogComponent } from './file-manager/modals/newFolderDialog/
 import { RenameDialogComponent} from './file-manager/modals/renameDialog/rename-dialog.component';
 import { MarketingBrochureComponent } from './marketing-brochure/marketing-brochure.component'
 import { FileService } from './Services/file-service/file.service';
+import { FileManagerModule } from './file-manager/file-manager.module';
 
 @NgModule({
   declarations: [
@@ -100,7 +100,7 @@ import { FileService } from './Services/file-service/file.service';
     AgencyDetailsComponent,
     EditAgentPopupComponent,
     DeleteAgentComponent,
-    FileManagerComponent,
+    // FileManagerComponent,
     NewFolderDialogComponent,
     RenameDialogComponent,
     MarketingBrochureComponent,
@@ -137,12 +137,13 @@ import { FileService } from './Services/file-service/file.service';
     MatNativeDateModule, MatCardModule,
     MatMenuModule,
    MatGridListModule,
+   FileManagerModule
    
   ],
   providers: [
     Location,FileService
   ],
-  entryComponents: [EditAgentPopupComponent,DeleteAgentComponent,NewFolderDialogComponent],
+  entryComponents: [EditAgentPopupComponent,DeleteAgentComponent,NewFolderDialogComponent,RenameDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -41,27 +41,30 @@ export class LoginComponent implements OnInit {
   }
   redirect() {
      var redirectHost = location.href.includes('login') ? location.href.split('#')[0]+'/%23/login': location.href+'/%23/login';  // To make possible url to form '../../#/login'
-    window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=1&redirectURL='+redirectHost ; 
+    window.location.href = 'http://dev.cogitate.us/SSONew/Login/VerifyCookieToken?siteId=42&redirectURL='+redirectHost ; 
   }
 
   ValidateToken(token: string) {
-    this.dataStore.ValidateSSOToken(token).subscribe(
-      (data) => {
-        console.log(data) //get userId from this api & pass it to AuthenticateUser 
-      }
-    );
-    localStorage.setItem('producerId','100040')
-    this.AuthenticateUser("100040");
+    // this.dataStore.ValidateSSOToken(token).subscribe(
+    //   (data) => {
+    //     console.log(data) //get userId from this api & pass it to AuthenticateUser 
+    //   }
+    // );
+    // localStorage.setItem('producerId','100040')
+    this.AuthenticateUser(token);
+   // this.AuthenticateUser("100040");
   }
 
   AuthenticateUser(userid: string) {
     this.dataStore.authenticate(userid).subscribe(
       data => {
+        console.log(data);
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('token', data.token);
         this.router.navigate(['/landingPage']);
       },
       (error) => {
+        console.log(error)
         if (error.status == 401) {
           this.response = false;
         }

@@ -1,0 +1,10 @@
+.mat-button-raised,button{
+    width: 100px;
+  }                           
+  button{
+    color: #65b6d6;
+    width: 100px;
+  }
+  ::ng-deep mat-form-field ::placeholder{
+    color: #65b6d6;
+  }

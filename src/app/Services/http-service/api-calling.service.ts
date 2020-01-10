@@ -40,7 +40,8 @@ export class ApiCallingService implements IApiService {
   post(url: string, data: any): Observable<any> {
 
     const headers = this.setHeaders();
-    return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
+    let payload: string = '"' + data + '"';
+    return this.http.post(apiPath + url, payload, { headers, withCredentials: true }).pipe(
       catchError(this.handleError(url))
     );
   }
@@ -54,14 +55,14 @@ export class ApiCallingService implements IApiService {
 
   delete(url: string, data: any): Observable<any> {
     const headers = this.setHeaders();
-    const options ={
-      headers : headers,
-      body:data,
-      withCredentials : true
+    const options = {
+      headers: headers,
+      body: data,
+      withCredentials: true
     }
-    return this.http.delete(apiPath + url,options
-      ).pipe(
-       catchError(this.handleError(url))
+    return this.http.delete(apiPath + url, options
+    ).pipe(
+      catchError(this.handleError(url))
     );
   }
 
@@ -78,12 +79,24 @@ export class ApiCallingService implements IApiService {
   }
 
   private setHeaders() {
-    const headers = new HttpHeaders({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-    });
-    return headers
+
+    let token: string = localStorage.getItem('token');
+    if (token && token != undefined && token.length > 0) {
+      const headers = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      });
+      return headers;
+    }
+    else {
+      const headers = new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      });
+      return headers;
+    }
+
   }
 
 }
