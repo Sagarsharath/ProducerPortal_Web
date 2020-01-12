@@ -38,9 +38,11 @@ export class NbRbComparisionReportRendererComponent implements OnInit {
       
     this.dataStore.getRBPremiumDetails(from,to).subscribe(y=>{
       this.chartData = this.mapper.toDataModel(y,this.chartData,'Renewal Business Premium');
-      var numerator:any = x.averagePremium;
-      var denom:any = y.averagePremium;
-      this.ratio = (numerator/denom)
+      if(x.averagePremium!=0||y.averagePremium!=0){
+        var numerator:any = x.averagePremium;
+        var denom:any = y.averagePremium;
+        this.ratio = (numerator/denom);
+      }
       this.additionalInfo = this.additionalInfoText+this.ratio.toFixed(2);
       
     })

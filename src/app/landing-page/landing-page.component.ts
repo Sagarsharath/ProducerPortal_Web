@@ -14,20 +14,31 @@ import { LoadComponents } from './LoadComponents';
 })
 export class LandingPageComponent implements OnInit {
   public AgencyName: string;
+  public 
   public renderComponent = 'dashboard';
   public defaultCharts = chartToRender;
   events: string[] = [];
   opened: boolean;
-  years = [new Date().getFullYear(), 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
+  panelOpenState :boolean =false;
+
+  years = [new Date().getFullYear()];
   selectedYear = this.years[0];
   toDate = new FormControl((new Date((this.selectedYear + 1) + "/01/01")));
   fromDate = new FormControl((new Date(this.selectedYear + "/01/01")));
-
   constructor(public router: Router,
-    private datastore: DataStoreService, private loadComponent: LoadComponents) { }
+    private datastore: DataStoreService, private loadComponent: LoadComponents) { 
+      //let components = new LoadComponents();
+      let i: number=1;
+      while(i!=10){
+        this.years.push(this.years[0]-i);
+        i++;
+      }
+      
+    }
 
   ngOnInit() {
     //this.renderComponent = 'agencyContact';
+    
     this.datastore.get_AgencyDetails().subscribe(result=>{
     this.AgencyName = result.name
     })
@@ -36,22 +47,21 @@ export class LandingPageComponent implements OnInit {
     this.toDate = new FormControl((new Date((this.selectedYear + 1) + "/01/01")));
     this.fromDate = new FormControl((new Date(this.selectedYear + "/01/01")));
   }
+public collapse : boolean = false;
+  openCollapsable(){
+    this.collapse = true
+    return  null;
 
+  }
+
+  setLoadComponent(){
+
+     
+  }
   changeComponent(toComponent: string) {
-    //this.loadComponent = new LoadComponents(false, false, false);
-    this.loadComponent.loadDashboard
-    switch (toComponent) {
-      case '1': this.renderComponent = this.defaultCharts.MonthlyPremium;
-        break;
-      case '2': this.renderComponent = this.defaultCharts.SubmissionToBound;
-        break;
-      case '3': this.renderComponent = 'brochure';
-        break;
-        case '22': this.renderComponent = 'agencyContact';
-        break;
-      default: this.renderComponent = toComponent;
-    }
-
+    this.renderComponent = toComponent;
+    this.selectedYear = this.years[0];
+    this.dsChange()
   }
   logOut() {
     localStorage.clear();

@@ -1,9 +1,56 @@
 
-body {
+html,body {
     font-family: "Lato", sans-serif;
     color: #bbc8ce;
+    
+    height: 100%;
   }
-  
+
+  mat-expansion-panel-header {
+    background-color: #65b6d6; 
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    text-align: left;
+    } mat-card{
+      background-color: #65b6d6;    
+      padding: 16px 8px 10px 16px;
+      text-decoration: none;
+      font-size: 15px;
+      color: white;
+      text-align: left;
+      
+    transition: none !important;
+    box-shadow: none !important;
+      }
+      mat-expansion-panel-header{
+        padding-left: 16px!important; // same as mat-card
+      }
+    mat-panel-title{
+      text-align: left!important;
+      padding-left: 1px;
+    font-size: 15px;
+    color: white;
+    }
+     mat-card:hover{
+      background-color: rgb(154, 193, 212);
+    color: white;
+    cursor: pointer;
+    }
+    mat-expansion-panel{
+      background-color: #65b6d6;  
+    }
+    mat-expansion-panel:hover{
+      background-color: rgb(154, 193, 212);
+    }
+    ::ng-deep .mat-expansion-panel-body{
+      padding:0px!important;
+      >mat-card{
+        text-align: right!important;
+        // background-color: white;
+        // color:#65b6d6 ;    
+      }
+    }
   .sidenav {
     height: 100%;
     width: 160px;
@@ -45,27 +92,31 @@ body {
   }
   
   .main {
+      
     margin-left: 160px; 
     font-size: 28px; 
     padding: 10px 10px 10px 50px;
     color: #bbc8ce;
-  
+    >.date-picker{     
+      margin-top: 40px;     
+      font-size: 22px; 
+      color:rgb(154, 193, 212);
+      text-align: right!important; 
+      >span{
+        padding-left:  12px!important;
+      }
+    }
     >.allcharts{
       // margin-top: 40px;
       padding-left: 5px;   
-      >.date-picker{     
-        margin-top: 40px;     
-        font-size: 22px; 
-        color:rgb(154, 193, 212);
-        text-align: right;
-        >span{
-          padding-left:  12px!important;
-        }
-      }
+      
     }
     >.singlechart{
-        margin-left: 93px;
-        margin-top: 60px;
+      padding-left: 5px;  
+      height: 50%!important;
+      width:50%;
+      
+    position: fixed;
     }
   }
   .topnav {
@@ -79,6 +130,7 @@ body {
     padding-top: 0%;
     top: 0;
     left: 0;
+
   }
   
   .topnav label{

@@ -5,6 +5,8 @@ export class LoadComponents {
     loadDashboard: boolean;
     loadAgencyContact: boolean;
     loadMarketingBrochure: boolean;
+    loadpremiumReport : boolean;
+    loadboundRatio : boolean
     // constructor(dashboard:boolean, agencycontact:boolean, marketingbrochure:boolean) {
     //     this.loadDashboard = dashboard;
     //     this.loadAgencyContact = agencycontact;

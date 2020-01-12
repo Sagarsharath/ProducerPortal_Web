@@ -30,8 +30,9 @@ export class MarketingBrochureComponent implements OnInit {
     //   filemapper.addFiles(result,'root');
     // })
     // this.fileService.deleteInFolder('root')
-    this.deleteAllElements();
+    //this.deleteAllElements();
     const filemapper = new FileServiceMapper(this.fileService);
+    // Delete file service folders
     filemapper.addFiles(mock,'root');    
     this.updateFileElementQuery();
   }

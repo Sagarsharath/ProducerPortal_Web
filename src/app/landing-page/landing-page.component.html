@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <div class="sidenav">
-        <img src="http://dev.cogitate.us/producerportal_web/assets/Images/client-logo.png" style="background-color:white;" height="40" width="160">
-        <div>
-            <label  (click)="changeComponent('dashboard')">DashBoard</label>            
-            <label (click)="changeComponent('1')">Premium Report</label>
-            <label (click)="changeComponent('22')">Agency Contact</label>
-            <label (click)="changeComponent('3')">Marketing Brochure</label>
-        </div>
+  <div class="sidenav">
+    <img src="http://dev.cogitate.us/producerportal_web/assets/Images/client-logo.png" style="background-color:white;"
+      height="40" width="160">
+    <div>
+      <mat-accordion>
+
+        <mat-card (click)="changeComponent('dashboard')">DashBoard</mat-card>
+        <mat-expansion-panel hideToggle="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Reports
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- <mat-form-field> -->
+          <mat-card matInput (click)="changeComponent('premiumreport')">Premium Report</mat-card>
+          <mat-card matInput (click)="changeComponent('boundratio')">Bound Ratio</mat-card>
+          <mat-card matInput (click)="changeComponent('pifreport')">PIF Report</mat-card>
+          <!-- </mat-form-field> -->
+
+        </mat-expansion-panel>
+        <mat-card (click)="changeComponent('agencyContact')">Agent Contacts</mat-card>
+        <mat-card (click)="changeComponent('brochure')">Marketing Brochure</mat-card>
+      </mat-accordion>
     </div>
-    <div class="topnav">
-        <div class="topnav-right">
-            <label style='align-items:center'>{{AgencyName}}</label> ||
-            <label (click)="logOut()">Logout</label>
-        </div>
+  </div>
+  <div class="topnav">
+    <div class="topnav-right">
+      <label style='align-items:center'>{{AgencyName}}</label> ||
+      <label (click)="logOut()">Logout</label>
     </div>
-    <div class='main'>
-       
-        <div class='allcharts' *ngIf="renderComponent=='dashboard'">
-            <div class="date-picker">
-                <div class="select-style">
-                  <select>
-                    <option value="Yearly">Yearly</option>
-                    <!-- <option value="warsawjs_2">Half-Yearly</option>
-                    <option value="warsawjs_3">Monthly</option> -->
-                  </select>
-                </div>
-                <div class="select-style">
-                  <select  [(ngModel)]="selectedYear" (change)="dsChange()">
-                    <option *ngFor="let x of years" [ngValue]="x">{{x}}</option>
-                  </select>
-                </div>             
-          </div>
-                <app-dashboard  [fromDate]="fromDate.value" [toDate]="toDate.value"></app-dashboard>
-        </div>
-        <div class='singlechart'>
-        </div>
-        <agency-details *ngIf="renderComponent=='agencyContact'"></agency-details>
-        <marketing-brochure *ngIf="renderComponent=='brochure'"></marketing-brochure>
+  </div>67
+  <div class='main'>
+    <div class="date-picker" *ngIf="renderComponent!='agencyContact'&&renderComponent!='brochure'">
+      <div class="select-style">
+        <select>
+          <option value="Yearly">Yearly</option>
+          <!-- <option value="warsawjs_2">Half-Yearly</option>
+                  <option value="warsawjs_3">Monthly</option> -->
+        </select>
+      </div>
+      <div class="select-style">
+        <select [(ngModel)]="selectedYear" (change)="dsChange()">
+          <option *ngFor="let x of years" [ngValue]="x">{{x}}</option>
+        </select>
+      </div>
     </div>
+    
+    <div class='allcharts' *ngIf="renderComponent=='dashboard'">
+      <app-dashboard [fromDate]="fromDate.value" [toDate]="toDate.value"></app-dashboard>
+    </div>
+    <div class='singlechart'>
+      <nb-premium-renderer *ngIf="renderComponent=='premiumreport'" [fromDate]="fromDate.value" [toDate]="toDate.value">
+      </nb-premium-renderer>
+      <bound-ratio-renderer *ngIf="renderComponent=='boundratio'" [fromDate]="fromDate.value" [toDate]="toDate.value">
+      </bound-ratio-renderer>
+      <pif-report-renderer *ngIf="renderComponent=='pifreport'" [fromDate]="fromDate.value" [toDate]="toDate.value">
+      </pif-report-renderer>
+    </div>
+  <agency-details *ngIf="renderComponent=='agencyContact'"></agency-details>
+  <marketing-brochure *ngIf="renderComponent=='brochure'"></marketing-brochure>
+  
+  </div>
 </body>

@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '',  component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'login/:id', component: LoginComponent},
-  //{ path: 'landingPage', component: LandingPageComponent},
+  { path: 'landingPage', component: LandingPageComponent},
    { path: 'landingPage', component: LandingPageComponent,canActivate:[AuthenticationGaurdService] },
 ];
 @NgModule({
