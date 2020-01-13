@@ -40,7 +40,16 @@ export class ApiCallingService implements IApiService {
   post(url: string, data: any): Observable<any> {
 
     const headers = this.setHeaders();
+
+    return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
+      catchError(this.handleError(url))
+    );
+  }
+  postWithStringify(url: string, data: any): Observable<any> {
+
+    const headers = this.setHeaders();
     let payload: string = '"' + data + '"';
+
     return this.http.post(apiPath + url, payload, { headers, withCredentials: true }).pipe(
       catchError(this.handleError(url))
     );

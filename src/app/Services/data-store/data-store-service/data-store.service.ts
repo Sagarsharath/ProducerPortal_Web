@@ -16,7 +16,7 @@ export class DataStoreService {
   //#region Authentication API calls
   authenticate(userid: string): Observable<any> {
     let url = 'APIGateway/auth/validate';
-    let response = this.apiService.post(url, userid);
+    let response = this.apiService.postWithStringify(url, userid);
     return response;
 
   }
