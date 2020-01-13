@@ -14,7 +14,9 @@ export class SubmissionToBound_Model {
     submission: Number;
     quoted: Number;
     bound: Number;
-    submissionToBoundRatio : Number
+    submissionToBoundRatio : Number;
+    submissionToQuoteRatio : Number;
+    quoteToBoundRatio : Number;
 }
 export class CarrierModel {
     carrierName: string;

@@ -16,6 +16,7 @@ import { DeleteAgentComponent } from '../delete-agent/delete-agent.component';
 export class AgencyDetailsComponent implements OnInit {
 
   data: AgentDetailsModel[] = [];
+  showLoader = true;
   displayedColumns: string[] = ['name', 'title', 'phone', 'email', 'address1', 'Edit', 'Delete'];
   dataSource = new MatTableDataSource<AgentDetailsModel>(this.data);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -29,9 +30,12 @@ export class AgencyDetailsComponent implements OnInit {
   }
 
   getAgentContacts() {
+   this.showLoader = true;
     this.dataStore.get_AgentContacts().subscribe(result => {
-      this.dataSource.data = this.mapper.toDataModel(result)
+      this.dataSource.data = this.mapper.toDataModel(result);
+      this.showLoader = false;
     })
+    
   }
 
   openDialog(dataToEditOrAdd: AgentDetailsModel): void {

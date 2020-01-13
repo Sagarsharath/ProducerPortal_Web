@@ -13,7 +13,7 @@ export class BoundRatioRendererComponent implements OnInit,OnChanges {
 
   chartData: PieChartDataModel;
   ratio: Number = 0;
-  additionalInfoText = 'Ratio : ';
+  additionalInfoText = 'Quote to Bound Ratio : ';
   additionalInfo: string ;
    
   @Input() public fromDate: Date ;
@@ -31,7 +31,7 @@ export class BoundRatioRendererComponent implements OnInit,OnChanges {
   private loadData(from : Date, to:Date) {
     this.dataStore.get_SubmissionToBound_Report(from,to).subscribe(x => {
       this.chartData = this.mapper.toDataModel(x);
-      this.additionalInfo = this.additionalInfoText + x.submissionToBoundRatio;
+      this.additionalInfo = this.additionalInfoText + x.quoteToBoundRatio;
     });
 
   }

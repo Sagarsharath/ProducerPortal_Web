@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
   }
   checkIfLoginHasToken() {
     if (this.router.url.includes('login')) {
-      var token = this.router.url.split('login')[1];
+      var urlArr = this.router.url.split('login');
+      var token = urlArr[urlArr.length-1];
       if (token.length != 0&& !token.includes('login')) {
         token = token.substr(1, token.length - 1); // for removing '/' at the beginning
         this.ValidateToken(token);
@@ -52,12 +53,10 @@ export class LoginComponent implements OnInit {
     // );
     // localStorage.setItem('producerId','100040')
     this.AuthenticateUser(token);
-   // this.AuthenticateUser("100040");
+   //this.AuthenticateUser("c8430ac4-f519-469e-97bd-afe8b5fb18f8");
   }
 
   AuthenticateUser(userid: string) {
-    // localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6Im56YW1iYW5pIiwiQWdlbnRJZCI6IjQ1OTU3NCIsImp0aSI6IjllZjRiYTFhLTRmYTktNDJjZS1hZjAyLTdkYjM2YzY2Yjg3MiIsImlhdCI6IjEvMTIvMjAyMCA1OjQyOjAxIFBNIiwibmJwcmVtaXVtIjoibmJwcmVtaXVtIiwicmJwcmVtaXVtIjoicmJwcmVtaXVtIiwibG9ibmJwcmVtaXVtIjoibG9ibmJwcmVtaXVtIiwibG9icmJwcmVtaXVtIjoibG9icmJwcmVtaXVtIiwiY2Fycmllcm5icHJlbWl1bSI6ImNhcnJpZXJuYnByZW1pdW0iLCJjYXJyaWVycmJwcmVtaXVtIjoiY2FycmllcnJicHJlbWl1bSIsInBpZiI6InBpZiIsInN1Ym1pc3Npb250b2JvdW5kIjoic3VibWlzc2lvbnRvYm91bmQiLCJtYXJrZXRpbmdsaWJyYXJ5IjoibWFya2V0aW5nbGlicmFyeSIsIm5iZiI6MTU3ODg1MDkyMSwiZXhwIjoxNTc4ODU4MTIxLCJpc3MiOiJodHRwOi8vd3d3LmMtc2hhcnBjb3JuZXIuY29tL21lbWJlcnMvY2F0Y2hlci13b25nIiwiYXVkIjoiQ2F0Y2hlciBXb25nIn0.n2kZ4gLHzsm_TFf9MrjmoAQRyaZMIIaIlMMrxUpo22I');
-    //     this.router.navigate(['/landingPage']);
     this.dataStore.authenticate(userid).subscribe(
       data => {
         console.log(data);

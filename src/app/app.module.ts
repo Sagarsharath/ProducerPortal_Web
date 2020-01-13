@@ -30,7 +30,7 @@ import {
   MatPaginatorModule,
   MatProgressBarModule,
   MatSnackBarModule,
-  MatGridListModule,
+  MatGridListModule
 } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';

@@ -13,7 +13,7 @@ export class NbPremiumRendererComponent implements OnInit {
   chartData: NgChartDataModel;
   average: Number = 0;
   additionalInfo: string;
-  additionalInfoText = 'Average :';
+  additionalInfoText = 'Average : ';
   
   @Input() public fromDate: Date ;
   @Input() public toDate: Date;

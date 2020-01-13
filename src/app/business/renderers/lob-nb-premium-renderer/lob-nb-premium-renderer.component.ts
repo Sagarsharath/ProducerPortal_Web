@@ -28,13 +28,13 @@ export class LobNbPremiumRendererComponent implements OnInit {
   }
 
   private loadData(from : Date, to:Date){
-
+    this.sum = 0;
     this.dataStore.get_LOB_nbpremium(from,to).subscribe(x => {
       this.chartData = this.mapper.toDataModel(x);
       x.forEach(element => {
         this.sum = this.sum + element.premium;
-        this.additionalInfo = this.additionalInfoText + this.sum;
       });
+      this.additionalInfo = this.additionalInfoText + this.sum;
     });
 
     

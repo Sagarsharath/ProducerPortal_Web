@@ -24,16 +24,16 @@ export class NbRbComparisionReportRendererComponent implements OnInit {
 
 
   ngOnInit() {
-    this.loadData(this.fromDate,this.toDate);
+   // this.loadData(this.fromDate,this.toDate);
   }
   ngOnChanges(): void {
     this.loadData(this.fromDate,this.toDate);
   }
 
   private loadData(from : Date, to:Date) {
-    
+    this.ratio =0;
     this.dataStore.getNBPremiumDetails(from,to).subscribe(x => {
-      this.chartData = new PieChartDataModel();
+      this.chartData = new PieChartDataModel();     
       this.chartData = this.mapper.toDataModel(x,this.chartData,'New Business Premium');
       
     this.dataStore.getRBPremiumDetails(from,to).subscribe(y=>{
@@ -43,7 +43,8 @@ export class NbRbComparisionReportRendererComponent implements OnInit {
         var denom:any = y.averagePremium;
         this.ratio = (numerator/denom);
       }
-      this.additionalInfo = this.additionalInfoText+this.ratio.toFixed(2);
+      this.additionalInfo ='';
+     // this.additionalInfo = this.additionalInfoText+this.ratio.toFixed(2);
       
     })
     });

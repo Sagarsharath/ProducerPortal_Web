@@ -32,7 +32,7 @@ export class NbRbMonthlyReportRendererComponent implements OnInit {
   private loadData(from : Date, to:Date){
     this.dataStore.getRBPremiumDetails(from,to).subscribe(x => {
       this.average = x.averagePremium;
-      this.additionalInfo = this.additionalInfoText + this.average;
+      this.additionalInfo = '';
       this.chartData = this.mapper.toDataModel(x);
       this.dataStore.getNBPremiumDetails(from,to).subscribe(x=>{
         let secondaryData = [];
@@ -40,7 +40,7 @@ export class NbRbMonthlyReportRendererComponent implements OnInit {
           secondaryData.push(element.totalPremium)
         })
         this.chartData.datasets[1] = {        
-          data : secondaryData,label:'New Business Premium'
+          data : secondaryData,label:'New Business Premium',backgroundColor:'#8dc99d',
         };
       })
     });

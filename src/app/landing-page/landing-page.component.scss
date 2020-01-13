@@ -11,14 +11,12 @@ html,body {
     text-decoration: none;
     font-size: 15px;
     color: white;
-    text-align: left;
     } mat-card{
       background-color: #65b6d6;    
       padding: 16px 8px 10px 16px;
       text-decoration: none;
       font-size: 15px;
       color: white;
-      text-align: left;
       
     transition: none !important;
     box-shadow: none !important;
@@ -46,14 +44,16 @@ html,body {
     ::ng-deep .mat-expansion-panel-body{
       padding:0px!important;
       >mat-card{
-        text-align: right!important;
+        padding-left: 35px;
+        font-size: 12px;
+        height: 15px;
         // background-color: white;
         // color:#65b6d6 ;    
       }
     }
   .sidenav {
     height: 100%;
-    width: 160px;
+    width: 185px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -62,7 +62,7 @@ html,body {
     background: #65b6d6 ;// linear-gradient(to top, #005382 0%, #018ad8 100%);
     overflow-x: hidden;
     >div{
-        padding-top: 100px;
+        padding-top: 40px;
         >mat-sidenav-container{
             background-color: #0b496d ;
             height : 50%; 
@@ -107,21 +107,19 @@ html,body {
       }
     }
     >.allcharts{
-      // margin-top: 40px;
       padding-left: 5px;   
       
     }
     >.singlechart{
       padding-left: 5px;  
-      height: 50%!important;
-      width:50%;
-      
-    position: fixed;
+      //height: 80%!important;
+      width:80%;      
+      //position: fixed;
     }
   }
   .topnav {
     //margin-left: 178px;
-    height: 40px;
+    height: 50px;
     overflow: hidden;    
     position: fixed;
     width: 100%;
@@ -137,9 +135,9 @@ html,body {
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 12px 16px;
+    padding: 16px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 15px;
   }
   
   .topnav label:hover {
@@ -190,7 +188,7 @@ html,body {
       display: inline-block;
       position: absolute;
       top: 50%;
-      margin-top: $caret-size * -0.3;
+      margin-top: $caret-size * 0.3;
       right: $select-padding-l;
       width: 0;
       height: 0;

@@ -16,10 +16,12 @@ export class DataStoreService {
   //#region Authentication API calls
   authenticate(userid: string): Observable<any> {
     let url = 'APIGateway/auth/validate';
-    let response = this.apiService.postWithStringify(url, userid);
+    let payload: string = '"' + userid + '"';
+    let response = this.apiService.post(url, payload).pipe(catchError(this.authenticationFailed(url)));
     return response;
 
   }
+  
   deleteCookie() {
     let url = 'SSONew/Login/ClearAllCookies';
     this.apiService.get(url);
@@ -135,6 +137,7 @@ export class DataStoreService {
   formatDate(dateToFormat: Date): string {
     return dateToFormat.getFullYear() + '/' + (dateToFormat.getMonth() + 1) + '/' + (dateToFormat.getDay() + 1);
   }
+
   // Handle errors in api calls if any
   private handleError(operation = 'operation') {
     return (error: any) => {
@@ -145,6 +148,19 @@ export class DataStoreService {
       }
       return of(error);
     };
+  }
+
+  // Redirect to login if auth-validate throws error
+  private authenticationFailed(operation = 'operation') {
+    return (error: any) => {
+      console.log(`${operation} failed: ${error.message}`);
+      if ( error.status==500) {
+        localStorage.clear();
+        window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies', '_self');
+      }
+      return of(error);
+    };
+    
   }
   //#endregion
 

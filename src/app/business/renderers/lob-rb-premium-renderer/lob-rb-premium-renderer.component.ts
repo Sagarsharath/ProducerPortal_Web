@@ -29,6 +29,7 @@ export class LobRbPremiumRendererComponent implements OnInit {
   }
 
   private loadData(from : Date, to:Date) {
+    this.sum = 0;
     this.dataStore.get_LOB_rbpremium(from, to).subscribe(x => {
       this.chartData = this.mapper.toDataModel(x);
       x.forEach(element => {
