@@ -1,0 +1,7 @@
+<form class="policy-documents">
+      <mat-form-field>
+        <input type="search" matInput placeholder="Policy Number" value="" length="10" [(ngModel)]="policyNumber" name="policyNumber">
+      </mat-form-field>
+      <button (click)="searchPolicies(policyNumber)" mat-button><mat-icon>search</mat-icon>Search Policies
+    </button>    
+</form>

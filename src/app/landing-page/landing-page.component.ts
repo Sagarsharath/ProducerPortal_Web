@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit {
   public AgencyName: string;
   public 
   public renderComponent = 'dashboard';
+  public userSpecificReport = false;
   public defaultCharts = chartToRender;
   events: string[] = [];
   opened: boolean;
@@ -53,8 +54,9 @@ public collapse : boolean = false;
 
      
   }
-  changeComponent(toComponent: string) {
+  changeComponent(toComponent: string, userSpecific:boolean) {
     this.renderComponent = toComponent;
+    this.userSpecificReport = userSpecific;
     this.selectedYear = this.years[0];
     this.dsChange()
   }

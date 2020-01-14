@@ -1,0 +1,60 @@
+<div *ngIf="renderComponent=='premiumreports'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+          <nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-premium-renderer>
+        </div>
+        <div fxFlex="50%">
+          <rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></rb-premium-renderer>
+        </div>
+      </div>
+
+      <div *ngIf="renderComponent=='boundratio'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="80%">
+          <bound-ratio-renderer [fromDate]="fromDate" [toDate]="toDate">
+          </bound-ratio-renderer>
+        </div>
+      </div>
+
+      <div *ngIf="renderComponent=='carrierpremium'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+
+          <carrier-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate">
+          </carrier-nb-premium-renderer>
+        </div>
+        <div fxFlex="50%">
+
+          <carrier-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate">
+          </carrier-rb-premium-renderer>
+        </div>
+      </div>
+      <div *ngIf="renderComponent=='pifreport'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="80%">
+          <pif-report-renderer [fromDate]="fromDate" [toDate]="toDate"> </pif-report-renderer>
+        </div>
+      </div>
+
+      <div *ngIf="renderComponent=='lobpremium'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+          <lob-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-nb-premium-renderer>
+        </div>
+        <div fxFlex="50%">
+          <lob-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-rb-premium-renderer>
+        </div>
+      </div>
+
+      <div *ngIf="renderComponent=='compare'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
+        fxLayoutGap="0.2%" fxLayoutAlign="center">
+        <div fxFlex="50%">
+          <nb-rb-monthly-report-renderer [fromDate]="fromDate" [toDate]="toDate">
+          </nb-rb-monthly-report-renderer>
+
+        </div>
+        <div fxFlex="50%">
+          <nb-rb-comparision-report-renderer [fromDate]="fromDate" [toDate]="toDate">
+          </nb-rb-comparision-report-renderer>
+        </div>
+      </div>

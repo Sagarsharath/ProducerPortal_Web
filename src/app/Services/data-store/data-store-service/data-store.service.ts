@@ -5,6 +5,7 @@ import { NBorRBPremium, SubmissionToBound_Model, LobPremium_Model, PIFModel, Car
 import { AgentModel_api } from '../model/AgentContacts-api-Model'
 import { map, catchError } from 'rxjs/operators';
 import { Folder } from '../model/Folder.model';
+import { Binary } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -125,7 +126,6 @@ export class DataStoreService {
 
   //#endregion
 
-
   //#region Commonly used methods
   getQueryString(fromDate: Date, toDate: Date) {
 
@@ -164,5 +164,17 @@ export class DataStoreService {
   }
   //#endregion
 
+  //#region Policy Documents API
+  getPolicyDocument(policyNumber : string) : Observable<Blob> {
+    let url = 'APIGateway/documents/getdocs?policyNumber' + policyNumber;
+    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
+    return response;
+  }
 
+  getPolicies(policyNumber : string) {
+    let url = 'APIGateway/documents/search?policyNumber' + policyNumber;
+    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
+    return response;
+  }
+  //#endregion
 }

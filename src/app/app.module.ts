@@ -67,6 +67,8 @@ import { RenameDialogComponent} from './file-manager/modals/renameDialog/rename-
 import { MarketingBrochureComponent } from './marketing-brochure/marketing-brochure.component'
 import { FileService } from './Services/file-service/file.service';
 import { FileManagerModule } from './file-manager/file-manager.module';
+import { UserSpecificReportsComponent} from './business/user-specific-reports/user-specific-reports.component';
+import { PolicyDocumentsComponent } from './policy-documents/policy-documents.component'
 
 @NgModule({
   declarations: [
@@ -94,6 +96,7 @@ import { FileManagerModule } from './file-manager/file-manager.module';
     PifReportRendererComponent,
     NbRbMonthlyReportRendererComponent,
     NbRbComparisionReportRendererComponent,
+    UserSpecificReportsComponent,
     DoughnutChartComponent,
     NbRbYearlyReportRendererComponent,
     DoughnutChartCustomizerComponent,
@@ -104,6 +107,7 @@ import { FileManagerModule } from './file-manager/file-manager.module';
     NewFolderDialogComponent,
     RenameDialogComponent,
     MarketingBrochureComponent,
+    PolicyDocumentsComponent,
   ],
   imports: [
     BrowserModule,

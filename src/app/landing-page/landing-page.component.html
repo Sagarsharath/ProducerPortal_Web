@@ -12,43 +12,34 @@
     <div>
       <mat-accordion>
 
-        <mat-card (click)="changeComponent('dashboard')">DashBoard</mat-card>
+        <mat-card (click)="changeComponent('dashboard',false)">Dashboard</mat-card>
         <mat-expansion-panel hideToggle="true">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Reports
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <!-- <mat-card matInput (click)="changeComponent('nbpremium')">NB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('rbpremium')">RB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('boundratio')">Bound Ratio</mat-card>
-          <mat-card matInput (click)="changeComponent('carriernbpremium')">Carrier NB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('carrierrbpremium')">Carrier RB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('pifreport')">PIF Report</mat-card>
-          <mat-card matInput (click)="changeComponent('lobnbpremium')">LOB RB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('lobrbpremium')">LOB RB Premium Report</mat-card>
-          <mat-card matInput (click)="changeComponent('nbrbmonthly')">NB-RB Monthly Report</mat-card>
-          <mat-card matInput (click)="changeComponent('nbrbcompare')">NB-RB Comparision Report</mat-card> -->
-          <mat-card matInput (click)="changeComponent('premiumreports')">Premium Reports</mat-card>
-          <mat-card matInput (click)="changeComponent('boundratio')">Bound Ratio</mat-card>
-          <mat-card matInput (click)="changeComponent('carrierpremium')">Carrier Premium Reports</mat-card>
-          <mat-card matInput (click)="changeComponent('pifreport')">PIF Report</mat-card>
-          <mat-card matInput (click)="changeComponent('lobpremium')">LOB Premium Reports</mat-card>
-          <mat-card matInput (click)="changeComponent('compare')">Comparision Reports</mat-card>
+          <mat-card matInput (click)="changeComponent('premiumreports',true)">Premium Reports</mat-card>
+          <mat-card matInput (click)="changeComponent('boundratio',true)">Bound Ratio</mat-card>
+          <mat-card matInput (click)="changeComponent('carrierpremium',true)">Carrier Premium Reports</mat-card>
+          <mat-card matInput (click)="changeComponent('pifreport',true)">PIF Report</mat-card>
+          <mat-card matInput (click)="changeComponent('lobpremium',true)">LOB Premium Reports</mat-card>
+          <mat-card matInput (click)="changeComponent('compare',true)">Comparision Reports</mat-card>
         </mat-expansion-panel>
-        <mat-card (click)="changeComponent('agencyContact')">Agent Contacts</mat-card>
-        <mat-card (click)="changeComponent('brochure')">Marketing Brochure</mat-card>
+        <mat-card (click)="changeComponent('agencyContact',false)">Agent Contacts</mat-card>
+        <mat-card (click)="changeComponent('brochure',false)">Marketing Brochure</mat-card>
+        <mat-card (click)="changeComponent('documents',false)">Policy Documents</mat-card>
       </mat-accordion>
     </div>
   </div>
   <div class="topnav">
     <div class="topnav-right">
-      <label style='align-items:center'>{{AgencyName}}</label> ||
+      <label style='align-items:center'>{{AgencyName}}</label> 
       <label (click)="logOut()">Logout</label>
     </div>
   </div>67
   <div class='main'>
-    <div class="date-picker" *ngIf="renderComponent!='agencyContact'&&renderComponent!='brochure'">
+    <div class="date-picker" *ngIf="renderComponent!='agencyContact'&&renderComponent!='brochure'&&renderComponent!='documents'">
       <div class="select-style">
         <select>
           <option value="Yearly">Yearly</option>
@@ -64,100 +55,15 @@
     </div>
 
     <div class='allcharts' *ngIf="renderComponent=='dashboard'">
+       
       <app-dashboard [fromDate]="fromDate.value" [toDate]="toDate.value"></app-dashboard>
     </div>
-    <div class='singlechart'>
-      <div *ngIf="renderComponent=='premiumreports'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-          <nb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value"></nb-premium-renderer>
-        </div>
-        <div fxFlex="50%">
-          <rb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value"></rb-premium-renderer>
-        </div>
-      </div>
-
-      <div *ngIf="renderComponent=='boundratio'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="80%">
-          <bound-ratio-renderer [fromDate]="fromDate.value" [toDate]="toDate.value">
-          </bound-ratio-renderer>
-        </div>
-      </div>
-
-      <div *ngIf="renderComponent=='carrierpremium'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-
-          <carrier-nb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value">
-          </carrier-nb-premium-renderer>
-        </div>
-        <div fxFlex="50%">
-
-          <carrier-rb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value">
-          </carrier-rb-premium-renderer>
-        </div>
-      </div>
-      <div *ngIf="renderComponent=='pifreport'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="80%">
-          <pif-report-renderer [fromDate]="fromDate.value" [toDate]="toDate.value"> </pif-report-renderer>
-        </div>
-      </div>
-
-      <div *ngIf="renderComponent=='lobpremium'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-          <lob-nb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value"></lob-nb-premium-renderer>
-        </div>
-        <div fxFlex="50%">
-          <lob-rb-premium-renderer [fromDate]="fromDate.value" [toDate]="toDate.value"></lob-rb-premium-renderer>
-        </div>
-      </div>
-
-      <div *ngIf="renderComponent=='compare'" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap
-        fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-          <nb-rb-monthly-report-renderer [fromDate]="fromDate.value" [toDate]="toDate.value">
-          </nb-rb-monthly-report-renderer>
-
-        </div>
-        <div fxFlex="50%">
-          <nb-rb-comparision-report-renderer [fromDate]="fromDate.value" [toDate]="toDate.value">
-          </nb-rb-comparision-report-renderer>
-        </div>
-      </div>
+    <div class='singlechart' *ngIf="userSpecificReport">
+      <user-specific-reports [renderComponent]="renderComponent" [fromDate]="fromDate.value" [toDate]="toDate.value"></user-specific-reports>
     </div>
-    <!-- <div class='singlechart'>
-      <nb-premium-renderer *ngIf="renderComponent=='nbpremium'" [fromDate]="fromDate.value" [toDate]="toDate.value">
-      </nb-premium-renderer>
-      <bound-ratio-renderer *ngIf="renderComponent=='boundratio'" [fromDate]="fromDate.value" [toDate]="toDate.value">
-      </bound-ratio-renderer>
-      <pif-report-renderer *ngIf="renderComponent=='pifreport'" [fromDate]="fromDate.value" [toDate]="toDate.value">
-      </pif-report-renderer>
-      <rb-premium-renderer *ngIf="renderComponent=='rbpremium'" [fromDate]="fromDate.value" [toDate]="toDate.value">
-      </rb-premium-renderer>
-
-      <carrier-nb-premium-renderer *ngIf="renderComponent=='carriernbpremium'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></carrier-nb-premium-renderer>
-
-      <carrier-rb-premium-renderer *ngIf="renderComponent=='carrierrbpremium'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></carrier-rb-premium-renderer>
-
-      <lob-nb-premium-renderer *ngIf="renderComponent=='lobnbpremium'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></lob-nb-premium-renderer>
-
-      <lob-rb-premium-renderer *ngIf="renderComponent=='lobrbpremium'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></lob-rb-premium-renderer>
-
-      <nb-rb-monthly-report-renderer *ngIf="renderComponent=='nbrbmonthly'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></nb-rb-monthly-report-renderer>
-
-      <nb-rb-comparision-report-renderer *ngIf="renderComponent=='nbrbcompare'" [fromDate]="fromDate.value"
-        [toDate]="toDate.value"></nb-rb-comparision-report-renderer>
-    </div> -->
     <agency-details *ngIf="renderComponent=='agencyContact'"></agency-details>
     <marketing-brochure *ngIf="renderComponent=='brochure'"></marketing-brochure>
+    <policy-documents *ngIf="renderComponent=='documents'"></policy-documents>
 
   </div>
 </body>
