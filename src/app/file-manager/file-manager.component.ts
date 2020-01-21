@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { NewFolderDialogComponent} from './modals/newFolderDialog/new-folder-dialog.component'
 import { RenameDialogComponent } from './modals/renameDialog/rename-dialog.component';
+import { DataStoreService } from '../Services/data-store/data-store-service/data-store.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ import { RenameDialogComponent } from './modals/renameDialog/rename-dialog.compo
   styleUrls: ['./file-manager.component.scss']
 })
 export class FileManagerComponent implements OnChanges {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+    private dataStore: DataStoreService) {}
 
   @Input() fileElements: FileElement[];
   @Input() canNavigateUp: string;
@@ -33,6 +35,33 @@ export class FileManagerComponent implements OnChanges {
     this.elementRemoved.emit(element);
   }
 
+  downloadFile(element: FileElement) {
+    this.dataStore.downloadFile(element.downloadUri.split('file=')[1]).subscribe(result=>{
+
+      // IE doesn't allow using a blob object directly as link href
+      // instead it is necessary to use msSaveOrOpenBlob
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(result);
+        return;
+      }
+
+      // For other browsers:
+      // Create a link pointing to the ObjectURL containing the blob.
+      const data = window.URL.createObjectURL(result);
+
+      var link = document.createElement('a');
+      link.href = data;
+      link.download = element.name;
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+      setTimeout(function () {
+        // For Firefox it is necessary to delay revoking the ObjectURL
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+    })
+  }
+
   navigate(element: FileElement) {
     if (element.isFolder) {
       this.navigatedDown.emit(element);
@@ -42,7 +71,7 @@ export class FileManagerComponent implements OnChanges {
   navigateUp() {
     this.navigatedUp.emit();
   }
-
+  
   moveElement(element: FileElement, moveTo: FileElement) {
     this.elementMoved.emit({ element: element, moveTo: moveTo });
   }

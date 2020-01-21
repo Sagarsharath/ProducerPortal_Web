@@ -3,4 +3,5 @@ export interface FileElement {
     isFolder: boolean;
     name: string;
     parent: string;
+    downloadUri:string;
 }

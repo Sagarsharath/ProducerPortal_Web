@@ -43,22 +43,22 @@ export class AgencyDetailsComponent implements OnInit {
       dataToEditOrAdd = this.setEmptyValues()
     }
     const dialogRef = this.dialog.open(EditAgentPopupComponent, {
-      width:"500px",
+      width: "500px",
       data: dataToEditOrAdd
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getAgentContacts()
     });
   }
-openDeleteDialog(dataToEditOrAdd: AgentDetailsModel): void{
-  const dialogRef = this.dialog.open(DeleteAgentComponent, {
-    data: dataToEditOrAdd
-  });
-  dialogRef.afterClosed().subscribe(result => {
-    this.getAgentContacts()
-  });
-  
-}
+  openDeleteDialog(dataToEditOrAdd: AgentDetailsModel): void {
+    const dialogRef = this.dialog.open(DeleteAgentComponent, {
+      data: dataToEditOrAdd
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAgentContacts()
+    });
+
+  }
 
   setEmptyValues(): AgentDetailsModel {
     var dataToAdd = new AgentDetailsModel();

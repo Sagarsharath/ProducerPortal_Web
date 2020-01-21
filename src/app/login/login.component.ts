@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.checkIfLoginHasToken()
   }
   checkIfLoginHasToken() {
+        
     if (this.router.url.includes('login')) {
       var urlArr = this.router.url.split('login');
       var token = urlArr[urlArr.length-1];
@@ -59,13 +60,12 @@ export class LoginComponent implements OnInit {
   AuthenticateUser(userid: string) {
     this.dataStore.authenticate(userid).subscribe(
       data => {
-        console.log(data);
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('token', data.token);
-        this.router.navigate(['/landingPage']);
+          localStorage.setItem('loggedIn', 'true');
+          localStorage.setItem('token', data.token);
+          this.router.navigate(['/landingPage']);
+               
       },
       (error) => {
-        console.log(error)
         if (error.status == 401) {
           this.response = false;
         }

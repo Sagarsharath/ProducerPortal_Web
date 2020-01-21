@@ -5,10 +5,11 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IApiService } from './interfaces/api-service.interface';
 import { MatSnackBarConfig, MatSnackBar } from '@angular/material/snack-bar';
+import { DataStoreService } from '../data-store/data-store-service/data-store.service';
 
 const apiPath = environment.serverUrl;
 
-const tokenHeaderName: string = "authToken";
+//const tokenHeaderName: string = "authToken";
 
 
 
@@ -23,15 +24,21 @@ export class ApiCallingService implements IApiService {
   ) {
 
   }
+
+
   private extractdata(res: Response) {
     let body = res;
     return body || {};
   }
-
-  get(url): Observable<any> {
-    const headers = this.setHeaders();
-    console.log(headers)
-    let response = this.http.get(apiPath + url, { headers })
+  
+  get(url, options = null): Observable<any> {
+    //let headers = new HttpHeaders();
+    if (options == null) {
+      options = {
+        headers: this.setHeaders()
+      }
+    }
+    let response = this.http.get(apiPath + url, options)
       .pipe(
         catchError(this.handleError(url)));
     return response;
@@ -40,20 +47,11 @@ export class ApiCallingService implements IApiService {
   post(url: string, data: any): Observable<any> {
 
     const headers = this.setHeaders();
-
     return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
       catchError(this.handleError(url))
     );
   }
-  postWithStringify(url: string, data: any): Observable<any> {
 
-    const headers = this.setHeaders();
-    
-
-    return this.http.post(apiPath + url, data, { headers, withCredentials: true }).pipe(
-      catchError(this.handleError(url))
-    );
-  }
 
   put(url: string, data: any): Observable<any> {
     const headers = this.setHeaders();

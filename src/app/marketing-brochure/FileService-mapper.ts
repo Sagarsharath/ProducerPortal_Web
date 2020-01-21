@@ -5,13 +5,13 @@ export class FileServiceMapper{
     constructor(public fileService: FileService) {}
     public addFiles(folders : Folder[], baseFolder:string){
         folders.forEach(folder=>{
-            const Parent = this.fileService.add({name:folder.name,isFolder:true,parent:baseFolder})
+            const Parent = this.fileService.add({name:folder.name,isFolder:true,parent:baseFolder,downloadUri:''})
             folder.files.forEach(file=>{
-                this.fileService.add({ name: file.name, isFolder: false, parent: Parent.id });
+                this.fileService.add({ name: file.name, isFolder: false, parent: Parent.id,downloadUri:file.uri});
             })
-            if(folder.subFolders.length>0&& folder.subFolders[0]!=null){                
-               this.addFiles(folder.subFolders,Parent.id)
-            }            
+            if(folder.subFolders!=null&&folder.subFolders.length>0){
+                this.addFiles(folder.subFolders,Parent.id)
+            }          
         })
     }
 

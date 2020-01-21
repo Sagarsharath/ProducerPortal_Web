@@ -25,20 +25,19 @@ export class MarketingBrochureComponent implements OnInit {
   ngOnInit() {
     // TODO api call
     console.log(mock)
-    // this.dataStore.get_marketingLibrary().subscribe(result=>{
-    //   const filemapper = new FileServiceMapper(this.fileService);
-    //   filemapper.addFiles(result,'root');
-    // })
-    // this.fileService.deleteInFolder('root')
-    //this.deleteAllElements();
     const filemapper = new FileServiceMapper(this.fileService);
+  
     // Delete file service folders
-    filemapper.addFiles(mock,'root');    
+    this.dataStore.getAllFiles().subscribe(result=>
+      {
+        filemapper.addFiles(result,'root')
+      })
+    //filemapper.addFiles(mock,'root');    
     this.updateFileElementQuery();
   }
 
   addFolder(folder: { name: string }) {
-    this.fileService.add({ isFolder: true, name: folder.name, parent: this.currentRoot ? this.currentRoot.id : 'root' });
+    this.fileService.add({ isFolder: true, name: folder.name, parent: this.currentRoot ? this.currentRoot.id : 'root' ,downloadUri:''});
     this.updateFileElementQuery();
   }
 

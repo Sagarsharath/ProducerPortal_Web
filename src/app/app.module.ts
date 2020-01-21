@@ -10,7 +10,7 @@ import { DashboardComponent } from './business/dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 import {
   MatButtonModule,
   MatFormFieldModule,
@@ -23,7 +23,7 @@ import {
   MatTableModule,
   MatToolbarModule,
   MatDatepickerModule,
-  MatNativeDateModule,
+  MatNativeDateModule, 
   MatDialogModule,
   MatMenuModule,
   MatExpansionModule,
@@ -36,7 +36,6 @@ import { LoginComponent } from './login/login.component';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { BarChartCustomizerComponent } from './chart-customizers/additional-info-customizer/bar-chart-customizer/bar-chart-customizer.component';
 import { NbPremiumRendererComponent } from './business/renderers/nb-premium-renderer/nb-premium-renderer.component';
-
 import { BarChartComponent } from './ng-charts/bar-chart/bar-chart.component';
 import { LineChartComponent } from './ng-charts/line-chart/line-chart.component';
 import { InitializeChart } from './chart-customizers/initializeChart.directive';
@@ -69,10 +68,18 @@ import { FileService } from './Services/file-service/file.service';
 import { FileManagerModule } from './file-manager/file-manager.module';
 import { UserSpecificReportsComponent} from './business/user-specific-reports/user-specific-reports.component';
 import { PolicyDocumentsComponent } from './policy-documents/policy-documents.component'
+import { LoaderInterceptorService } from './Services/http-service/loader-interceptor.service';
+import { LoaderService } from './Services/http-service/loader.service';
+import { LoaderComponent} from './loader/loader.component';
+import { ModalComponent } from './modal/modal.component';
+import { ModalService } from '../../../Umb/cogitate_umbrella/src/app/generic-components/modal/modal.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    ModalComponent,
+    //ChartComponent,
     BarChartComponent,
     LineChartComponent,
     DashboardComponent,
@@ -108,8 +115,9 @@ import { PolicyDocumentsComponent } from './policy-documents/policy-documents.co
     RenameDialogComponent,
     MarketingBrochureComponent,
     PolicyDocumentsComponent,
+    LoaderComponent
   ],
-  imports: [
+  imports: [    
     BrowserModule,
     AppRoutingModule,
     ChartsModule,
@@ -117,35 +125,33 @@ import { PolicyDocumentsComponent } from './policy-documents/policy-documents.co
     HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatButtonModule,
     MatFormFieldModule,
-    MatIconModule,
     MatListModule,
-    MatInputModule,
     MatSelectModule,
-    MatSidenavModule,
     MatCardModule,MatSnackBarModule,
     MatTableModule,
     MatCheckboxModule, MatToolbarModule,
     ReactiveFormsModule,
     Ng4LoadingSpinnerModule,
-    MatToolbarModule,
     MatPaginatorModule,
     MatButtonModule, MatSidenavModule, MatIconModule,
-    MatListModule,
-    MatSelectModule,
     MatExpansionModule,
     MatDialogModule,
     MatProgressBarModule,
     MatInputModule, MatDatepickerModule,
-    MatNativeDateModule, MatCardModule,
+    MatNativeDateModule,
     MatMenuModule,
    MatGridListModule,
-   FileManagerModule
-   
+   FileManagerModule,
+   //ChartModule   
   ],
+  //exports :[ ChartModule],
   providers: [
-    Location,FileService
+    Location,FileService,LoaderService, ModalService,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true
+    }
   ],
   entryComponents: [EditAgentPopupComponent,DeleteAgentComponent,NewFolderDialogComponent,RenameDialogComponent],
   bootstrap: [AppComponent]

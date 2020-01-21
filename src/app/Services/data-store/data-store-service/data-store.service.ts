@@ -6,6 +6,7 @@ import { AgentModel_api } from '../model/AgentContacts-api-Model'
 import { map, catchError } from 'rxjs/operators';
 import { Folder } from '../model/Folder.model';
 import { Binary } from '@angular/compiler';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class DataStoreService {
 
   //#region Authentication API calls
   authenticate(userid: string): Observable<any> {
-    let url = 'APIGateway/auth/validate';
+    let url = 'ProducerPortal/auth/validate';
     let payload: string = '"' + userid + '"';
     let response = this.apiService.post(url, payload).pipe(catchError(this.authenticationFailed(url)));
     return response;
@@ -37,43 +38,43 @@ export class DataStoreService {
   //#region Reports Related API calls
 
   getNBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBorRBPremium> {
-    let url = 'APIGateway/reports/nbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/nbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
 
   getRBPremiumDetails(fromDate: Date = null, toDate: Date = null): Observable<NBorRBPremium> {
-    let url = 'APIGateway/reports/rbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/rbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_SubmissionToBound_Report(fromDate: Date = null, toDate: Date = null): Observable<SubmissionToBound_Model> {
-    let url = 'APIGateway/reports/submissiontobound' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/submissiontobound' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_LOB_nbpremium(fromDate: Date = null, toDate: Date = null): Observable<LobPremium_Model[]> {
-    let url = 'APIGateway/reports/lob/nbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/lob/nbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_LOB_rbpremium(fromDate: Date = null, toDate: Date = null): Observable<LobPremium_Model[]> {
-    let url = 'APIGateway/reports/lob/rbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/lob/rbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_Carrier_nbpremium(fromDate: Date = null, toDate: Date = null): Observable<CarrierModel[]> {
-    let url = 'APIGateway/reports/carrier/nbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/carrier/nbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_Carrier_rbpremium(fromDate: Date = null, toDate: Date = null): Observable<CarrierModel[]> {
-    let url = 'APIGateway/reports/carrier/rbpremium' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/carrier/rbpremium' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_PIF_report(fromDate: Date = null, toDate: Date = null): Observable<PIFModel[]> {
-    let url = 'APIGateway/reports/pif' + this.getQueryString(fromDate, toDate);
+    let url = 'ProducerPortal/reports/pif' + this.getQueryString(fromDate, toDate);
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
@@ -82,29 +83,29 @@ export class DataStoreService {
 
   //#region Agency and Agent related API calls
   get_AgencyDetails() {
-    let url = 'APIGateway/Agency';
+    let url = 'ProducerPortal/Agency';
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   get_AgentContacts(): Observable<AgentModel_api[]> {
-    let url = 'APIGateway/contact';
+    let url = 'ProducerPortal/contact';
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
   addAgentDetails(data: AgentModel_api) {
-    let url = 'APIGateway/contact';
+    let url = 'ProducerPortal/contact';
     let response = this.apiService.post(url, data).pipe(catchError(this.handleError(url)));
     console.log(response.subscribe(x => x.status))
     return response;
   }
   editAgentDetails(data: AgentModel_api) {
-    let url = 'APIGateway/contact';
+    let url = 'ProducerPortal/contact';
     let response = this.apiService.put(url, data).pipe(catchError(this.handleError(url)));
     console.log(response.subscribe(x => x.status))
     return response;
   }
   deleteAgentDetails(data: AgentModel_api) {
-    let url = 'APIGateway/contact';
+    let url = 'ProducerPortal/contact';
     let response = this.apiService.delete(url, data).pipe(catchError(this.handleError(url)));
     return response;
   }
@@ -112,15 +113,20 @@ export class DataStoreService {
 
   //#region File Manager( Marketing brochure ) Api calls
 
-  get_marketingLibrary(): Observable<Folder[]>{    
-    let url = 'APIGateway/marketinglibrary';
+  getAllFiles(): Observable<Folder[]>{    
+    let url = 'ProducerPortal/marketinglibrary';
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
 
-  get_Files() :Observable<File>{
-    let url = 'APIGateway/getfile';
-    let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
+  downloadFile(fileName : string) :Observable<File>{
+    let url = 'ProducerPortal/marketinglibrary/downloadfile?file='+fileName;
+    const headers = new HttpHeaders({
+      'Accept': 'application/octet-stream',
+      'Content-Type': 'application/octet-stream',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    let response = this.apiService.get(url,{headers,responseType:'blob'}).pipe(catchError(this.handleError(url)));
     return response;
   }
 
@@ -164,15 +170,15 @@ export class DataStoreService {
   }
   //#endregion
 
-  //#region Policy Documents API
+//#region Policy Documents API
   getPolicyDocument(policyNumber : string) : Observable<Blob> {
-    let url = 'APIGateway/documents/getdocs?policyNumber' + policyNumber;
+    let url = 'ProducerPortal/documents/getdocs?policyNumber' + policyNumber;
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }
 
-  getPolicies(policyNumber : string) {
-    let url = 'APIGateway/documents/search?policyNumber' + policyNumber;
+  getPolicies(policyNumber : string):Observable<string[]> {
+    let url = 'ProducerPortal/documents/search?policyNumber=' + policyNumber;
     let response = this.apiService.get(url).pipe(catchError(this.handleError(url)));
     return response;
   }

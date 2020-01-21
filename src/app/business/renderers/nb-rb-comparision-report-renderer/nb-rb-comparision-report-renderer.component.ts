@@ -44,7 +44,7 @@ export class NbRbComparisionReportRendererComponent implements OnInit {
         this.ratio = (numerator/denom);
       }
       this.additionalInfo ='';
-     // this.additionalInfo = this.additionalInfoText+this.ratio.toFixed(2);
+   // this.additionalInfo = this.additionalInfoText + this.ratio.toFixed(2);
       
     })
     });

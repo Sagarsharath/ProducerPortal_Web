@@ -1,9 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Component, OnInit } from '@angular/core';
 import { chartToRender } from './../Charts/chartsConfig';
 import { Router } from '@angular/router';
 import { DataStoreService } from './../Services/data-store/data-store-service/data-store.service';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,8 +13,9 @@ import { FormControl } from '@angular/forms';
 export class LandingPageComponent implements OnInit {
   public AgencyName: string;
   public 
-  public renderComponent = 'dashboard';
-  public userSpecificReport = false;
+  //public renderComponent = 'dashboard';
+  public renderComponent = 'bcline';
+  public userSpecificReport = false ;
   public defaultCharts = chartToRender;
   events: string[] = [];
   opened: boolean;
@@ -25,35 +26,39 @@ export class LandingPageComponent implements OnInit {
   toDate = new FormControl((new Date((this.selectedYear + 1) + "/01/01")));
   fromDate = new FormControl((new Date(this.selectedYear + "/01/01")));
   constructor(public router: Router,
+    private  snackBar : MatSnackBar,
     private datastore: DataStoreService) { 
       let i: number=1;
       while(i!=10){
         this.years.push(this.years[0]-i);
         i++;
-      }
-      
+      }      
     }
 
   ngOnInit() {
     this.datastore.get_AgencyDetails().subscribe(result=>{
-    this.AgencyName = result.name
-    })
+    this.AgencyName = result.name ;
+    },
+    error=>{
+      console.log(error);
+    }
+    )
   }
   dsChange() {
     this.toDate = new FormControl((new Date((this.selectedYear + 1) + "/01/01")));
     this.fromDate = new FormControl((new Date(this.selectedYear + "/01/01")));
   }
-public collapse : boolean = false;
-  openCollapsable(){
+  public collapse: boolean = false;
+  openCollapsable() {
     this.collapse = true
-    return  null;
-
+    return null;
   }
 
-  setLoadComponent(){
-
-     
+  showSessionExpiredMessage(){
+    this.snackBar.open("Session Expired! Try Login Again","",{verticalPosition: 'top',duration:1000,horizontalPosition:"center"});
+    this.router.navigate(['/login']);
   }
+
   changeComponent(toComponent: string, userSpecific:boolean) {
     this.renderComponent = toComponent;
     this.userSpecificReport = userSpecific;
@@ -62,6 +67,7 @@ public collapse : boolean = false;
   }
   logOut() {
     localStorage.clear();
-    window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies', '_self');
+    //location.href.
+    window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies?redirectURL=http://localhost:4200/%23/login', '_self');
   }
 }
