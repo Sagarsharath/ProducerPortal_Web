@@ -20,7 +20,7 @@ export class DoughnutChartComponent implements OnInit, OnChanges{
   
   @Input()
   colors: ChartColor;
-  legend: boolean = true;
+  legend: boolean = false;
   private donutColors;
   private donutData:any[];
   ngOnInit() {
@@ -33,7 +33,7 @@ export class DoughnutChartComponent implements OnInit, OnChanges{
   private initializeChartData(): void {
     this.donutColors=[
       {
-        backgroundColor: [
+        backgroundColor: [  
           'rgba(110, 114, 20, 1)',
           'rgba(118, 183, 172, 1)',
           'rgba(0, 148, 97, 1)',

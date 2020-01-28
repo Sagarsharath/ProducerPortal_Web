@@ -22,6 +22,14 @@ export class DoughnutChartCustomizerComponent implements OnInit {
     RGB = [
       '#a697a0',
       '#94aab5',
+      '#94b59d',
+      '#ad9a53',
+      '#d49d9d',
+      '#9fc1c2',
+      '#6a77ad',
+      '#c9add9',
+      '#cc91bc',
+      '#a16a94',
     ];
   
     ChartColor = [

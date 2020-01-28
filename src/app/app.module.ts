@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DashboardComponent } from './business/dashboard/dashboard.component';
+import { OldDashboardComponent } from './business/OLD-dashboard/old-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -73,6 +73,11 @@ import { LoaderService } from './Services/http-service/loader.service';
 import { LoaderComponent} from './loader/loader.component';
 import { ModalComponent } from './modal/modal.component';
 import { ModalService } from '../../../Umb/cogitate_umbrella/src/app/generic-components/modal/modal.service';
+import { NbPremiumReportComponent } from './business/chart-renderers/nb-premium-report/nb-premium-report.component';
+import { DashboardComponent } from './business/dashboard/dashboard.component';
+import { LobNbPremiumReportComponent } from './business/chart-renderers/lob-nb-premium-report/lob-nb-premium-report.component';
+import { LineChartCustomizerComponent } from './chart-customizers/additional-info-customizer/line-chart-customizer/line-chart-customizer.component';
+import { TopSellingCarrierComponent } from './business/chart-renderers/top-selling-carrier/top-selling-carrier.component';
 
 
 @NgModule({
@@ -82,7 +87,7 @@ import { ModalService } from '../../../Umb/cogitate_umbrella/src/app/generic-com
     //ChartComponent,
     BarChartComponent,
     LineChartComponent,
-    DashboardComponent,
+    OldDashboardComponent,
     LandingPageComponent,
     LoginComponent,
     BarChartCustomizerComponent,
@@ -115,7 +120,12 @@ import { ModalService } from '../../../Umb/cogitate_umbrella/src/app/generic-com
     RenameDialogComponent,
     MarketingBrochureComponent,
     PolicyDocumentsComponent,
-    LoaderComponent
+    LoaderComponent,
+    NbPremiumReportComponent,
+    DashboardComponent,
+    LobNbPremiumReportComponent,
+    LineChartCustomizerComponent,
+    TopSellingCarrierComponent
   ],
   imports: [    
     BrowserModule,

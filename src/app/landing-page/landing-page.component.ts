@@ -20,7 +20,6 @@ export class LandingPageComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
   panelOpenState :boolean =false;
-
   years = [new Date().getFullYear()-1];
   selectedYear = this.years[0];
   toDate = new FormControl((new Date((this.selectedYear + 1) + "/01/01")));
@@ -67,7 +66,7 @@ export class LandingPageComponent implements OnInit {
   }
   logOut() {
     localStorage.clear();
-    //location.href.
-    window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies?redirectURL=http://localhost:4200/%23/login', '_self');
+    let redirectUrl = location.host + '/%23/login';
+    window.open('http://dev.cogitate.us/ssonew/Login/ClearAllCookies?redirectURL='+ redirectUrl, '_self');   
   }
 }

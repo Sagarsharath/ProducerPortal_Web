@@ -55,7 +55,8 @@
 
     <div class='allcharts' *ngIf="renderComponent=='dashboard'">
        
-      <app-dashboard [fromDate]="fromDate.value" [toDate]="toDate.value"></app-dashboard>
+       <old-dashboard [fromDate]="fromDate.value" [toDate]="toDate.value"></old-dashboard> 
+      
     </div>
     <div class='singlechart' *ngIf="userSpecificReport">
       <user-specific-reports [renderComponent]="renderComponent" [fromDate]="fromDate.value" [toDate]="toDate.value"></user-specific-reports>
@@ -64,6 +65,12 @@
     <marketing-brochure *ngIf="renderComponent=='brochure'"></marketing-brochure>
     <policy-documents *ngIf="renderComponent=='documents'"></policy-documents>
     <!-- <bc-line-chart *ngIf="renderComponent=='bcline'"></bc-line-chart> --> 
+    <div class='singlechart'>
+      <!--  <nb-premium-report *ngIf="renderComponent=='bcline'"></nb-premium-report> -->
+     
+    </div> <dashboard *ngIf="renderComponent=='bcline'"></dashboard>
+   
+    
 
   </div>
 </body>

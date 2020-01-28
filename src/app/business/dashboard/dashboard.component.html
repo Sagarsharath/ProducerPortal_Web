@@ -1,53 +1,382 @@
-<div class="container" fxLayout="row" fxLayout.xs="column"
- fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="33%">
-                <nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-premium-renderer>
-        </div>
-        <div fxFlex="33%">
-                <rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate" ></rb-premium-renderer>
-        </div>
-        <div fxFlex="34%">
-                <bound-ratio-renderer [fromDate]="fromDate" [toDate]="toDate"></bound-ratio-renderer>
-        </div>
-</div>
-
-<div class="container" fxLayout="row" fxLayout.xs="column"
- fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-                <carrier-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></carrier-nb-premium-renderer>
-        </div>
-        <div fxFlex="50%">
-                <carrier-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></carrier-rb-premium-renderer>
-        </div>
-</div>
-
-<div class="container" fxLayout="row" fxLayout.xs="column"
- fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="33%">
-                <lob-nb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-nb-premium-renderer>
-        </div>
-        <div fxFlex="33%">
-                <lob-rb-premium-renderer [fromDate]="fromDate" [toDate]="toDate"></lob-rb-premium-renderer>
-        </div>
-        <div fxFlex="34%">
-                <pif-report-renderer [fromDate]="fromDate" [toDate]="toDate"></pif-report-renderer>
-        </div>
-</div>
-<div class="container" fxLayout="row" fxLayout.xs="column"
- fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-                <nb-rb-monthly-report-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-rb-monthly-report-renderer>
-        </div>
-        <div fxFlex="50%">
-                <nb-rb-comparision-report-renderer [fromDate]="fromDate" [toDate]="toDate"></nb-rb-comparision-report-renderer>
-        </div>
-</div>
-<!-- <div class="container" fxLayout="row" fxLayout.xs="column"
- fxLayoutWrap fxLayoutGap="0.2%" fxLayoutAlign="center">
-        <div fxFlex="50%">
-                <nb-premium-renderer [fromDate]="tempdate" [toDate]="toDate"></nb-premium-renderer>
-        </div>
-        <div fxFlex="50%">
-               
-        </div>
-</div> -->
+<script src="../../../assets/js/Chart.min.js"></script>
+<script src="../../../assets/js/slick-slider/slick.min.js"></script>
+<script src="../../../assets/js/site.inc.js"></script>
+<link href="../../../assets/js/slick-slider/slick.css" rel="stylesheet">
+<div id="wrap" style="text-align: left;">
+    <div class="content col-100 floatLft">
+         <div class="agencyTitle col-100 floatLft">
+             <h1>Insura Agency Inc</h1>
+             <span>Agency overview</span>
+         </div>
+ 
+         <div class="revenueWrap col-100 floatLft">
+             <div class="revenueCount">
+                <div class="countBx">
+                    <img src="./../../../assets/Images/actPol.png" alt="">
+                    <h2>1,234</h2>
+                    <span>Active Policies</span>
+                </div>
+                <div class="countBx">
+                    <img src="./../../../assets/Images/totAgents.png" alt="">
+                    <h2>29</h2>
+                    <span>Total Agents</span>
+                </div> 
+                <div class="countBx">
+                     <img src="./../../../assets/Images/actCust.png" alt="">
+                     <h2>987</h2>
+                     <span>Active Customers</span>
+                 </div>  
+             </div>
+             <div class="revenueBox">
+                <div class="overAllBx">
+                   <h3>Overall Revenue</h3> 
+                   <h1>$183,927</h1>
+                   <a href="#">View Details</a>
+                </div> 
+                <div class="percBx">
+                   <!-- <h2>&nearr; 12%</h2>  -->
+                   <span>when compared to last month</span>
+ 
+                   <h3>Last Month</h3>
+                   <h1>$123,890</h1>
+                </div> 
+             </div>
+         </div>
+ 
+         <div class="businessWrap col-100 floatLft">
+             <div class="busiMenu col-100 floatLft">
+                 <a href="#" class="active">New Business</a>
+                 <a href="#">Renewal Business</a>
+             </div>
+ 
+             <div class="premiumBxOuter col-100 floatLft">
+                 <div class="premiumBx">
+                 <!--     <div class="graphTitleWrap">
+                         <div class="graphTitle">
+                             <h2>New Business Premium <a href="#">View All</a></h2>
+                             <span>223 policies sold</span>
+                         </div>
+                         <div class="graphFilter">
+                             <div class="filterDD">
+                                 <select name="yeardd" id="yeardd">
+                                     <option value="yearly">Yearly</option>
+                                     <option value="monthly">Monthly</option>
+                                 </select>
+                             </div>
+                             <div class="filterDD">
+                                 <select name="perioddd" id="perioddd">
+                                     <option value="2019">2019</option>
+                                     <option value="2018">2018</option>
+                                     <option value="2017">2017</option>
+                                     <option value="2016">2016</option>
+                                     <option value="2015">2015</option>
+                                     <option value="2014">2014</option>
+                                 </select>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="graphInner col-100 floatLft">
+                         <div class="graphBx">
+                             
+                           <canvas id="primium"></canvas>  
+                         </div>
+                         <div class="graphCntBx">
+                             <div class="pifBx col-100 floatLft">
+                                 <h3>PIF for NB</h3>
+                                 <h2>$32,443</h2>
+                                 <span>from 142 Policies</span>
+                             </div>
+                             <div class="ouoteBx col-100 floatLft">
+                                 <h3>Quote to Bid ratio</h3>
+                                 <h2>15%</h2>
+                                 
+                                  <h4>&nearr; 12%</h4> 
+                                 <span>when compared to<br>last year</span>
+                             </div>
+                         </div>
+                     </div>-->
+                     <nb-premium-report></nb-premium-report>
+                    </div>                
+                 <div class="lobBx">
+                    <lob-nb-premium-report></lob-nb-premium-report>
+                 </div>
+             </div>
+         </div>
+ 
+         <div class="policyWrap col-100 floatLft">
+             <div class="policyInner">
+                 <div class="tableTitle"><h2>Recently Sold Policies</h2> <a href="#">View All</a></div>
+                 <table cellpadding="0" cellspacing="0" width="100%">
+                     <thead>
+                         <tr>
+                             <th>Insurer Name</th>
+                             <th>Policy ID</th>
+                             <th>Policy Name</th>
+                             <th>carrier</th>
+                             <th></th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td><span class="initials danger">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials warning">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials success">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials info">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials progress">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials danger">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials success">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         <tr>
+                             <td><span class="initials danger">EB</span><span>Emlen Beaver</span></td>
+                             <td>662D 7738R</td>
+                             <td>Automotive Complete</td>
+                             <td>Liberty Mutal</td>
+                             <td><a href="#"><img src="./../../../assets/Images/ico-more.png" alt=""></a></td>
+                         </tr>
+                         
+                     </tbody>
+                 </table>
+             </div>
+             <div class="careersInner">
+                 <div class="tableTitle"><h2>Top Selling Carriers</h2></div>
+ 
+                 <div class="careerSlider col-100 floatLft ">
+                     <div class="careersBox">
+                         <div class="carrierHead">
+                             <div class="carrierImg"><img src="./../../../assets/Images/progressive-logo.png" alt=""></div>
+                             <div class="carrierCnt">
+                                 <h2>Progressive Corporation</h2>
+                                 <div class="totCount col-100 floatLft">
+                                     <span>323 Policies sold</span>
+                                     <span>293 Customers</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="premiumBxWrap col-100 floatLft">
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>  
+                         </div>
+     
+                         <div class="premiumGraph col-100 floatLft">
+                             <span>Activity Last Month</span>
+                             <canvas id="premiumGraphChart"></canvas> 
+                         </div>
+     
+                         <div class="topSellingWrap col-100 floatLft">
+                             <p>Top Selling Policy in Progressive </p>
+                             <h3>Automotive Complete</h3>
+                             <div class="totCount">
+                                 <span>187 Policies sold</span>
+                                 <span>130 Customers</span>
+                             </div>
+                         </div>
+     
+                         <div class="BxBtn col-100 floatLft"><a href="#">VIEW DETAILS</a></div>
+                     </div>
+ 
+                     <div class="careersBox">
+                         <div class="carrierHead">
+                             <div class="carrierImg"><img src="./../../../assets/Images/progressive-logo.png" alt=""></div>
+                             <div class="carrierCnt">
+                                 <h2>Progressive Corporation</h2>
+                                 <div class="totCount col-100 floatLft">
+                                     <span>323 Policies sold</span>
+                                     <span>293 Customers</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="premiumBxWrap col-100 floatLft">
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>  
+                         </div>
+     
+                         <div class="premiumGraph col-100 floatLft">
+                             <span>Activity Last Month</span>
+                             <canvas id="premiumGraphChart2"></canvas> 
+                         </div>
+     
+                         <div class="topSellingWrap col-100 floatLft">
+                             <p>Top Selling Policy in Progressive </p>
+                             <h3>Automotive Complete</h3>
+                             <div class="totCount">
+                                 <span>187 Policies sold</span>
+                                 <span>130 Customers</span>
+                             </div>
+                         </div>
+     
+                         <div class="BxBtn col-100 floatLft"><a href="#">VIEW DETAILS</a></div>
+                     </div>
+ 
+                     <div class="careersBox">
+                         <div class="carrierHead">
+                             <div class="carrierImg"><img src="./../../../assets/Images/progressive-logo.png" alt=""></div>
+                             <div class="carrierCnt">
+                                 <h2>Progressive Corporation</h2>
+                                 <div class="totCount col-100 floatLft">
+                                     <span>323 Policies sold</span>
+                                     <span>293 Customers</span>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="premiumBxWrap col-100 floatLft">
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>
+                            <div class="premiumBx">
+                                <h3>$23,334</h3>
+                                <span>Total Premium</span>
+                            </div>  
+                         </div>
+     
+                         <div class="premiumGraph col-100 floatLft">
+                             <span>Activity Last Month</span>
+                             <canvas id="premiumGraphChart3"></canvas> 
+                         </div>
+     
+                         <div class="topSellingWrap col-100 floatLft">
+                             <p>Top Selling Policy in Progressive </p>
+                             <h3>Automotive Complete</h3>
+                             <div class="totCount">
+                                 <span>187 Policies sold</span>
+                                 <span>130 Customers</span>
+                             </div>
+                         </div>
+     
+                         <div class="BxBtn col-100 floatLft"><a href="#">VIEW DETAILS</a></div>
+                     </div>
+                 </div>
+                 
+                 
+             </div>
+         </div>
+ 
+         <div class="documentWrap col-100 floatLft">
+             <div class="tableTitle"><h2>Recently Accessed Documents</h2> <a href="#">View All</a></div>
+ 
+             <div class="documentWrapInner col-100 floatLft">
+                 <div class="documentBx">
+                     <div class="imgBx"><img src="./../../../assets/Images/docImg1.jpg" alt=""></div>
+                     <div class="docCnt">
+                         <h3>Lorem Ipusme name</h3>
+                         <div class="totCount col-100 floatLft">
+                             <span>PDF</span>
+                             <span>2.3MB</span>
+                         </div>
+                         <div class="buttons col-100 floatLft">
+                             <a href="#" class="viewBtn">View</a>
+                             <a href="#" class="downloadBtn"><img src="./../../../assets/Images/ico-download.png" alt=""></a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="documentBx">
+                     <div class="imgBx"><img src="./../../../assets/Images/docImg2.jpg" alt=""></div>
+                     <div class="docCnt">
+                         <h3>Lorem Ipusme name</h3>
+                         <div class="totCount col-100 floatLft">
+                             <span>PDF</span>
+                             <span>2.3MB</span>
+                         </div>
+                         <div class="buttons col-100 floatLft">
+                             <a href="#" class="viewBtn">View</a>
+                             <a href="#" class="downloadBtn"><img src="./../../../assets/Images/ico-download.png" alt=""></a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="documentBx">
+                     <div class="imgBx"><img src="./../../../assets/Images/docImg3.jpg" alt=""></div>
+                     <div class="docCnt">
+                         <h3>Lorem Ipusme name</h3>
+                         <div class="totCount col-100 floatLft">
+                             <span>PDF</span>
+                             <span>2.3MB</span>
+                         </div>
+                         <div class="buttons col-100 floatLft">
+                             <a href="#" class="viewBtn">View</a>
+                             <a href="#" class="downloadBtn"><img src="./../../../assets/Images/ico-download.png" alt=""></a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="documentBx">
+                     <div class="imgBx"><img src="./../../../assets/Images/docImg4.jpg" alt=""></div>
+                     <div class="docCnt">
+                         <h3>Lorem Ipusme name</h3>
+                         <div class="totCount col-100 floatLft">
+                             <span>PDF</span>
+                             <span>2.3MB</span>
+                         </div>
+                         <div class="buttons col-100 floatLft">
+                             <a href="#" class="viewBtn">View</a>
+                             <a href="#" class="downloadBtn"><img src="./../../../assets/Images/ico-download.png" alt=""></a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+ </div>
+ 

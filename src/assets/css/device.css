@@ -1,0 +1,64 @@
+@media screen and (max-width:1500px){
+    .businessWrap .premiumBxOuter .lobBx .lobHeader{ padding: 20px 40px;}
+}
+
+@media screen and (max-width:1300px){
+    #wrap{ padding: 30px 40px;}
+    .graphTitleWrap .graphFilter .filterDD select{ width: 100%;}
+    .graphTitleWrap .graphFilter .filterDD::after{ top: 9px; width: 10px; height: 10px;}
+    .graphTitleWrap .graphFilter .filterDD{    width: calc(50% - 20px);}
+}
+@media screen and (max-width:1280px){
+    .agencyTitle h1{ font-size: 28px;}
+    .revenueCount .countBx h2{ font-size: 28px;}
+    .revenueWrap .revenueBox .overAllBx h3{ font-size: 18px;}
+    .revenueWrap .revenueBox .overAllBx h1{ font-size: 42px;}
+    .revenueWrap .revenueBox .percBx h2{ font-size: 20px;}
+    .revenueWrap .revenueBox .percBx span{ margin-bottom: 15px;}
+    .revenueWrap .revenueBox .percBx h1{ font-size: 20px;}
+    .businessWrap .busiMenu a{ font-size: 20px;}
+
+    .graphInner .graphCntBx .pifBx h3, .graphInner .graphCntBx .ouoteBx h3{ font-size: 14px;}
+    .graphInner .graphCntBx .pifBx h2, .graphInner .graphCntBx .ouoteBx h2{ font-size: 20px;}
+    .graphInner .graphCntBx .ouoteBx h2{ margin-bottom: 15px;}
+
+    .businessWrap .premiumBxOuter .lobBx .lobHeader h1{ font-size: 42px;}
+    .businessWrap .premiumBxOuter .lobBx .lobHeader { padding: 15px 30px; margin-bottom: 10px;}
+    .businessWrap .premiumBxOuter{ align-items: flex-start;}
+    .businessWrap .premiumBxOuter .lobBx .lobHeader {padding: 25px 30px;}
+}
+
+@media screen and (max-width:1100px){
+    .graphInner{ flex-flow: row wrap;}
+    .graphInner .graphBx{ width: 100%; margin-bottom: 25px;}
+    .graphInner .graphCntBx{ width: 100%;}
+
+    .chart-wrapper{ width: calc(100% - 40px);}
+    #legend { width: 100%; padding: 0 20px;}
+
+    .businessWrap .premiumBxOuter .lobBx .lobHeader h1{ font-size: 35px;}
+
+    table tbody tr td{ padding: 9px; font-size: 13px;}
+
+    .careersBox .carrierHead .carrierCnt h2{ font-size: 15px;}
+
+    .careersBox .carrierHead .carrierImg{ margin: 0 5px 0 0; width: calc(25% - 9px);}
+    .careersBox .carrierHead .carrierCnt{ margin: 0 0 0 5px; width: calc(75% - 9px);}
+    .careersBox .carrierHead .carrierCnt .totCount span{ font-size: 11px; padding: 5px 5px 5px 0;}
+    .careersBox .carrierHead .carrierCnt .totCount span:last-child{ padding: 5px 0 5px 5px;}
+
+    .careersBox .carrierHead{ padding: 10px;}
+    .premiumBxWrap .premiumBx{ padding: 10px 5px;}
+    #premiumGraphChart{ max-height: 135px;}
+    .documentWrapInner .documentBx .imgBx {width: calc(40% - 13px); margin: 0 10px 0 0;}
+    .documentWrapInner .documentBx{ padding: 10px; width: calc(25% - 5px);}
+    .documentWrapInner .documentBx .docCnt h3{ font-size: 11px;}
+
+    .graphTitleWrap{ margin-bottom: 25px;}
+
+    .graphTitleWrap{ flex-flow: row wrap;}
+    .graphTitle{ width: 100%; margin-bottom: 15px;}
+    .graphFilter{ width: 100%; text-align: left;}
+    .graphTitleWrap .graphFilter .filterDD:first-child{ margin: 0 10px 0 0;}
+    .businessWrap .premiumBxOuter .lobBx .lobChart { margin: 37px 0; }
+}

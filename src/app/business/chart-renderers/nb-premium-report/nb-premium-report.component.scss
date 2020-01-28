@@ -1,0 +1,102 @@
+    @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
+
+body{background-color: #f7fafc; font-family: 'Graphik-Regular'; font-weight: 400; font-size: 12px; color: #7f8899;}
+
+.header{ width: 100%; height: 75px; float: left; position: fixed; top: 0; left: 0; border: solid 1px #e4e7ec; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; background: #fff; z-index: 10;}
+.header .logo{ width: 192px; }
+.header .logo img{ width: 100%;}
+.agencyLogo{ display: flex; align-items: center; justify-content: space-between;}
+.agencyLogo{ font-size: 14px; color: #37435a;}
+
+.businessWrap .premiumBxOuter{ display: flex; align-items: center; justify-content: space-between;}
+.businessWrap .premiumBxOuter .premiumBx{ width: calc(65% - 10px); border-radius: 4px; box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); border: solid 1px #e4e7ec; padding: 20px; background-color: #ffffff;}
+
+.graphTitleWrap{ display: flex; align-items: center; justify-content: space-between; margin-bottom: 35px;}
+.graphTitleWrap .graphTitle h2{ color: #37435a; font-size: 18px; display: inline-block; vertical-align: middle; width: 100%; margin-bottom: 5px;}
+.graphTitleWrap .graphTitle h2 a{display: inline-block;vertical-align: middle;font-size: 12px;color: #2d75ff;margin: 0 0 0 10px;}
+.graphTitleWrap .graphTitle span{ font-size: 14px; color: #7f8899; width: 100%; float: left;}
+
+.graphTitleWrap .graphFilter .filterDD{ display: inline-block; vertical-align: middle; margin: 0 10px; position: relative;}
+.graphTitleWrap .graphFilter .filterDD:last-child{ margin: 0 0 0 10px;}
+.graphTitleWrap .graphFilter .filterDD select{ width: 150px; display: inline-block; border-radius: 3px; border: solid 1px #e4e7ec; background-color: #f9f9f9; padding: 5px 10px; outline: none; color: #7f8899; font-family: 'Graphik-Regular'; font-size: 12px;}
+.graphTitleWrap .graphFilter .filterDD::after{ content: ""; position: absolute; right: 5px; top: 7px; background-color: #f9f9f9; background-image: ''; background-position: center center; background-repeat: no-repeat; background-size: cover; width: 15px; height: 15px;}
+
+.graphInner{ display: flex; align-items: flex-start; justify-content: space-between;}
+.graphInner .graphBx{ width: calc(73% - 10px);}
+.floatLft {
+	float: left
+}
+.col-100, div.imgBox {
+	width: 100%
+}
+.graphInner .graphCntBx{width: calc(27% - 10px);}
+.graphInner .graphCntBx .pifBx{ border-radius: 3px; border: solid 1px #eef1f4; padding: 10px; margin-bottom: 17px; margin-top: 0;}
+.graphInner .graphCntBx .pifBx h3{ font-size: 16px; color: #97a4ba; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Medium";}
+.graphInner .graphCntBx .pifBx h2{ font-size: 24px; color: #37435a; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Light";}
+.graphInner .graphCntBx .pifBx span{ font-size: 10px;  color: #37435a; width: 100%; float: left; }
+
+.graphInner .graphCntBx .ouoteBx{ border-radius: 3px; border: solid 1px #eef1f4; padding: 10px; margin-bottom: 0;}
+.graphInner .graphCntBx .ouoteBx h3{ font-size: 16px; color: #97a4ba; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Medium";}
+.graphInner .graphCntBx .ouoteBx h2{ font-size: 24px; color: #37435a; width: 100%; float: left; margin-bottom: 22px;  font-family: "Graphik-Light";}
+.graphInner .graphCntBx .ouoteBx h4{ width: 100%; float: left; font-size: 16px; color: #7dc75c;}
+.graphInner .graphCntBx .ouoteBx span{ width: 100%; float: left; font-size: 12px; color:#9eb0c2;}
+
+.businessWrap .premiumBxOuter .lobBx{ width: calc(35% - 10px); border-radius: 4px; box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); border: solid 1px #e4e7ec; padding: 0; background-color: #ffffff;}
+.businessWrap .premiumBxOuter .lobBx .lobHeader{ padding: 23px 40px; margin-bottom: 15px; border-bottom: 1px solid #e4e7ec;}
+.businessWrap .premiumBxOuter .lobBx .lobHeader h1{ font-size: 48px; color: #37435a; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Light";}
+.businessWrap .premiumBxOuter .lobBx .lobHeader h3{ font-size: 13px; color: #9eb0c2; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Medium";}
+
+.businessWrap .premiumBxOuter .lobBx .lobChart{ margin: 10px 0;}
+
+.policyWrap { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 30px;}
+.policyWrap .policyInner{width: calc(65% - 10px);}
+
+.premiumBxWrap{ margin: 0; border-top:1px solid #e9eff4; border-bottom:1px solid #e9eff4;}
+.premiumBxWrap .premiumBx{ width: 33.3%; float: left; padding: 15px 10px; border-right:1px solid #e9eff4; }
+.premiumBxWrap .premiumBx:last-child{border-right:none;}
+.premiumBxWrap .premiumBx h3{ width: 100%; float: left; color: #4da1ff; line-height: 1.63; font-size: 16px;}
+.premiumBxWrap .premiumBx span{ width: 100%; float: left; color: #323c47; letter-spacing: 0.39px; font-size: 11px;}
+
+.premiumGraph{ padding: 0; border-bottom: solid 1px #e9eff4; position: relative;}
+.premiumGraph span{ font-size: 11px; opacity: 0.87; letter-spacing: 0.39px; color: #323c47; position: absolute; left: 10px; top: 10px; }
+
+
+.BxBtn a{ font-size: 14px; letter-spacing: 1px;  font-family: 'Graphik-Medium'; color: #fff; background-color: #2d75ff; padding: 15px; width: 100%; float: left; text-align: center;}
+
+
+.chart-wrapper {
+    max-height: 300px;
+    position: relative;
+    margin: 0 20px 20px;
+    width: calc(60% - 44px);
+    display: inline-block;
+    vertical-align: middle;
+  }
+  body .chart-wrapper #myChart {
+    position: relative;
+    z-index: 1;
+  }
+  body .chart-wrapper #chartjs-tooltip {
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    padding: 0;
+    opacity: 1 !important;
+    align-items: center;
+    text-align: center;
+  }
+
+  body .chart-wrapper #chartjs-tooltip p{color: #2e384d; font-family: 'Rubik', sans-serif; font-weight: 300; font-size: 40px;}
+  body .chart-wrapper #chartjs-tooltip p span{ width: 100%; float: left; font-size: 12px; font-family: 'Rubik', sans-serif; font-weight: 500; color: #b0bac9; margin-top: 5px; letter-spacing: 1px;}
+
+// .premiumGraph canvas{ max-height: 160px;}
+
+.careerSlider{ padding: 0 0 20px;}
+
+.graphTitle{ width: 50%; float: left;}
+.graphFilter{ width: 50%; float: left; text-align: right;}

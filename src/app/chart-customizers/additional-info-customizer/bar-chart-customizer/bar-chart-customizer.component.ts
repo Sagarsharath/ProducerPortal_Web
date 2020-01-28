@@ -54,32 +54,34 @@ export class BarChartCustomizerComponent implements OnInit, OnChanges {
       xAxes: [{
         stacked: false,
         ticks: {
-          fontColor: '#ffffff',
+          fontColor: '#7f8899',
         },
         gridLines: {
-          color: '#65b6d6'
+          borderDash: [8, 4],
+          color: '#d2d7d9'
         },
         scaleLabel: {
           display: true,
           labelString: '', // can be used to display y axis info
-          fontColor: '#ffffff',
+          fontColor: '#7f8899',
         }
       }],
       yAxes: [{
         stacked: false,
         ticks: {
-          fontColor: '#ffffff',
+          fontColor: '#7f8899',
           min: 0,
           beginAtZero: true,
 
         },
         gridLines: {
-          color: '#868d8f'
+          borderDash: [8, 4],
+          color: '#d2d7d9'
         },
         scaleLabel: {
           display: true,
           labelString: '',  // can be used to display y axis info
-          fontColor: '#ffffff',
+          fontColor: '#7f8899',
         }
       }]
     };

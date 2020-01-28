@@ -1,0 +1,99 @@
+body, h1, h2, h3, h4, h5, h6, p, ul, ul li {
+	margin: 0;
+	padding: 0;
+}
+.col-100, div.imgBox {
+	width: 100%
+}
+body {
+	font-size: 12px;
+	text-align: center;
+	margin:0;
+	padding:0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+}
+
+input{ outline:none !important;}
+
+*{box-sizing:border-box;}
+
+a:link, a:visited {
+	text-decoration: none;
+	border: none;
+	color: inherit;
+	outline:none;
+}
+img {
+	border: none;
+	outline:none;
+    max-width: 100%;
+}
+ul, ul li {
+	list-style-type: none
+}
+q {
+	quotes: "\201C" "\201D" "\2018" "\2019"
+}
+.desktop{ display:block;}
+.mobile{ display:none;}
+.helperSpan{ display:inline-block; vertical-align:middle; width:1px; height:100%;}
+.relative{ position:relative;}
+.clr {
+	clear: both
+}
+.floatLft {
+	float: left
+}
+.floatRgt {
+	float: right
+}
+.inlineBlk {
+	display: inline-block;
+	vertical-align: middle
+}
+.table {
+	display: table
+}
+div.imgBox {
+	float: left
+}
+div.imgBox img {
+	width: 100%;
+	float: left
+}
+.transition {transition: all .35s ease 0s;-moz-transition: all .35s ease 0s;-webkit-transition: all .35s ease 0s;}
+.col-90 {
+	width: 90%
+}
+.col-80 {
+	width: 80%
+}
+.col-70 {
+	width: 70%
+}
+.col-60 {
+	width: 60%
+}
+.col-50 {
+	width: 50%
+}
+.col-40 {
+	width: 40%
+}
+.col-30 {
+	width: 30%
+}
+.col-20 {
+	width: 20%
+}
+.col-10 {
+	width: 10%
+}
+
+
+
+
+
+
