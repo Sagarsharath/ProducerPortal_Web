@@ -128,7 +128,7 @@ body{background-color: #f7fafc; font-family: 'Graphik-Regular'; font-weight: 400
 .graphInner{ display: flex; align-items: flex-start; justify-content: space-between;}
 .graphInner .graphBx{ width: calc(73% - 10px);}
 
-canvas{-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;}
+/* canvas{-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;} */
 
 .graphInner .graphCntBx{width: calc(27% - 10px);}
 .graphInner .graphCntBx .pifBx{ border-radius: 3px; border: solid 1px #eef1f4; padding: 10px; margin-bottom: 17px; margin-top: 0;}
@@ -148,6 +148,7 @@ canvas{-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;
 .businessWrap .premiumBxOuter .lobBx .lobHeader h3{ font-size: 13px; color: #9eb0c2; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Medium";}
 
 .businessWrap .premiumBxOuter .lobBx .lobChart{ margin: 10px 0;}
+
 
 .policyWrap { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 30px;}
 .policyWrap .policyInner{width: calc(65% - 10px);}

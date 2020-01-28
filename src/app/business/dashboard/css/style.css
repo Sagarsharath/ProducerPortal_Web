@@ -128,7 +128,7 @@ body{background-color: #f7fafc; font-family: 'Graphik-Regular'; font-weight: 400
 .graphInner{ display: flex; align-items: flex-start; justify-content: space-between;}
 .graphInner .graphBx{ width: calc(73% - 10px);}
 
-canvas{-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;}
+/* canvas{-moz-user-select: none; -webkit-user-select: none; -ms-user-select: none;} */
 
 .graphInner .graphCntBx{width: calc(27% - 10px);}
 .graphInner .graphCntBx .pifBx{ border-radius: 3px; border: solid 1px #eef1f4; padding: 10px; margin-bottom: 17px; margin-top: 0;}

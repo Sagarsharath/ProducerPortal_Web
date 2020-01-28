@@ -4,11 +4,29 @@
         <h3>Average New business premium per policy</h3>
     </div>
     <div class="lobChart  col-100 floatLft">
-        <div class="chart-wrapper"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-        <doughnut-chart-customizer  [chartData]="chartData"></doughnut-chart-customizer>
-            <div id="chartjs-tooltip" class="center top bottom" style="color: rgb(70, 73, 80); opacity: 0;">
-                <div><p>100%</p></div>
+        <div class="chart-wrapper">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
             </div>
+            <doughnut-chart-customizer [chartData]="chartData"></doughnut-chart-customizer>
+            <!-- <div id="chartjs-tooltip" class="center top bottom" style="color: rgb(70, 73, 80); opacity: 0;">
+                <div>
+                    <p>100%</p>
+                </div>
+            </div> -->
         </div>
-        <div id="legend"><h2>Highest selling LOBs</h2><ul class="0-legend"><li><span style="background-color:#2d75ff"></span>Automobile</li><li><span style="background-color:#c6d4f9"></span>Fire</li><li><span style="background-color:#496db4"></span>Marine</li><li><span style="background-color:#84e2f1"></span>Commercial</li></ul></div>
+        <!-- <div id="legend">
+            <h2>Highest selling LOBs</h2>
+            <ul class="0-legend">
+                <li><span style="background-color:#2d75ff"></span>Automobile</li>
+                <li><span style="background-color:#c6d4f9"></span>Fire</li>
+                <li><span style="background-color:#496db4"></span>Marine</li>
+                <li><span style="background-color:#84e2f1"></span>Commercial</li>
+            </ul>
+        </div> -->
     </div>

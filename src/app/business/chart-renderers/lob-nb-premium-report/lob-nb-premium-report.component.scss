@@ -1,2 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap');
 @import '../../../../assets/css/style.css';
+
+
+.lobBx{ width: calc(35% - 10px); border-radius: 4px; box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1); border: solid 1px #e4e7ec; padding: 0; background-color: #ffffff;}
+.lobHeader{ padding: 23px 40px; margin-bottom: 15px; border-bottom: 1px solid #e4e7ec;}
+.lobHeader h1{ font-size: 48px; color: #37435a; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Light";}
+.lobHeader h3{ font-size: 13px; color: #9eb0c2; width: 100%; float: left; margin-bottom: 5px;  font-family: "Graphik-Medium";}
+.lobChart{ margin: 10px 0;}

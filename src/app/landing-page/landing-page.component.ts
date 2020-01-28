@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LandingPageComponent implements OnInit {
   public AgencyName: string;
-  public 
   //public renderComponent = 'dashboard';
   public renderComponent = 'bcline';
   public userSpecificReport = false ;
